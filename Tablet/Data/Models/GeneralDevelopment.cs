@@ -14,8 +14,10 @@ namespace Tablet.Data.Models
             this.appDBContent = appDBContent;
         }
 
+        public String Id { get; set; }
         public DateTime Date { get; set; }
-
+        public int Forecast { get; set; }
+        public int Progress { get; set; }
 
     }
 }
