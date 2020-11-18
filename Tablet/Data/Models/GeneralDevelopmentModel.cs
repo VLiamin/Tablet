@@ -5,19 +5,11 @@ using System.Threading.Tasks;
 
 namespace Tablet.Data.Models
 {
-    public class GeneralDevelopment
+    public class GeneralDevelopmentModel
     {
-        private readonly AppDBContent appDBContent;
-
-        public GeneralDevelopment(AppDBContent appDBContent)
-        {
-            this.appDBContent = appDBContent;
-        }
-
         public String Id { get; set; }
         public DateTime Date { get; set; }
         public int Forecast { get; set; }
         public int Progress { get; set; }
-
     }
 }

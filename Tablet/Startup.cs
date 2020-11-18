@@ -12,6 +12,7 @@ using Microsoft.Extensions.Hosting;
 using Tablet.Data;
 using Tablet.Data.interfaces;
 using Tablet.Data.mocks;
+using Tablet.Data.Models;
 using Tablet.Data.Repository;
 
 namespace Tablet
@@ -30,7 +31,12 @@ namespace Tablet
         {
             services.AddDbContext<AppDBContent>(options => options.UseSqlServer(_confString.GetConnectionString("DefaultConnection")));
             services.AddTransient<IProject, ProjectRepository>();
+
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            
             services.AddMvc(option => option.EnableEndpointRouting = false);
+            services.AddMemoryCache();
+            services.AddSession();
            
         }
 
@@ -40,7 +46,7 @@ namespace Tablet
             app.UseDeveloperExceptionPage();
             app.UseStatusCodePages();
             app.UseStaticFiles();
-            
+            app.UseSession();
             app.UseMvcWithDefaultRoute();
             app.UseMvc(routes =>
             {
