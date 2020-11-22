@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Tablet.Data.Models
 {
-    public class GeneralDevelopmentModel
+    public class GeneralDevelopment
     {
         public String Id { get; set; }
         public DateTime Date { get; set; }

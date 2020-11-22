@@ -14,10 +14,10 @@ namespace Tablet.Data.Models
             this.appDBContent = appDBContent;
         }
 
-        public List<GeneralDevelopmentModel> generalDevelopmentModels { get; set; }
+        public List<GeneralDevelopment> generalDevelopmentModels { get; set; }
         public void AddToTable(DateTime date, int forecast, int progress)
         {
-            appDBContent.GeneralDevelopmentModels.Add(new GeneralDevelopmentModel
+            appDBContent.GeneralDevelopmentModels.Add(new GeneralDevelopment
             {
                 Id = Guid.NewGuid().ToString(),
                 Date = date,
@@ -28,7 +28,7 @@ namespace Tablet.Data.Models
             appDBContent.SaveChanges();
         }
 
-        public List<GeneralDevelopmentModel> getGeneralDevelopmentModels()
+        public List<GeneralDevelopment> getGeneralDevelopmentModels()
         {
             return appDBContent.GeneralDevelopmentModels.ToList();
         }
