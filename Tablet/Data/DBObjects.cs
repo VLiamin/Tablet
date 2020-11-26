@@ -15,9 +15,11 @@ namespace Tablet.Data
 
             if (!content.Project.Any())
             {
+
                 content.AddRange(
                     new Project { name = "U019292", customer = "Серегин С.Ю.", developer = "Селин Т.Е.", technology = "WF", cost = 120000 }
                     );
+
             }
             content.SaveChanges();
         }

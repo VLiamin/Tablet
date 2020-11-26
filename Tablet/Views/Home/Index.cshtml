@@ -1,10 +1,26 @@
 ﻿@model HomeViewModel
 
-    <div class="row mt-5 mb-5">
+    <div class="container mt-5 mb-5">
+        <hr />
+        <hr />
         <div class="currencies float-left">
             <h2>
                 Общий график разработки ИСУГ
             </h2>
-            
+
         </div>
+        <hr />
+        <hr />
+        <hr />
+        @foreach (var el in Model.mainModal.generalDevelopmentModels)
+        {
+            <div class="alert alert-warning mt-3">
+                @el.Date<br />
+                @el.Forecast<br />
+                @el.Progress<br />
+            </div>
+        }
+        <hr />
+        <hr />
+        <a class="btn btn-warning" href="/GeneralDevelopment/Checkout">Добавить значение</a>
     </div>
