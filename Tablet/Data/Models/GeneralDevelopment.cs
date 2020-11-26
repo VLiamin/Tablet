@@ -13,7 +13,7 @@ namespace Tablet.Data.Models
         public String Id { get; set; }
 
         [Display(Name = "Введите дату")]
-        public String Date { get; set; }
+        public DateTime Date { get; set; }
 
         [Display(Name = "Введите план")]
         public int Forecast { get; set; }
