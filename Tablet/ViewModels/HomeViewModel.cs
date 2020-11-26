@@ -9,5 +9,6 @@ namespace Tablet.ViewModels
     public class HomeViewModel
     {
         public MainModel mainModal { get; set; } 
+        public GeneralDevelopment general { get; set; }
     }
 }

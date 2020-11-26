@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Tablet.Data.interfaces;
+using Tablet.Data.Models;
 using Tablet.ViewModels;
 
 namespace Tablet.Controllers

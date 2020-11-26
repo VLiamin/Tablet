@@ -13,6 +13,7 @@ namespace Tablet.Controllers
     {
 
         private readonly MainModel mainModel;
+        private readonly GeneralDevelopment generalDevelopment;
 
         public HomeController(MainModel mainModel)
         {
@@ -28,6 +29,12 @@ namespace Tablet.Controllers
             };
 
             return View(obj);
+        }
+
+        [HttpPost]
+        public void Checkout()
+        {
+
         }
     }
 }
