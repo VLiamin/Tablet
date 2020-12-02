@@ -16,5 +16,6 @@ namespace Tablet.Data
          
         public DbSet<Project> Project { get; set; }
         public DbSet<GeneralDevelopment> GeneralDevelopmentModels { get; set; }
+        public DbSet<Structure> Structures { get; set; }
     }
 }
