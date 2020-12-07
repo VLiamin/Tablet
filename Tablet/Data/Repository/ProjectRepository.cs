@@ -17,9 +17,14 @@ namespace Tablet.Data.Repository
         }
         public IEnumerable<Project> AllProjects => appDBContent.Project;
 
-        public Project getProject(int projectId)
+        public Project getProject(string projectId)
         {
             return appDBContent.Project.FirstOrDefault(p => p.Id == projectId);
+        }
+
+        public Project getProject(int projectId)
+        {
+            throw new NotImplementedException();
         }
     }
 }

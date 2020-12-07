@@ -7,7 +7,7 @@ namespace Tablet.Data.Models
 {
     public class Project
     {
-        public int Id { set; get; }
+        public string Id { set; get; }
         public String Name { set; get; }
         public String Customer { set; get; }
         public String Developer { set; get; }
