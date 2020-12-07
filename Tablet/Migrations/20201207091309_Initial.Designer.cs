@@ -10,18 +10,18 @@ using Tablet.Data;
 namespace Tablet.Migrations
 {
     [DbContext(typeof(AppDBContent))]
-    [Migration("20201116183849_GeneralDevelopment")]
-    partial class GeneralDevelopment
+    [Migration("20201207091309_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.9")
+                .HasAnnotation("ProductVersion", "3.1.10")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Tablet.Data.Models.GeneralDevelopmentModel", b =>
+            modelBuilder.Entity("Tablet.Data.Models.GeneralDevelopment", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -37,34 +37,48 @@ namespace Tablet.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("generalDevelopmentModels");
+                    b.ToTable("GeneralDevelopmentModels");
                 });
 
             modelBuilder.Entity("Tablet.Data.Models.Project", b =>
                 {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("cost")
+                    b.Property<int>("Cost")
                         .HasColumnType("int");
 
-                    b.Property<string>("customer")
+                    b.Property<string>("Customer")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("developer")
+                    b.Property<string>("Developer")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("name")
+                    b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("technology")
+                    b.Property<string>("Technology")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
                     b.ToTable("Project");
+                });
+
+            modelBuilder.Entity("Tablet.Data.Models.Structure", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Proportion")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Structures");
                 });
 #pragma warning restore 612, 618
         }

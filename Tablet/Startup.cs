@@ -11,7 +11,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Tablet.Data;
 using Tablet.Data.interfaces;
-using Tablet.Data.mocks;
 using Tablet.Data.Models;
 using Tablet.Data.Repository;
 
@@ -32,6 +31,7 @@ namespace Tablet
             services.AddDbContext<AppDBContent>(options => options.UseSqlServer(_confString.GetConnectionString("DefaultConnection")));
             services.AddTransient<IProject, ProjectRepository>();
             services.AddTransient<MainModel>();
+            services.AddTransient<ProjectModels>();
             services.AddTransient<IGeneralDevelopment, GeneralDevelopmentRepository>();
             services.AddTransient<IStructure, SructureRepository>();
 

@@ -13,19 +13,25 @@ namespace Tablet.Controllers
     {
 
         private readonly IProject project;
+        private readonly ProjectModels projectModels;
 
-        public ProjectController(IProject project)
+        public ProjectController(IProject project, ProjectModels projectModels)
         {
             this.project = project;
+            this.projectModels = projectModels;
         }
 
-        [Route("Project/List")]
-        public ViewResult List()
+        public IActionResult Presentation()
         {
-            ViewBag.tittle = "Страница с проектом";
-            ProjectListViewModel obj = new ProjectListViewModel();
-            obj.getAllModels = project.AllProjects;
-            return View(obj);
+
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Presentation(Project project)
+        {
+            projectModels.AddToTable(project.Name, project.Customer, project.Developer, project.Technology, project.Cost);
+            return View();
         }
     }
 }

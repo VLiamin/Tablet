@@ -8,7 +8,6 @@ namespace Tablet.Data.interfaces
 {
     public interface IProject
     {
-        IEnumerable<Project> AllProjects { get; }
-        Project getProject(int projectId);
+        void createProject(Project project);
     }
 }
