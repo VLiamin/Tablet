@@ -7,13 +7,13 @@ using Tablet.Data.Models;
 
 namespace Tablet.Data.Repository
 {
-    public class GeneralDevelopmentRepository : IGeneralDevelopment
+    public class SructureRepository : IStructure
     {
         private readonly AppDBContent appDBContent;
-        
-        public void createGeneralDevelopment (GeneralDevelopment general)
+
+        public void createStructure (Structure sructure)
         {
-            appDBContent.GeneralDevelopmentModels.Add(general);
+            appDBContent.Structures.Add(sructure);
             appDBContent.SaveChanges();
         }
     }

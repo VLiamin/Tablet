@@ -8,7 +8,8 @@ namespace Tablet.ViewModels
 {
     public class HomeViewModel
     {
-        public MainModel mainModal { get; set; } 
+        public MainModel mainModal { get; set; }
         public GeneralDevelopment general { get; set; }
+        public Structure structure { get; set; }
     }
 }
