@@ -19,7 +19,7 @@ namespace Tablet.Data.Repository
 
         public Project getProject(int projectId)
         {
-            return appDBContent.Project.FirstOrDefault(p => p.id == projectId);
+            return appDBContent.Project.FirstOrDefault(p => p.Id == projectId);
         }
     }
 }

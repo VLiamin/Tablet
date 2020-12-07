@@ -24,7 +24,7 @@ namespace Tablet.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(nullable: false),
-                    Name = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(nullable: false),
                     Proportion = table.Column<int>(nullable: false)
                 },
                 constraints: table =>

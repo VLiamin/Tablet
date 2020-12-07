@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+
 
 namespace Tablet.Data.Models
 {
@@ -33,6 +33,23 @@ namespace Tablet.Data.Models
             return appDBContent.GeneralDevelopmentModels.ToList();
         }
 
+        public List<Structure> Structures { get; set; }
+        public void AddToTableStructure(string name, int proportion)
+        {
+            appDBContent.Structures.Add(new Structure
+            {
+                Id = Guid.NewGuid().ToString(),
+                Name = name,
+                Proportion = proportion
+
+            });
+            appDBContent.SaveChanges();
+        }
+
+        public List<Structure> GetStructures()
+        {
+            return appDBContent.Structures.ToList();
+        }
 
     }
 

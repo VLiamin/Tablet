@@ -33,6 +33,7 @@ namespace Tablet
             services.AddTransient<IProject, ProjectRepository>();
             services.AddTransient<MainModel>();
             services.AddTransient<IGeneralDevelopment, GeneralDevelopmentRepository>();
+            services.AddTransient<IStructure, SructureRepository>();
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             

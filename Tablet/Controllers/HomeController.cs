@@ -14,6 +14,7 @@ namespace Tablet.Controllers
 
         private readonly MainModel mainModel;
         private readonly GeneralDevelopment generalDevelopment;
+        private readonly Structure structure;
 
         public HomeController(MainModel mainModel)
         {
@@ -23,6 +24,8 @@ namespace Tablet.Controllers
         {
             var items = mainModel.getGeneralDevelopmentModels();
             mainModel.generalDevelopmentModels = items;
+            var secondItems = mainModel.GetStructures();
+            mainModel.Structures = secondItems;
             var obj = new HomeViewModel
             {
                 mainModal = this.mainModel

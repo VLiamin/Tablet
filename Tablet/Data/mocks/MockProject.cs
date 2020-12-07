@@ -20,7 +20,7 @@ namespace Tablet.Data.mocks
                 return new List<Project>
                 {
 
-                    new Project {name = "U019292", customer = "Серегин С.Ю.", developer = "Селин Т.Е.", technology = "WF", cost = 120000}
+                    new Project {Name = "U019292", Customer = "Серегин С.Ю.", Developer = "Селин Т.Е.", Technology = "WF", Cost = 120000}
                 };
             }
         }
