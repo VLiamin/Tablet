@@ -12,15 +12,7 @@ namespace Tablet.Data
     {
         public static void Initial(AppDBContent content)
         {
-
-            if (!content.Project.Any())
-            {
-
-                content.AddRange(
-                    new Project { Name = "U019292", Customer = "Серегин С.Ю.", Developer = "Селин Т.Е.", Technology = "WF", Cost = 120000 }
-                    );
-
-            }
+            content.Project.RemoveRange();
             content.SaveChanges();
         }
     }

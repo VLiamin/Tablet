@@ -1,0 +1,26 @@
+﻿@model ProjectListViewModel
+
+<div class="container mt-5 mb-5">
+    <hr />
+    <hr />
+    <div class="currencies float-left">
+        <h2>
+            Все проекты
+        </h2>
+
+    </div>
+    <hr />
+    <hr />
+    <hr />
+    @foreach (var el in Model.ProjectModels.Projects)
+    {
+        <div class="alert alert-warning mt-3">
+            @el.Name<br />
+            @el.Customer<br />
+        </div>
+    }
+    <hr />
+    <hr />
+    <a class="btn btn-warning" href="/Project/Presentation">Добавить проект</a>
+    
+</div>

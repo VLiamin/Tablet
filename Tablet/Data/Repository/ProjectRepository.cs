@@ -15,11 +15,11 @@ namespace Tablet.Data.Repository
         {
             this.appDBContent = appDBContent;
         }
-        public IEnumerable<Project> AllProjects => appDBContent.Project;
 
-        public Project getProject(int projectId)
+        public void createProject(Project project)
         {
-            return appDBContent.Project.FirstOrDefault(p => p.Id == projectId);
+            appDBContent.Project.Add(project);
+            appDBContent.SaveChanges();
         }
     }
 }

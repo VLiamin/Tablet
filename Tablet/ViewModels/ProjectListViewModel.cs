@@ -8,6 +8,7 @@ namespace Tablet.ViewModels
 {
     public class ProjectListViewModel
     {
-        public IEnumerable<Project> getAllModels{ get; set; }
+        public ProjectModels ProjectModels { get; set; }
+        public Project Project { get; set; }
     }
 }
