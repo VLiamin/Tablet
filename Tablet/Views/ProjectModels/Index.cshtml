@@ -1,26 +1,37 @@
 ﻿@model ProjectListViewModel
 
-<div class="container mt-5 mb-5">
-    <hr />
-    <hr />
-    <div class="currencies float-left">
-        <h2>
-            Все проекты
-        </h2>
+    <div class="container mt-5 mb-5">
+        <hr />
+        <hr />
+        <div class="currencies float-left">
+            <h2>
+                Все проекты
+            </h2>
+
+        </div>
+        <hr />
+        <hr />
+        <hr />
+        <style>
+            button {
+                border: 2px solid #e34761; /* Параметры рамки */
+                background: #f3dbdf; /* Цвет фона */
+                font-size: 14px; /* Размер текста */
+                padding: 5px 20px; /* Поля вокруг текста */
+            }
+        </style>
+        @foreach (var el in Model.ProjectModels.Projects)
+        {
+            <td>Название проекта: @el.Name</td>
+            <br>
+            <td>ID проекта: @el.Id</td>
+            <br>
+            <button>Перейти на проект</button>
+            <br>
+            <hr />
+        }
+        <hr />
+        <hr />
+        <a class="btn btn-warning" href="/Project/Presentation">Добавить проект</a>
 
     </div>
-    <hr />
-    <hr />
-    <hr />
-    @foreach (var el in Model.ProjectModels.Projects)
-    {
-        <div class="alert alert-warning mt-3">
-            @el.Name<br />
-            @el.Customer<br />
-        </div>
-    }
-    <hr />
-    <hr />
-    <a class="btn btn-warning" href="/Project/Presentation">Добавить проект</a>
-    
-</div>
