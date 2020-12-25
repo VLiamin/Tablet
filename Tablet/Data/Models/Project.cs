@@ -8,7 +8,6 @@ namespace Tablet.Data.Models
 {
     public class Project
     {
-        [BindNever]
         public string Id { set; get; }
         public String Name { set; get; }
         public String Customer { set; get; }

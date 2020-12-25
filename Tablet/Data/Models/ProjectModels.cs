@@ -15,11 +15,11 @@ namespace Tablet.Data.Models
         }
 
         public List<Project> Projects { get; set; }
-        public void AddToTable(string name, string customer, string developer, string technology, int cost)
+        public void AddToTable(string id, string name, string customer, string developer, string technology, int cost)
         {
             appDBContent.Project.Add(new Project
             {
-                Id = Guid.NewGuid().ToString(),
+                Id = id,
                 Name = name,
                 Customer = customer,
                 Developer = developer,
