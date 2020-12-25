@@ -12,14 +12,13 @@
         <hr />
         <hr />
         <hr />
-        @foreach (var el in Model.mainModal.generalDevelopmentModels)
-        {
-            <div class="alert alert-warning mt-3">
-                @el.Date<br />
-                @el.Forecast<br />
-                @el.Progress<br />
-            </div>
-        }
+        <table class="table">
+            <tr><td>Дата</td><td>Прогноз</td><td>Результат</td></tr>
+            @foreach (var item in Model.mainModal.generalDevelopmentModels)
+            {
+                <tr><td>@item.Date</td><td>@item.Forecast</td><td>@item.Progress</td></tr>
+            }
+        </table>
         <hr />
         <hr />
         <a class="btn btn-warning" href="/GeneralDevelopment/Checkout">Добавить значение</a>
@@ -33,13 +32,13 @@
         <hr />
         <hr />
         <hr />
-        @foreach (var el in Model.mainModal.Structures)
-        {
-            <div class="alert alert-warning mt-3">
-                @el.Name<br />
-                @el.Proportion<br />
-            </div>
-        }
+        <table class="table">
+            <tr><td>Название</td><td>Проценты</td></tr>
+            @foreach (var item in Model.mainModal.Structures)
+            {
+                <tr><td>@item.Name</td><td>@item.Proportion</td></tr>
+            }
+        </table>
         <hr />
         <hr />
         <a class="btn btn-warning" href="/Structure/SecondCheckout">Добавить значение</a>
