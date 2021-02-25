@@ -26,7 +26,7 @@ namespace Tablet.Controllers
             return View();
         }
 
-         [HttpPost]
+        [HttpPost]
         public IActionResult Checkout(GeneralDevelopment general)
         {
             mainModel.AddToTable(general.Id, general.Date, general.Forecast, general.Progress);

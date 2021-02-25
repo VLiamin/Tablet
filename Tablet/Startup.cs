@@ -31,6 +31,7 @@ namespace Tablet
             services.AddDbContext<AppDBContent>(options => options.UseSqlServer(_confString.GetConnectionString("DefaultConnection")));
             services.AddTransient<IProject, ProjectRepository>();
             services.AddTransient<MainModel>();
+            services.AddTransient<ProjectPageModel>();
             services.AddTransient<ProjectModels>();
             services.AddTransient<IGeneralDevelopment, GeneralDevelopmentRepository>();
             services.AddTransient<IStructure, SructureRepository>();
