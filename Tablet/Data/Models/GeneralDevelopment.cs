@@ -9,7 +9,6 @@ namespace Tablet.Data.Models
 {
     public class GeneralDevelopment
     {
-        [BindNever]
         public String Id { get; set; }
 
         [Display(Name = "Введите дату")]

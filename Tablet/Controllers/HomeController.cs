@@ -13,13 +13,12 @@ namespace Tablet.Controllers
     {
 
         private readonly MainModel mainModel;
-        private readonly GeneralDevelopment generalDevelopment;
-        private readonly Structure structure;
 
         public HomeController(MainModel mainModel)
         {
             this.mainModel = mainModel;
         }
+
         public ViewResult Index()
         {
             var items = mainModel.getGeneralDevelopmentModels();
@@ -32,12 +31,6 @@ namespace Tablet.Controllers
             };
 
             return View(obj);
-        }
-
-        [HttpPost]
-        public void Checkout()
-        {
-
         }
     }
 }

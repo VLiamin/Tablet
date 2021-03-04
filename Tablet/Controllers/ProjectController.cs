@@ -30,7 +30,7 @@ namespace Tablet.Controllers
         [HttpPost]
         public IActionResult Presentation(Project project)
         {
-            projectModels.AddToTable(project.Name, project.Customer, project.Developer, project.Technology, project.Cost);
+            projectModels.AddToTable(project.Id, project.Name, project.Customer, project.Developer, project.Technology, project.Cost);
             return View();
         }
     }

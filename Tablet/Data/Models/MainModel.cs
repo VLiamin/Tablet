@@ -15,11 +15,11 @@ namespace Tablet.Data.Models
         }
 
         public List<GeneralDevelopment> generalDevelopmentModels { get; set; }
-        public void AddToTable(DateTime date, int forecast, int progress)
+        public void AddToTable(string id, DateTime date, int forecast, int progress)
         {
             appDBContent.GeneralDevelopmentModels.Add(new GeneralDevelopment
             {
-                Id = Guid.NewGuid().ToString(),
+                Id = id,
                 Date = date,
                 Forecast = forecast,
                 Progress = progress

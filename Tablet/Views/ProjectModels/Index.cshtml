@@ -20,13 +20,14 @@
                 padding: 5px 20px; /* Поля вокруг текста */
             }
         </style>
+
         @foreach (var el in Model.ProjectModels.Projects)
         {
             <td>Название проекта: @el.Name</td>
             <br>
             <td>ID проекта: @el.Id</td>
             <br>
-            <button>Перейти на проект</button>
+            <a class="" asp-controller="ProjectPage" asp-action="getProjectId" asp-route-id="@el.Id">Перейти на проект</a>
             <br>
             <hr />
         }
