@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tablet", "Tablet\Tablet.csproj", "{9D95C0CF-E3BE-49DE-8932-10C69C784006}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tablet", "Tablet\Tablet.csproj", "{9D95C0CF-E3BE-49DE-8932-10C69C784006}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Microservices", "Microservices", "{8EC7E702-63BA-4F55-8988-E1051BCD5EC2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Clients", "Clients", "{BC40121D-8A12-45A0-A45C-17D7076E5052}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUI", "Gui\GUI.csproj", "{6FF9D1BE-CDF7-45E7-A453-A12E6F74DBC7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +21,17 @@ Global
 		{9D95C0CF-E3BE-49DE-8932-10C69C784006}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9D95C0CF-E3BE-49DE-8932-10C69C784006}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9D95C0CF-E3BE-49DE-8932-10C69C784006}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6FF9D1BE-CDF7-45E7-A453-A12E6F74DBC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FF9D1BE-CDF7-45E7-A453-A12E6F74DBC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FF9D1BE-CDF7-45E7-A453-A12E6F74DBC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FF9D1BE-CDF7-45E7-A453-A12E6F74DBC7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9D95C0CF-E3BE-49DE-8932-10C69C784006} = {8EC7E702-63BA-4F55-8988-E1051BCD5EC2}
+		{6FF9D1BE-CDF7-45E7-A453-A12E6F74DBC7} = {BC40121D-8A12-45A0-A45C-17D7076E5052}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {52C4EEAA-D94D-4018-A651-EFD1B8ECD842}

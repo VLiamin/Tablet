@@ -1,0 +1,31 @@
+﻿@model Structure
+
+<div class="row  mt-5 mb-5">
+    <hr />
+    <hr />
+    <div class="currencies float-left">
+        <h2>
+            Добавление значения
+        </h2>
+
+    </div>
+    <hr />
+    <hr />
+    <hr />
+    <form asp-action="SecondCheckout" method="post" class="form">
+        <div class="form-group">
+            <label asp-for="Name"></label>
+            <div class="col-md-5">
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Proportion"></label>
+            <div class="col-md-5">
+                <input asp-for="Proportion" class="form-control" />
+            </div>
+        </div>
+        <input class="btn btn-success" type="submit" value="Добавить в таблицу" />
+    </form>
+</div>

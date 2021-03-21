@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/style.css" rel="stylesheet" type="text/css" />
+
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <div class="navbar-collapse" id="navbarСollapse">
+                <ul class="navbar-nav mr-auto">
+
+                    <li class="nav-item active">
+                        <a class="nav-link">Project</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/Home/Index">Главная</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/ProjectModels/Index">Проекты</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Ход разработки</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">График демонстрации</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Статус выполнения работ</a>
+                    </li>
+
+                </ul>
+
+                <form class="form-inline mt-2 mt-md-0">
+                    <a class="nav-link" href="#">Выйти</a>
+                </form>
+            </div>
+        </nav> 
+        
+    </header>
+
+    <div class="container">
+        @RenderBody()
+    </div>
+    <script href="~/css/bootstrap.min.js"></script>
+</body>
+</html>
