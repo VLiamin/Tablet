@@ -13,6 +13,7 @@ using Tablet.Data;
 using Tablet.Data.interfaces;
 using Tablet.Data.Models;
 using Tablet.Data.Repository;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace Tablet
 {
@@ -29,6 +30,11 @@ namespace Tablet
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<AppDBContent>(options => options.UseSqlServer(_confString.GetConnectionString("DefaultConnection")));
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+        .AddCookie(options => //CookieAuthenticationOptions
+        {
+            options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/Account/Login");
+        });
             services.AddTransient<IProject, ProjectRepository>();
             services.AddTransient<MainModel>();
             services.AddTransient<ProjectPageModel>();
@@ -41,7 +47,11 @@ namespace Tablet
             services.AddMvc(option => option.EnableEndpointRouting = false);
             services.AddMemoryCache();
             services.AddSession();
-           
+
+            
+            services.AddControllersWithViews();
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -51,18 +61,24 @@ namespace Tablet
             app.UseStatusCodePages();
             app.UseStaticFiles();
             app.UseSession();
-            app.UseMvcWithDefaultRoute();
-            app.UseMvc(routes =>
-            {
-                routes.MapRoute(name: "default", template: "{controller=Project}/{action=List}");
-            });
+            app.UseRouting();
 
             using (var scope = app.ApplicationServices.CreateScope())
             {
                 AppDBContent content = scope.ServiceProvider.GetRequiredService<AppDBContent>();
                 DBObjects.Initial(content);
             }
-            
+
+            app.UseAuthentication();    // аутентификация
+            app.UseAuthorization();     // авторизация
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+            });
+
         }
     }
 }

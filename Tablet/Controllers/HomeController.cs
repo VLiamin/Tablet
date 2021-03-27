@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Tablet.Data.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Tablet.Controllers
 {
@@ -19,6 +20,7 @@ namespace Tablet.Controllers
             this.mainModel = mainModel;
         }
 
+        [Authorize]
         public ViewResult Index()
         {
             var items = mainModel.getGeneralDevelopmentModels();
