@@ -7,6 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Tablet.Data.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Tablet.Controllers
 {
@@ -29,10 +30,11 @@ namespace Tablet.Controllers
             mainModel.Structures = secondItems;
             var obj = new HomeViewModel
             {
-                mainModal = this.mainModel
+                mainModel = this.mainModel
             };
 
             return View(obj);
         }
+
     }
 }

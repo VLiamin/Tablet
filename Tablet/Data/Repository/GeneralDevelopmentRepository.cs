@@ -10,7 +10,6 @@ namespace Tablet.Data.Repository
     public class GeneralDevelopmentRepository : IGeneralDevelopment
     {
         private readonly AppDBContent appDBContent;
-        
         public void createGeneralDevelopment (GeneralDevelopment general)
         {
             appDBContent.GeneralDevelopmentModels.Add(general);

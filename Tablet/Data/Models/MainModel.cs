@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.RazorPages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -28,6 +29,19 @@ namespace Tablet.Data.Models
             appDBContent.SaveChanges();
         }
 
+        public void DeleteFromProgressTable(string id)
+        {
+            var generalDevelopment = appDBContent.GeneralDevelopmentModels.Find(id);
+
+            if (generalDevelopment != null)
+            {
+                appDBContent.GeneralDevelopmentModels.Remove(generalDevelopment);
+                appDBContent.SaveChangesAsync();
+            }
+        }
+
+        
+
         public List<GeneralDevelopment> getGeneralDevelopmentModels()
         {
             return appDBContent.GeneralDevelopmentModels.ToList();
@@ -51,7 +65,19 @@ namespace Tablet.Data.Models
             return appDBContent.Structures.ToList();
         }
 
+
+        public void DeleteFromStructureTable(string id)
+        {
+            var structure = appDBContent.Structures.Find(id);
+
+            if (structure != null)
+            {
+                appDBContent.Structures.Remove(structure);
+                appDBContent.SaveChangesAsync();
+            }
+        }
+
     }
 
-
 }
+

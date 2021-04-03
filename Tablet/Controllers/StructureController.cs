@@ -11,12 +11,10 @@ namespace Tablet.Controllers
     public class StructureController : Controller
     {
 
-        private readonly IStructure structure;
         private readonly MainModel mainModel;
 
         public StructureController (IStructure structure, MainModel mainModel)
         {
-            this.structure = structure;
             this.mainModel = mainModel;
         }
 
@@ -30,6 +28,13 @@ namespace Tablet.Controllers
         public IActionResult SecondCheckout(Structure structure)
         {
             mainModel.AddToTableStructure(structure.Name, structure.Proportion);
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult DeleteValue(String Id)
+        {
+            mainModel.DeleteFromStructureTable(Id);
             return View();
         }
     }

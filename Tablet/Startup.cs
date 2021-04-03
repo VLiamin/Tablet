@@ -47,8 +47,9 @@ namespace Tablet
             services.AddMvc(option => option.EnableEndpointRouting = false);
             services.AddMemoryCache();
             services.AddSession();
+            services.AddRazorPages();
 
-            
+
             services.AddControllersWithViews();
 
 
@@ -62,6 +63,7 @@ namespace Tablet
             app.UseStaticFiles();
             app.UseSession();
             app.UseRouting();
+
 
             using (var scope = app.ApplicationServices.CreateScope())
             {
@@ -78,6 +80,8 @@ namespace Tablet
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            
 
         }
     }

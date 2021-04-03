@@ -9,5 +9,6 @@ namespace Tablet.Data.interfaces
     public interface IGeneralDevelopment
     {
         void createGeneralDevelopment(GeneralDevelopment general);
+
     }
 }
