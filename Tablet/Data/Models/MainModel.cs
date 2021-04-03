@@ -40,6 +40,8 @@ namespace Tablet.Data.Models
             }
         }
 
+        
+
         public List<GeneralDevelopment> getGeneralDevelopmentModels()
         {
             return appDBContent.GeneralDevelopmentModels.ToList();
@@ -63,7 +65,19 @@ namespace Tablet.Data.Models
             return appDBContent.Structures.ToList();
         }
 
+
+        public void DeleteFromStructureTable(string id)
+        {
+            var structure = appDBContent.Structures.Find(id);
+
+            if (structure != null)
+            {
+                appDBContent.Structures.Remove(structure);
+                appDBContent.SaveChangesAsync();
+            }
+        }
+
     }
 
-
 }
+

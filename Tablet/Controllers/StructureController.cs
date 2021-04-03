@@ -30,5 +30,12 @@ namespace Tablet.Controllers
             mainModel.AddToTableStructure(structure.Name, structure.Proportion);
             return View();
         }
+
+        [HttpPost]
+        public IActionResult DeleteValue(String Id)
+        {
+            mainModel.DeleteFromStructureTable(Id);
+            return View();
+        }
     }
 }

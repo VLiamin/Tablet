@@ -35,7 +35,6 @@
     <hr />
     <hr />
     <a class="btn btn-warning" href="/GeneralDevelopment/Checkout">Добавить значение</a>
-    <a class="btn btn-warning" href="/GeneralDevelopment/DeleteValue">Удалить значение</a>
     <hr />
     <div class="currencies float-left">
         <h2>
@@ -50,11 +49,19 @@
         <tr><td>Название</td><td>Проценты</td></tr>
         @foreach (var item in Model.mainModel.Structures)
         {
-<tr><td>@item.Name</td><td>@item.Proportion</td></tr>
+    <tr>
+        <td>@item.Name</td>
+        <td>@item.Proportion</td>
+        <td><form method="post">
+            <button type="submit" asp-controller="Structure" asp-action="DeleteValue" asp-route-id="@item.Id">
+                Удалить
+            </button>
+        </form>
+        </td>
+    </tr>
 }
     </table>
     <hr />
     <hr />
     <a class="btn btn-warning" href="/Structure/SecondCheckout">Добавить значение</a>
-    <a class="btn btn-warning" href="#">Удалить значение</a>
 </div>
