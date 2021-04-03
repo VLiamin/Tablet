@@ -10,6 +10,5 @@ namespace Tablet.Data.interfaces
     {
         void createGeneralDevelopment(GeneralDevelopment general);
 
-        void deleteGeneralDevelopment(String id);
     }
 }

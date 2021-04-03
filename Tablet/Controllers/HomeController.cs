@@ -36,22 +36,5 @@ namespace Tablet.Controllers
             return View(obj);
         }
 
-        [HttpPost]
-
-        public ViewResult Index(String Id)
-        {
-            mainModel.DeleteFromTable(Id);
-            var items = mainModel.getGeneralDevelopmentModels();
-            mainModel.generalDevelopmentModels = items;
-            var secondItems = mainModel.GetStructures();
-            mainModel.Structures = secondItems;
-            var obj = new HomeViewModel
-            {
-                mainModel = this.mainModel
-            };
-
-            return View(obj);
-        }
-
     }
 }

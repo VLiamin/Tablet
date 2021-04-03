@@ -15,16 +15,5 @@ namespace Tablet.Data.Repository
             appDBContent.GeneralDevelopmentModels.Add(general);
             appDBContent.SaveChanges();
         }
-
-        public async void deleteGeneralDevelopment(string id)
-        {
-            var generalDevelopment = appDBContent.GeneralDevelopmentModels.Find("3");
-
-            if (generalDevelopment != null)
-            {
-                appDBContent.GeneralDevelopmentModels.Remove(generalDevelopment);
-                await appDBContent.SaveChangesAsync();
-            }
-        }
     }
 }

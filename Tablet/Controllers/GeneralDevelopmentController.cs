@@ -42,7 +42,7 @@ namespace Tablet.Controllers
         [HttpPost]
         public IActionResult DeleteValue(String Id)
         {
-            mainModel.DeleteFromTable(Id);
+            mainModel.DeleteFromProgressTable(Id);
             return View();
         }
     }

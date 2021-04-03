@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace Tablet.Data.Models
 {
-    public class MainModel : PageModel
+    public class MainModel
     {
         private readonly AppDBContent appDBContent;
 
@@ -29,7 +29,7 @@ namespace Tablet.Data.Models
             appDBContent.SaveChanges();
         }
 
-        public void DeleteFromTable(string id)
+        public void DeleteFromProgressTable(string id)
         {
             var generalDevelopment = appDBContent.GeneralDevelopmentModels.Find(id);
 
