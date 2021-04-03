@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.RazorPages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
 
 namespace Tablet.Data.Models
 {
-    public class MainModel
+    public class MainModel : PageModel
     {
         private readonly AppDBContent appDBContent;
 
@@ -26,6 +27,17 @@ namespace Tablet.Data.Models
 
             });
             appDBContent.SaveChanges();
+        }
+
+        public void DeleteFromTable(string id)
+        {
+            var generalDevelopment = appDBContent.GeneralDevelopmentModels.Find(id);
+
+            if (generalDevelopment != null)
+            {
+                appDBContent.GeneralDevelopmentModels.Remove(generalDevelopment);
+                appDBContent.SaveChangesAsync();
+            }
         }
 
         public List<GeneralDevelopment> getGeneralDevelopmentModels()

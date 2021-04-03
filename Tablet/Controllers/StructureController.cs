@@ -11,12 +11,10 @@ namespace Tablet.Controllers
     public class StructureController : Controller
     {
 
-        private readonly IStructure structure;
         private readonly MainModel mainModel;
 
         public StructureController (IStructure structure, MainModel mainModel)
         {
-            this.structure = structure;
             this.mainModel = mainModel;
         }
 

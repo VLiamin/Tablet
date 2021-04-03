@@ -7,6 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Tablet.Data.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Tablet.Controllers
 {
@@ -29,10 +30,28 @@ namespace Tablet.Controllers
             mainModel.Structures = secondItems;
             var obj = new HomeViewModel
             {
-                mainModal = this.mainModel
+                mainModel = this.mainModel
             };
 
             return View(obj);
         }
+
+        [HttpPost]
+
+        public ViewResult Index(String Id)
+        {
+            mainModel.DeleteFromTable(Id);
+            var items = mainModel.getGeneralDevelopmentModels();
+            mainModel.generalDevelopmentModels = items;
+            var secondItems = mainModel.GetStructures();
+            mainModel.Structures = secondItems;
+            var obj = new HomeViewModel
+            {
+                mainModel = this.mainModel
+            };
+
+            return View(obj);
+        }
+
     }
 }

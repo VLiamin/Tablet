@@ -10,11 +10,21 @@ namespace Tablet.Data.Repository
     public class GeneralDevelopmentRepository : IGeneralDevelopment
     {
         private readonly AppDBContent appDBContent;
-        
         public void createGeneralDevelopment (GeneralDevelopment general)
         {
             appDBContent.GeneralDevelopmentModels.Add(general);
             appDBContent.SaveChanges();
+        }
+
+        public async void deleteGeneralDevelopment(string id)
+        {
+            var generalDevelopment = appDBContent.GeneralDevelopmentModels.Find("3");
+
+            if (generalDevelopment != null)
+            {
+                appDBContent.GeneralDevelopmentModels.Remove(generalDevelopment);
+                await appDBContent.SaveChangesAsync();
+            }
         }
     }
 }

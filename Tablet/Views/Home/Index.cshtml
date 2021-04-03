@@ -1,45 +1,60 @@
-﻿@model HomeViewModel
+﻿@model Tablet.ViewModels.HomeViewModel
 
-    <div class="container mt-5 mb-5">
-        <hr />
-        <hr />
-        <div class="currencies float-left">
-            <h2>
-                Общий график разработки
-            </h2>
+<div class="container mt-5 mb-5">
+    <hr />
+    <hr />
+    <div class="currencies float-left">
+        <h2>
+            Общий график разработки
+        </h2>
 
-        </div>
-        <hr />
-        <hr />
-        <hr />
-        <table class="table">
-            <tr><td>Дата</td><td>Прогноз</td><td>Результат</td></tr>
-            @foreach (var item in Model.mainModal.generalDevelopmentModels)
-            {
-                <tr><td>@item.Date</td><td>@item.Forecast</td><td>@item.Progress</td></tr>
-            }
-        </table>
-        <hr />
-        <hr />
-        <a class="btn btn-warning" href="/GeneralDevelopment/Checkout">Добавить значение</a>
-        <hr />
-        <div class="currencies float-left">
-            <h2>
-                Структура проекта
-            </h2>
-
-        </div>
-        <hr />
-        <hr />
-        <hr />
-        <table class="table">
-            <tr><td>Название</td><td>Проценты</td></tr>
-            @foreach (var item in Model.mainModal.Structures)
-            {
-                <tr><td>@item.Name</td><td>@item.Proportion</td></tr>
-            }
-        </table>
-        <hr />
-        <hr />
-        <a class="btn btn-warning" href="/Structure/SecondCheckout">Добавить значение</a>
     </div>
+    <hr />
+    <hr />
+    <hr />
+    <table class="table">
+        <tr><td>Дата</td><td>Прогноз</td><td>Результат</td></tr>
+        @foreach (var item in Model.mainModel.generalDevelopmentModels)
+
+        {
+<tr>
+    <td>@item.Date</td>
+    <td>@item.Forecast</td>
+    <td>@item.Progress</td>
+    <td>
+        <form method="post">
+            <button type="submit" asp-controller="GeneralDevelopment" asp-action="DeleteValue" asp-route-id="@item.Id">
+                Удалить
+            </button>
+        </form>
+    </td>
+
+</tr>
+       }
+    </table>
+    <hr />
+    <hr />
+    <a class="btn btn-warning" href="/GeneralDevelopment/Checkout">Добавить значение</a>
+    <a class="btn btn-warning" href="/GeneralDevelopment/DeleteValue">Удалить значение</a>
+    <hr />
+    <div class="currencies float-left">
+        <h2>
+            Структура проекта
+        </h2>
+
+    </div>
+    <hr />
+    <hr />
+    <hr />
+    <table class="table">
+        <tr><td>Название</td><td>Проценты</td></tr>
+        @foreach (var item in Model.mainModel.Structures)
+        {
+<tr><td>@item.Name</td><td>@item.Proportion</td></tr>
+}
+    </table>
+    <hr />
+    <hr />
+    <a class="btn btn-warning" href="/Structure/SecondCheckout">Добавить значение</a>
+    <a class="btn btn-warning" href="#">Удалить значение</a>
+</div>
