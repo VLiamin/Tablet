@@ -19,12 +19,33 @@
                     <td>Технология: @item.Technology</td> <br />
                     <td>Стоимость: @item.Cost</td> <br />
                 }
+
             }
 
+            <a class="btn btn-warning" href="#">Изменить значения</a>
         </h3>
-        <hr> 
+        <hr>
         <h2>
             Проблемы разработки
         </h2>
-    
-</div>
+
+        @foreach (var item in Model.projectPageModel.projectProblems)
+        {
+            if (item.Id.Equals(ProjectPageViewModel.projectId))
+            {
+                <td> @item.Id </td>
+                <td>  @item.ProjectId</td> <br />
+                <td>
+                    <form method="post">
+                        <button type="submit" >
+                            Удалить
+                        </button>
+                    </form>
+                </td>
+            }
+
+        }
+        <a class="btn btn-warning" href="#">Добавить значение</a>
+
+
+    </div>
