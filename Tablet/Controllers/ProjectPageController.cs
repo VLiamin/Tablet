@@ -27,7 +27,6 @@ namespace Tablet.Controllers
             var secondItems = projectPageModel.GetProjectProblemsModels();
             projectPageModel.projectProblems = secondItems;
 
-
             var obj = new ProjectPageViewModel
             {
                 projectPageModel = this.projectPageModel,
@@ -41,6 +40,18 @@ namespace Tablet.Controllers
         {
             ProjectPageController.id = id;
             return RedirectToAction("Index");
+        }
+
+        public ViewResult AddProblem()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ViewResult AddProblem(ProjectProblems projectProblems)
+        {
+            projectPageModel.AddToProjectProblems(projectProblems.Id, id, projectProblems.Problem);
+            return View();
         }
     }
 }
