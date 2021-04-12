@@ -4,7 +4,7 @@ image: Visual Studio 2019
 environment:
   
   matrix:
-  - solution_path: Table.sln
+  - solution_path: Tablet.sln
   
 before_build:
   - nuget restore %solution_path%
