@@ -39,21 +39,22 @@ namespace Tablet.Data.Models
 
         public List<ProjectProblems> projectProblems { get; set; }
 
-        public void AddToProjectProblems(int id, String projectId, String problem)
+        public void AddToProjectProblems(String id, String projectId, String problem)
         {
-            appDBContent.ProjectProblems.Add(new ProjectProblems
-            {
-                Id = id,
-                ProjectId = projectId,
-                Problem = problem
-            });
+
+               appDBContent.ProjectProblems.Add(new ProjectProblems
+               {
+                   Id = id,
+                   Project = projectId,
+                   Problem = problem
+               });
 
             appDBContent.SaveChanges();
         }
 
         public List<ProjectProblems> GetProjectProblemsModels()
         {
-            return appDBContent.ProjectProblems.ToList();
+             return appDBContent.ProjectProblems.ToList();
         }
     }
 }
