@@ -40,10 +40,10 @@ namespace Tablet.Controllers
         }
 
         [HttpPost]
-        public IActionResult DeleteValue(String Id)
+        public RedirectToActionResult DeleteValue(String Id)
         {
             mainModel.DeleteFromProgressTable(Id);
-            return View();
+            return RedirectToAction("Index", "Home");
         }
     }
 }

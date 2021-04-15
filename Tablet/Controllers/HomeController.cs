@@ -24,6 +24,8 @@ namespace Tablet.Controllers
         [Authorize]
         public ViewResult Index()
         {
+            if (HomeViewModel.measurement == null)
+                HomeViewModel.measurement = "Трудозатраты";
             var items = mainModel.getGeneralDevelopmentModels();
             mainModel.generalDevelopmentModels = items;
             var secondItems = mainModel.GetStructures();
@@ -34,6 +36,13 @@ namespace Tablet.Controllers
             };
 
             return View(obj);
+        }
+
+        [HttpPost]
+        public RedirectToActionResult ChangeMeasurement(String measurement)
+        {
+            HomeViewModel.measurement = measurement;
+            return RedirectToAction("Index");
         }
 
     }
