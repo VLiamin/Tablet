@@ -10,6 +10,7 @@ namespace Tablet.ViewModels
 {
     public class HomeViewModel : PageModel
     {
+        public static String measurement { get; set; }
         public MainModel mainModel { get; set; }
         public GeneralDevelopment general { get; set; }
         public Structure structure { get; set; }
