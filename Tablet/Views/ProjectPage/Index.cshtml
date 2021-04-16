@@ -47,5 +47,26 @@
         }
         <a class="btn btn-warning" href="/ProjectPage/AddProblem">Добавить значение</a>
 
+        <hr>
+        <h2>
+            Этапы
+        </h2>
+
+        @foreach (var item in Model.projectPageModel.Stages)
+        {
+            if (item.Project.Equals(ProjectPageViewModel.projectId))
+            {
+                <td> @item.Number </td>
+                <td> @item.Stage</td> <br />
+                <td>
+                    <form method="post">
+                       
+                    </form>
+                </td>
+            }
+
+        }
+        <a class="btn btn-warning" href="#">Добавить значение</a>
+
 
     </div>

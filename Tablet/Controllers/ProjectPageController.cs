@@ -27,6 +27,9 @@ namespace Tablet.Controllers
             var secondItems = projectPageModel.GetProjectProblemsModels();
             projectPageModel.projectProblems = secondItems;
 
+            var thirdItems = projectPageModel.GetProjectStagesModels();
+            projectPageModel.Stages = thirdItems;
+
             var obj = new ProjectPageViewModel
             {
                 projectPageModel = this.projectPageModel,

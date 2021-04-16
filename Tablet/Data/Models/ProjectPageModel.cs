@@ -76,5 +76,45 @@ namespace Tablet.Data.Models
         {
              return appDBContent.ProjectProblems.ToList();
         }
+
+        public List<Stages> Stages { get; set; }
+
+        public void AddToProjectStage(String id, String number, String projectId, String stage)
+        {
+
+            appDBContent.Stages.Add(new Stages
+            {
+                Id = id,
+                Number = number,
+                Project = projectId,
+                Stage = stage
+            });
+
+            appDBContent.SaveChanges();
+        }
+
+        public void DeleteProjectStage(String id, String projectId)
+        {
+
+            var stage = appDBContent.Stages.Find(id);
+
+            try
+            {
+                if (stage != null && appDBContent.Stages.Contains(stage))
+                {
+                    appDBContent.Stages.Remove(stage);
+                    appDBContent.SaveChangesAsync();
+                }
+            }
+            catch (Exception e)
+            {
+                ///////////
+            }
+        }
+
+        public List<Stages> GetProjectStagesModels()
+        {
+            return appDBContent.Stages.ToList();
+        }
     }
 }
