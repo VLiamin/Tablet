@@ -39,12 +39,13 @@ namespace Tablet.Data.Models
 
         public List<ProjectProblems> projectProblems { get; set; }
 
-        public void AddToProjectProblems(String id, String projectId, String problem)
+        public void AddToProjectProblems(String id, String number, String projectId, String problem)
         {
 
                appDBContent.ProjectProblems.Add(new ProjectProblems
                {
                    Id = id,
+                   Number = number,
                    Project = projectId,
                    Problem = problem
                });

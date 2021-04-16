@@ -68,6 +68,9 @@ namespace Tablet.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("Number")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Problem")
                         .HasColumnType("nvarchar(max)");
 

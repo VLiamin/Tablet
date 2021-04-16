@@ -10,6 +10,8 @@ namespace Tablet.Data.Models
 
         public String Id { get; set; }
 
+        public String Number { get; set; }
+
         public String Project { get; set; }
 
         public String Problem { get; set; }

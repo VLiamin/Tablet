@@ -48,10 +48,12 @@ namespace Tablet.Controllers
         }
 
         [HttpPost]
-        public ViewResult AddProblem(ProjectProblems projectProblems)
+        public RedirectToActionResult AddProblem(ProjectProblems projectProblems)
         {
-            projectPageModel.AddToProjectProblems(projectProblems.Id, id, projectProblems.Problem);
-            return View();
+            String problemId = Guid.NewGuid().ToString();
+            problemId = projectProblems.Number + problemId;
+            projectPageModel.AddToProjectProblems(problemId, projectProblems.Number, id, projectProblems.Problem);
+            return RedirectToAction("Index");
         }
 
         [HttpPost]

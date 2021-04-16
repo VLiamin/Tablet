@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Tablet.Migrations
 {
-    public partial class Initial : Migration
+    public partial class Problems : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -38,6 +38,20 @@ namespace Tablet.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "ProjectProblems",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false),
+                    Number = table.Column<string>(nullable: true),
+                    Project = table.Column<string>(nullable: true),
+                    Problem = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ProjectProblems", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Structures",
                 columns: table => new
                 {
@@ -48,6 +62,20 @@ namespace Tablet.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Structures", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Users",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Email = table.Column<string>(nullable: true),
+                    Password = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Users", x => x.Id);
                 });
         }
 
@@ -60,7 +88,13 @@ namespace Tablet.Migrations
                 name: "Project");
 
             migrationBuilder.DropTable(
+                name: "ProjectProblems");
+
+            migrationBuilder.DropTable(
                 name: "Structures");
+
+            migrationBuilder.DropTable(
+                name: "Users");
         }
     }
 }
