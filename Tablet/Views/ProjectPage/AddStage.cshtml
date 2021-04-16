@@ -1,0 +1,34 @@
+﻿@model Stages
+
+<div class="row  mt-5 mb-5">
+    <hr />
+    <hr />
+    <div class="currencies float-left">
+        <h2>
+            Добавление значения
+        </h2>
+
+    </div>
+    <hr />
+    <hr />
+
+    <form asp-action="AddStage" method="post" class="form">
+        <hr />
+        <hr />
+        <div class="form-group">
+            <label asp-for="Number"></label>
+            <div class="col-md-12">
+                <input asp-for="Number" class="form-control" />
+                <span asp-validation-for="Number" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Stage"></label>
+            <div class="col-md-12">
+                <input asp-for="Stage" class="form-control" />
+                <span asp-validation-for="Stage" class="text-danger"></span>
+            </div>
+        </div>
+        <input class="btn btn-success" type="submit" value="Добавить в таблицу" />
+    </form>
+</div>

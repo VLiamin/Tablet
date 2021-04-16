@@ -65,5 +65,19 @@ namespace Tablet.Controllers
             projectPageModel.DeleteProjectProblems(ID, id);
             return RedirectToAction("Index");
         }
+
+        public ViewResult AddStage()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public RedirectToActionResult AddStage(Stages stages)
+        {
+            String stageId = Guid.NewGuid().ToString();
+            stageId = stages.Number + stageId;
+            projectPageModel.AddToProjectStage(stageId, stages.Number, id, stages.Stage);
+            return RedirectToAction("Index");
+        }
     }
 }
