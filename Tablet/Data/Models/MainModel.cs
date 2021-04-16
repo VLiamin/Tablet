@@ -33,16 +33,10 @@ namespace Tablet.Data.Models
         {
             var generalDevelopment = appDBContent.GeneralDevelopmentModels.Find(id);
 
-            try
+            if (generalDevelopment != null)
             {
-                if (generalDevelopment != null)
-                {
-                    appDBContent.GeneralDevelopmentModels.Remove(generalDevelopment);
-                    appDBContent.SaveChangesAsync();
-                }
-            } catch (Exception e)
-            {
-                ///////////
+                appDBContent.GeneralDevelopmentModels.Remove(generalDevelopment);
+                appDBContent.SaveChangesAsync();
             }
         }
 
@@ -76,17 +70,12 @@ namespace Tablet.Data.Models
         {
             var structure = appDBContent.Structures.Find(id);
 
-            try
+            if (structure != null && appDBContent.Structures.Contains(structure))
             {
-                if (structure != null && appDBContent.Structures.Contains(structure))
-                {
-                    appDBContent.Structures.Remove(structure);
-                    appDBContent.SaveChangesAsync();
-                }
-            } catch (Exception e)
-            {
-                ///////////
+                appDBContent.Structures.Remove(structure);
+                appDBContent.SaveChangesAsync();
             }
+
         }
 
     }

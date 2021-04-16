@@ -25,12 +25,6 @@ namespace Tablet.Controllers
             
             return View();
         }
-        
-        public IActionResult DeleteValue()
-        {
-            
-            return View();
-        }
 
         [HttpPost]
         public IActionResult Checkout(GeneralDevelopment general)

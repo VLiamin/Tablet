@@ -79,5 +79,12 @@ namespace Tablet.Controllers
             projectPageModel.AddToProjectStage(stageId, stages.Number, id, stages.Stage);
             return RedirectToAction("Index");
         }
+
+        [HttpPost]
+        public RedirectToActionResult DeleteStage(String ID)
+        {
+            projectPageModel.DeleteProjectStage(ID, id);
+            return RedirectToAction("Index");
+        }
     }
 }

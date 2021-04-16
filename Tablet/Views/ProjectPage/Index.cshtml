@@ -60,7 +60,9 @@
                 <td> @item.Stage</td> <br />
                 <td>
                     <form method="post">
-                       
+                        <button type="submit" asp-controller="ProjectPage" asp-action="DeleteStage" asp-route-id="@item.Id">
+                            Удалить
+                        </button>
                     </form>
                 </td>
             }
