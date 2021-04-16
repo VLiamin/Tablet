@@ -52,6 +52,25 @@ namespace Tablet.Data.Models
             appDBContent.SaveChanges();
         }
 
+        public void DeleteProjectProblems(String id, String projectId)
+        {
+
+            var problem = appDBContent.ProjectProblems.Find(id);
+
+            try
+            {
+                if (problem != null && appDBContent.ProjectProblems.Contains(problem))
+                {
+                    appDBContent.ProjectProblems.Remove(problem);
+                    appDBContent.SaveChangesAsync();
+                }
+            }
+            catch (Exception e)
+            {
+                ///////////
+            }
+        }
+
         public List<ProjectProblems> GetProjectProblemsModels()
         {
              return appDBContent.ProjectProblems.ToList();

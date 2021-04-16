@@ -53,5 +53,12 @@ namespace Tablet.Controllers
             projectPageModel.AddToProjectProblems(projectProblems.Id, id, projectProblems.Problem);
             return View();
         }
+
+        [HttpPost]
+        public RedirectToActionResult DeleteProblem(String ID)
+        {
+            projectPageModel.DeleteProjectProblems(ID, id);
+            return RedirectToAction("Index");
+        }
     }
 }

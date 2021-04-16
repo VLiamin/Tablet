@@ -37,7 +37,7 @@
                 <td> @item.Problem</td> <br />
                 <td>
                     <form method="post">
-                        <button type="submit" >
+                        <button type="submit" asp-controller="ProjectPage" asp-action="DeleteProblem" asp-route-id="@item.Id">
                             Удалить
                         </button>
                     </form>
