@@ -31,6 +31,15 @@ namespace Tablet.Controllers
             var thirdItems = projectPageModel.GetProjectStagesModels();
             projectPageModel.Stages = thirdItems;
 
+            var fourthItems = projectPageModel.GetProjectGeneralProblems();
+            projectPageModel.GeneralProblems = fourthItems;
+
+            var fifthItems = projectPageModel.GetProjectGeneralWorks();
+            projectPageModel.GeneralWorks = fifthItems;
+
+            var sixthItems = projectPageModel.GetProjectRisks();
+            projectPageModel.ProjectRisks = sixthItems;
+
             var obj = new ProjectPageViewModel
             {
                 projectPageModel = this.projectPageModel,
@@ -43,7 +52,6 @@ namespace Tablet.Controllers
         public RedirectToActionResult getProjectId(string id)
         {
             ProjectPageController.id = id;
-            ProjectPageController.name = "jfjfjf";
             return RedirectToAction("Index");
         }
 

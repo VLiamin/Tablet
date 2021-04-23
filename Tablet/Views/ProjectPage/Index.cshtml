@@ -70,5 +70,68 @@
         }
         <a class="btn btn-warning" href="/ProjectPage/AddStage">Добавить значение</a>
 
+        <hr>
+        <h2>
+            Основные задачи этапа
+        </h2>
 
+        <table class="table">
+            <tr><td>Контрольные точки</td><td>Срок до:</td></tr>
+            @foreach (var item in Model.projectPageModel.GeneralProblems)
+
+            {
+                <tr>
+                    <td>@item.Description</td>
+                    <td>@item.Date</td>
+
+
+                </tr>
+            }
+        </table>
+
+        <a class="btn btn-warning" href="#">Добавить значение</a>
+
+        <hr>
+
+        <table class="table">
+            <tr><td>Основные текущие и предстоящие работы</td><td>Срок:</td><td>Точка невозрата</td><td>Ответственные</td><td>%</td></tr>
+            @foreach (var item in Model.projectPageModel.GeneralWorks)
+
+            {
+                <tr>
+                    <td>@item.Description</td>
+                    <td>@item.Date</td>
+                    <td>@item.RedLine</td>
+                    <td>@item.Responsible</td>
+                    <td>@item.Persent</td>
+
+                </tr>
+            }
+        </table>
+
+        <a class="btn btn-warning" href="#">Добавить значение</a>
+        <hr>
+
+        <h2>
+            Риски:
+        </h2>
+
+        <table class="table">
+            <tr><td>Описание рисков</td><td>ОТВ</td><td>Срок</td><td>Решение</td></tr>
+            @foreach (var item in Model.projectPageModel.ProjectRisks)
+
+            {
+        <tr>
+            <td>@item.Description</td>
+            <td>@item.OTV</td>
+            <td>@item.RedLine</td>
+            <td>@item.Solution</td>
+
+        </tr>
+            }
+        </table>
+
+        <a class="btn btn-warning" href="#">Добавить значение</a>
+
+        <hr>
     </div>

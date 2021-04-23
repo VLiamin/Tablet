@@ -147,5 +147,136 @@ namespace Tablet.Data.Models
         {
             return appDBContent.Stages.ToList();
         }
+
+
+        public List<ProjectGeneralProblems> GeneralProblems { get; set; }
+
+        public void AddToProjectGeneralProblems(String id, String description, DateTime date)
+        {
+
+            appDBContent.ProjectGeneralProblems.Add(new ProjectGeneralProblems
+            {
+                Id = id,
+                Description = description,
+                Date = date,
+            });
+
+            appDBContent.SaveChanges();
+        }
+
+        public void DeleteGeneralProblems(String id, String projectId)
+        {
+
+            var stage = appDBContent.Stages.Find(id);
+
+            try
+            {
+                if (stage != null && appDBContent.Stages.Contains(stage))
+                {
+                    appDBContent.Stages.Remove(stage);
+                    appDBContent.SaveChangesAsync();
+                }
+            }
+            catch (Exception e)
+            {
+                ///////////
+            }
+        }
+
+
+        public List<ProjectGeneralProblems> GetProjectGeneralProblems()
+        {
+            return appDBContent.ProjectGeneralProblems.ToList();
+        }
+
+
+
+        public List<ProjectGeneralWorks> GeneralWorks { get; set; }
+
+        public void AddToProjectGeneralWorks(String id, String description, DateTime date, DateTime redLine,
+            String responsible, String persent)
+        {
+
+            appDBContent.ProjectGeneralWorks.Add(new ProjectGeneralWorks
+            {
+                Id = id,
+                Description = description,
+                Date = date,
+                RedLine = redLine,
+                Responsible = responsible,
+                Persent = persent
+            });
+
+            appDBContent.SaveChanges();
+        }
+
+        public void DeleteGeneralWorks(String id, String projectId)
+        {
+
+            var stage = appDBContent.Stages.Find(id);
+
+            try
+            {
+                if (stage != null && appDBContent.Stages.Contains(stage))
+                {
+                    appDBContent.Stages.Remove(stage);
+                    appDBContent.SaveChangesAsync();
+                }
+            }
+            catch (Exception e)
+            {
+                ///////////
+            }
+        }
+
+
+        public List<ProjectGeneralWorks> GetProjectGeneralWorks()
+        {
+            return appDBContent.ProjectGeneralWorks.ToList();
+        }
+
+
+        public List<ProjectRisks> ProjectRisks { get; set; }
+
+        public void AddToProjectRisks(String id, String description, DateTime date, DateTime redLine,
+            String otv, String solution)
+        {
+
+            appDBContent.ProjectRisks.Add(new ProjectRisks
+            {
+                Id = id,
+                Description = description,
+                OTV = otv,
+                RedLine = redLine,
+                Solution = solution
+            });
+
+            appDBContent.SaveChanges();
+        }
+
+        public void DeleteProjectRisks(String id, String projectId)
+        {
+
+            var stage = appDBContent.Stages.Find(id);
+
+            try
+            {
+                if (stage != null && appDBContent.Stages.Contains(stage))
+                {
+                    appDBContent.Stages.Remove(stage);
+                    appDBContent.SaveChangesAsync();
+                }
+            }
+            catch (Exception e)
+            {
+                ///////////
+            }
+        }
+
+
+        public List<ProjectRisks> GetProjectRisks()
+        {
+            return appDBContent.ProjectRisks.ToList();
+        }
     }
 }
