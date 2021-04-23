@@ -33,5 +33,11 @@ namespace Tablet.Controllers
             projectModels.AddToTable(project.Id, project.Name, project.Customer, project.Developer, project.Technology, project.Cost);
             return View();
         }
+
+        public IActionResult Editor()
+        {
+
+            return View();
+        }
     }
 }

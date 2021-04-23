@@ -12,6 +12,7 @@ namespace Tablet.Controllers
     {
         private readonly ProjectPageModel projectPageModel;
         private static String id;
+        private static String name;
 
         public ProjectPageController(ProjectPageModel projectPageModel)
         {
@@ -42,6 +43,7 @@ namespace Tablet.Controllers
         public RedirectToActionResult getProjectId(string id)
         {
             ProjectPageController.id = id;
+            ProjectPageController.name = "jfjfjf";
             return RedirectToAction("Index");
         }
 
@@ -84,6 +86,15 @@ namespace Tablet.Controllers
         public RedirectToActionResult DeleteStage(String ID)
         {
             projectPageModel.DeleteProjectStage(ID, id);
+            return RedirectToAction("Index");
+        }
+
+
+        [HttpPost]
+        public RedirectToActionResult Editor(Project project)
+        {
+            projectPageModel.EditToProject(id, project.Customer, project.Developer,
+                project.Technology, project.Cost);
             return RedirectToAction("Index");
         }
     }

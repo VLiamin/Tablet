@@ -32,6 +32,36 @@ namespace Tablet.Data.Models
             appDBContent.SaveChanges();
         }
 
+        public void DeleteProject(string id)
+        {
+            var project = appDBContent.Project.Find(id);
+
+            try
+            {
+                if (project != null && appDBContent.Project.Contains(project))
+                {
+                    appDBContent.Project.Remove(project);
+                    appDBContent.SaveChangesAsync();
+                }
+            }
+            catch (Exception e)
+            {
+                ///////////
+            }
+        }
+
+        public void EditToProject(String id, String customer, String developer, String technology, int cost)
+        {
+            var project = appDBContent.Project.Find(id);
+
+            project.Developer = developer;
+            project.Customer = customer;
+            project.Technology = technology;
+            project.Cost = cost;
+
+            appDBContent.SaveChanges();
+        }
+
         public List<Project> getProjectModels()
         {
             return appDBContent.Project.ToList();
@@ -112,6 +142,7 @@ namespace Tablet.Data.Models
             }
         }
 
+        
         public List<Stages> GetProjectStagesModels()
         {
             return appDBContent.Stages.ToList();
