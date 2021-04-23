@@ -195,7 +195,7 @@ namespace Tablet.Data.Models
         public List<ProjectGeneralWorks> GeneralWorks { get; set; }
 
         public void AddToProjectGeneralWorks(String id, String description, DateTime date, DateTime redLine,
-            String responsible, String persent)
+            String responsible, String persent, String projectId)
         {
 
             appDBContent.ProjectGeneralWorks.Add(new ProjectGeneralWorks
@@ -205,7 +205,8 @@ namespace Tablet.Data.Models
                 Date = date,
                 RedLine = redLine,
                 Responsible = responsible,
-                Persent = persent
+                Persent = persent,
+                Project = projectId
             });
 
             appDBContent.SaveChanges();

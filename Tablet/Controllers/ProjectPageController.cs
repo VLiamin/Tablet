@@ -110,6 +110,20 @@ namespace Tablet.Controllers
             return RedirectToAction("Index");
         }
 
+        public ViewResult AddGeneralWorks()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public RedirectToActionResult AddGeneralWorks(ProjectGeneralWorks projectGeneralWorks)
+        {
+            String problemId = Guid.NewGuid().ToString();
+            projectPageModel.AddToProjectGeneralWorks(problemId, projectGeneralWorks.Description, projectGeneralWorks.Date,
+                projectGeneralWorks.RedLine,  projectGeneralWorks.Responsible, projectGeneralWorks.Persent, id);
+            return RedirectToAction("Index");
+        }
+
         [HttpPost]
         public RedirectToActionResult Editor(Project project)
         {
