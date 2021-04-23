@@ -10,8 +10,8 @@ using Tablet.Data;
 namespace Tablet.Migrations
 {
     [DbContext(typeof(AppDBContent))]
-    [Migration("20210410011321_addProblems3")]
-    partial class addProblems3
+    [Migration("20210423130943_table")]
+    partial class table
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -65,12 +65,60 @@ namespace Tablet.Migrations
                     b.ToTable("Project");
                 });
 
+            modelBuilder.Entity("Tablet.Data.Models.ProjectGeneralProblems", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Project")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ProjectGeneralProblems");
+                });
+
+            modelBuilder.Entity("Tablet.Data.Models.ProjectGeneralWorks", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Persent")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Project")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("RedLine")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Responsible")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ProjectGeneralWorks");
+                });
+
             modelBuilder.Entity("Tablet.Data.Models.ProjectProblems", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Number")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Problem")
                         .HasColumnType("nvarchar(max)");
@@ -81,6 +129,50 @@ namespace Tablet.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ProjectProblems");
+                });
+
+            modelBuilder.Entity("Tablet.Data.Models.ProjectRisks", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("OTV")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Project")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("RedLine")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Solution")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ProjectRisks");
+                });
+
+            modelBuilder.Entity("Tablet.Data.Models.Stages", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Number")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Project")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Stage")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Stages");
                 });
 
             modelBuilder.Entity("Tablet.Data.Models.Structure", b =>

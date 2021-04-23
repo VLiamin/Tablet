@@ -19,5 +19,9 @@ namespace Tablet.Data
         public DbSet<Structure> Structures { get; set; }
         public DbSet<ProjectProblems> ProjectProblems {get; set; }
         public DbSet<Users> Users { get; set; }
+        public DbSet<Stages> Stages { get; set; }
+        public DbSet<ProjectGeneralProblems> ProjectGeneralProblems { get; set; }
+        public DbSet<ProjectGeneralWorks> ProjectGeneralWorks { get; set; }
+        public DbSet<ProjectRisks> ProjectRisks { get; set; }
     }
 }

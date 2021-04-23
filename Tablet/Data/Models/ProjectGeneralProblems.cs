@@ -5,15 +5,15 @@ using System.Threading.Tasks;
 
 namespace Tablet.Data.Models
 {
-    public class ProjectProblems
+    public class ProjectGeneralProblems
     {
 
         public String Id { get; set; }
 
-        public String Number { get; set; }
+        public String Description { get; set; }
 
+        public DateTime Date { get; set; }
         public String Project { get; set; }
 
-        public String Problem { get; set; }
     }
 }

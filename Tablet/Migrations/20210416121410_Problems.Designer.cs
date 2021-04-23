@@ -10,8 +10,8 @@ using Tablet.Data;
 namespace Tablet.Migrations
 {
     [DbContext(typeof(AppDBContent))]
-    [Migration("20210409131615_deleteProblems")]
-    partial class deleteProblems
+    [Migration("20210416121410_Problems")]
+    partial class Problems
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -63,6 +63,25 @@ namespace Tablet.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Project");
+                });
+
+            modelBuilder.Entity("Tablet.Data.Models.ProjectProblems", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Number")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Problem")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Project")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ProjectProblems");
                 });
 
             modelBuilder.Entity("Tablet.Data.Models.Structure", b =>

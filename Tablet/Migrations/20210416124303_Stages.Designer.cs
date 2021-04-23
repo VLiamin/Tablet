@@ -10,8 +10,8 @@ using Tablet.Data;
 namespace Tablet.Migrations
 {
     [DbContext(typeof(AppDBContent))]
-    [Migration("20201225135928_Initial")]
-    partial class Initial
+    [Migration("20210416124303_Stages")]
+    partial class Stages
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -65,6 +65,44 @@ namespace Tablet.Migrations
                     b.ToTable("Project");
                 });
 
+            modelBuilder.Entity("Tablet.Data.Models.ProjectProblems", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Number")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Problem")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Project")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ProjectProblems");
+                });
+
+            modelBuilder.Entity("Tablet.Data.Models.Stages", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Number")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Project")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Stage")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Stages");
+                });
+
             modelBuilder.Entity("Tablet.Data.Models.Structure", b =>
                 {
                     b.Property<string>("Id")
@@ -79,6 +117,24 @@ namespace Tablet.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Structures");
+                });
+
+            modelBuilder.Entity("Tablet.Data.Models.Users", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users");
                 });
 #pragma warning restore 612, 618
         }

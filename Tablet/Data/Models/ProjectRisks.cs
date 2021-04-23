@@ -5,15 +5,19 @@ using System.Threading.Tasks;
 
 namespace Tablet.Data.Models
 {
-    public class ProjectProblems
+    public class ProjectRisks
     {
-
         public String Id { get; set; }
 
-        public String Number { get; set; }
+        public String Description { get; set; }
+
+        public DateTime RedLine { get; set; }
+
+        public String OTV { get; set; }
+
+        public String Solution { get; set; }
 
         public String Project { get; set; }
 
-        public String Problem { get; set; }
     }
 }

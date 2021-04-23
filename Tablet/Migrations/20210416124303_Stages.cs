@@ -2,29 +2,29 @@
 
 namespace Tablet.Migrations
 {
-    public partial class addProblems2 : Migration
+    public partial class Stages : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "ProjectProblems",
+                name: "Stages",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<string>(nullable: false),
+                    Number = table.Column<string>(nullable: true),
                     Project = table.Column<string>(nullable: true),
-                    Problem = table.Column<string>(nullable: true)
+                    Stage = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ProjectProblems", x => x.Id);
+                    table.PrimaryKey("PK_Stages", x => x.Id);
                 });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "ProjectProblems");
+                name: "Stages");
         }
     }
 }

@@ -22,22 +22,22 @@
 
             }
 
-            <a class="btn btn-warning" href="#">Изменить значения</a>
+            <a class="btn btn-warning" href="/Project/Editor">Изменить значения</a>
         </h3>
         <hr>
         <h2>
-            Проблемы разработки
+            Задачи до конца проекта
         </h2>
 
         @foreach (var item in Model.projectPageModel.projectProblems)
         {
             if (item.Project.Equals(ProjectPageViewModel.projectId))
             {
-                <td> @item.Id </td>
+                <td> @item.Number </td>
                 <td> @item.Problem</td> <br />
                 <td>
                     <form method="post">
-                        <button type="submit" >
+                        <button type="submit" asp-controller="ProjectPage" asp-action="DeleteProblem" asp-route-id="@item.Id">
                             Удалить
                         </button>
                     </form>
@@ -47,5 +47,91 @@
         }
         <a class="btn btn-warning" href="/ProjectPage/AddProblem">Добавить значение</a>
 
+        <hr>
+        <h2>
+            Этапы
+        </h2>
 
+        @foreach (var item in Model.projectPageModel.Stages)
+        {
+            if (item.Project.Equals(ProjectPageViewModel.projectId))
+            {
+                <td> @item.Number </td>
+                <td> @item.Stage</td> <br />
+                <td>
+                    <form method="post">
+                        <button type="submit" asp-controller="ProjectPage" asp-action="DeleteStage" asp-route-id="@item.Id">
+                            Удалить
+                        </button>
+                    </form>
+                </td>
+            }
+
+        }
+        <a class="btn btn-warning" href="/ProjectPage/AddStage">Добавить значение</a>
+
+        <hr>
+        <h2>
+            Основные задачи этапа
+        </h2>
+
+        <table class="table">
+            <tr><td>Контрольные точки</td><td>Срок до:</td></tr>
+            @foreach (var item in Model.projectPageModel.GeneralProblems)
+
+            {
+                <tr>
+                    <td>@item.Description</td>
+                    <td>@item.Date</td>
+
+
+                </tr>
+            }
+        </table>
+
+        <a class="btn btn-warning" href="/ProjectPage/AddGeneralProblem">Добавить значение</a>
+
+        <hr>
+
+        <table class="table">
+            <tr><td>Основные текущие и предстоящие работы</td><td>Срок:</td><td>Точка невозрата</td><td>Ответственные</td><td>%</td></tr>
+            @foreach (var item in Model.projectPageModel.GeneralWorks)
+
+            {
+                <tr>
+                    <td>@item.Description</td>
+                    <td>@item.Date</td>
+                    <td>@item.RedLine</td>
+                    <td>@item.Responsible</td>
+                    <td>@item.Persent</td>
+
+                </tr>
+            }
+        </table>
+
+        <a class="btn btn-warning" href="/ProjectPage/AddGeneralWorks">Добавить значение</a>
+        <hr>
+
+        <h2>
+            Риски:
+        </h2>
+
+        <table class="table">
+            <tr><td>Описание рисков</td><td>ОТВ</td><td>Срок</td><td>Решение</td></tr>
+            @foreach (var item in Model.projectPageModel.ProjectRisks)
+
+            {
+        <tr>
+            <td>@item.Description</td>
+            <td>@item.OTV</td>
+            <td>@item.RedLine</td>
+            <td>@item.Solution</td>
+
+        </tr>
+            }
+        </table>
+
+        <a class="btn btn-warning" href="/ProjectPage/AddRisks">Добавить значение</a>
+
+        <hr>
     </div>
