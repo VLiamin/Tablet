@@ -97,6 +97,18 @@ namespace Tablet.Controllers
             return RedirectToAction("Index");
         }
 
+        public ViewResult AddGeneralProblem()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public RedirectToActionResult AddGeneralProblem(ProjectGeneralProblems projectGeneralProblems)
+        {
+            String problemId = Guid.NewGuid().ToString();
+            projectPageModel.AddToProjectGeneralProblems(problemId, projectGeneralProblems.Description, projectGeneralProblems.Date, id);
+            return RedirectToAction("Index");
+        }
 
         [HttpPost]
         public RedirectToActionResult Editor(Project project)

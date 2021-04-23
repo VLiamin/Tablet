@@ -16,6 +16,7 @@ namespace Tablet.Data.Models
         public String OTV { get; set; }
 
         public String Solution { get; set; }
+        public String Project { get; set; }
 
     }
 }

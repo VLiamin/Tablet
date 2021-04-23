@@ -151,7 +151,7 @@ namespace Tablet.Data.Models
 
         public List<ProjectGeneralProblems> GeneralProblems { get; set; }
 
-        public void AddToProjectGeneralProblems(String id, String description, DateTime date)
+        public void AddToProjectGeneralProblems(String id, String description, DateTime date, String projectId)
         {
 
             appDBContent.ProjectGeneralProblems.Add(new ProjectGeneralProblems
@@ -159,6 +159,7 @@ namespace Tablet.Data.Models
                 Id = id,
                 Description = description,
                 Date = date,
+                Project = projectId
             });
 
             appDBContent.SaveChanges();

@@ -18,5 +18,6 @@ namespace Tablet.Data.Models
         public String Responsible { get; set; }
 
         public String Persent { get; set; }
+        public String Project { get; set; }
     }
 }
