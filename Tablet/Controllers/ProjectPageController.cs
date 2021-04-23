@@ -124,6 +124,21 @@ namespace Tablet.Controllers
             return RedirectToAction("Index");
         }
 
+        public ViewResult AddRisks()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public RedirectToActionResult AddRisks(ProjectRisks projectRisks)
+        {
+            String problemId = Guid.NewGuid().ToString();
+            projectPageModel.AddToProjectRisks(problemId, projectRisks.Description, projectRisks.OTV,
+                projectRisks.RedLine, projectRisks.Solution, id);
+            return RedirectToAction("Index");
+        }
+
+
         [HttpPost]
         public RedirectToActionResult Editor(Project project)
         {

@@ -240,8 +240,8 @@ namespace Tablet.Data.Models
 
         public List<ProjectRisks> ProjectRisks { get; set; }
 
-        public void AddToProjectRisks(String id, String description, DateTime date, DateTime redLine,
-            String otv, String solution)
+        public void AddToProjectRisks(String id, String description, String otv, DateTime redLine,
+            String solution, String project)
         {
 
             appDBContent.ProjectRisks.Add(new ProjectRisks
@@ -250,7 +250,8 @@ namespace Tablet.Data.Models
                 Description = description,
                 OTV = otv,
                 RedLine = redLine,
-                Solution = solution
+                Solution = solution,
+                Project = project
             });
 
             appDBContent.SaveChanges();
