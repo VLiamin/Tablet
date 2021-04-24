@@ -28,8 +28,17 @@ namespace Tablet.Controllers
                 HomeViewModel.measurement = "Трудозатраты";
             var items = mainModel.getGeneralDevelopmentModels();
             mainModel.generalDevelopmentModels = items;
+
             var secondItems = mainModel.GetStructures();
             mainModel.Structures = secondItems;
+
+            var thirdItem = mainModel.GetInformation();
+            InformationModel[] array = thirdItem.ToArray();
+            if (array.Length != 0 && array[0].Id.Equals("1"))
+            {
+                HomeViewModel.measurement = array[0].Information;
+            }
+
             var obj = new HomeViewModel
             {
                 mainModel = this.mainModel
@@ -42,6 +51,7 @@ namespace Tablet.Controllers
         public RedirectToActionResult ChangeMeasurement(String measurement)
         {
             HomeViewModel.measurement = measurement;
+            mainModel.AddToTableInformation(measurement);
             return RedirectToAction("Index");
         }
 

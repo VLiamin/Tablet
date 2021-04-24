@@ -80,12 +80,15 @@
             @foreach (var item in Model.projectPageModel.GeneralProblems)
 
             {
+                if (item.Project.Equals(ProjectPageViewModel.projectId))
+                {
                 <tr>
                     <td>@item.Description</td>
                     <td>@item.Date</td>
 
 
                 </tr>
+                }
             }
         </table>
 
@@ -98,6 +101,8 @@
             @foreach (var item in Model.projectPageModel.GeneralWorks)
 
             {
+                if (item.Project.Equals(ProjectPageViewModel.projectId))
+                {
                 <tr>
                     <td>@item.Description</td>
                     <td>@item.Date</td>
@@ -106,6 +111,7 @@
                     <td>@item.Persent</td>
 
                 </tr>
+                }
             }
         </table>
 
@@ -121,13 +127,16 @@
             @foreach (var item in Model.projectPageModel.ProjectRisks)
 
             {
-        <tr>
-            <td>@item.Description</td>
-            <td>@item.OTV</td>
-            <td>@item.RedLine</td>
-            <td>@item.Solution</td>
+                if (item.Project.Equals(ProjectPageViewModel.projectId))
+                {
+                    <tr>
+                        <td>@item.Description</td>
+                        <td>@item.OTV</td>
+                        <td>@item.RedLine</td>
+                        <td>@item.Solution</td>
 
-        </tr>
+                    </tr>
+                }
             }
         </table>
 
