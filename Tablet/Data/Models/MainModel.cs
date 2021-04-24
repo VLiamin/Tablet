@@ -78,6 +78,29 @@ namespace Tablet.Data.Models
 
         }
 
+        public List<InformationModel> Information { get; set; }
+        public void AddToTableInformation(string information)
+        {
+            var model = appDBContent.InformationModel.Find("1");
+            if (model != null)
+            {
+                model.Information = information;
+            } else
+            {
+                appDBContent.InformationModel.Add(new InformationModel
+                {
+                    Information = information,
+                    Id = "1"
+                });
+            }
+            appDBContent.SaveChanges();
+        }
+
+        public List<InformationModel> GetInformation()
+        {
+            return appDBContent.InformationModel.ToList();
+        }
+
     }
 
 }

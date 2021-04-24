@@ -23,5 +23,6 @@ namespace Tablet.Data
         public DbSet<ProjectGeneralProblems> ProjectGeneralProblems { get; set; }
         public DbSet<ProjectGeneralWorks> ProjectGeneralWorks { get; set; }
         public DbSet<ProjectRisks> ProjectRisks { get; set; }
+        public DbSet<InformationModel> InformationModel { get; set; }
     }
 }
