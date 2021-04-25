@@ -1,1 +1,37 @@
-﻿
+﻿@model Tablet.ViewModels.MeetingsPageModel
+
+    <div class="container mt-5 mb-5">
+        <hr />
+        <hr />
+        <div class="currencies float-left">
+            <h2>
+                Все встречи
+            </h2>
+
+        </div>
+        <hr />
+        <hr />
+        <hr />
+        <style>
+            button {
+                border: 2px solid #e34761; /* Параметры рамки */
+                background: #f3dbdf; /* Цвет фона */
+                font-size: 14px; /* Размер текста */
+                padding: 5px 20px; /* Поля вокруг текста */
+            }
+        </style>
+
+        @foreach (var el in Model.MeetingPageModel.ListOfMeetings)
+        {
+                <td>Номер встречи: @el.Number</td>
+                    <br>
+                        
+                <a class="" asp-controller="" asp-action="" asp-route-id="@el.Id">Перейти на встречу</a>
+                    <br>
+                  <hr />
+        }
+        <hr />
+        <hr />
+        <a class="btn btn-warning" href="#">Добавить встречу</a>
+
+    </div>

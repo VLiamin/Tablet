@@ -25,6 +25,6 @@ namespace Tablet.Data
         public DbSet<ProjectRisks> ProjectRisks { get; set; }
         public DbSet<InformationModel> InformationModel { get; set; }
         public DbSet<MeetingModel> MeetingModel { get; set; }
-        public DbSet<ListOfMeetingsModel> ListOfMeetings { get; set; }
+        public DbSet<ListOfMeetingsModel> ListOfMeetingsModel { get; set; }
     }
 }

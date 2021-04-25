@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Tablet.Data.Models;
+using Tablet.ViewModels;
 
 namespace Tablet.Controllers
 {
@@ -16,7 +17,26 @@ namespace Tablet.Controllers
             this.meetingPageModel = meetingPageModel;
         }
 
-        public ViewResult GetList()
+        [HttpPost]
+        public ViewResult GetList(String projectId)
+        {
+
+            var items = meetingPageModel.GetListOfMeetingsModel();
+            meetingPageModel.ListOfMeetings = items;
+
+            var secondItems = meetingPageModel.GetMeetingModels();
+            meetingPageModel.MeetingModel = secondItems;
+
+
+            var obj = new MeetingsPageModel
+            {
+                MeetingPageModel = this.meetingPageModel,
+
+            };
+            return View(obj);
+        }
+
+        public ViewResult AddMeeting()
         {
             return View();
         }

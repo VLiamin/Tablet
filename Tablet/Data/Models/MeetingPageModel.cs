@@ -14,7 +14,7 @@ namespace Tablet.Data.Models
             this.appDBContent = appDBContent;
         }
 
-        public List<MeetingModel> meetingModel { get; set; }
+        public List<MeetingModel> MeetingModel { get; set; }
 
         public void AddToMeeting(String id, String number, String projectId, String problem)
         {
@@ -27,7 +27,7 @@ namespace Tablet.Data.Models
             appDBContent.SaveChanges();
         }
 
-        public void DeleteProjectProblems(String id, String projectId)
+        public void DeleteMeeting(String id, String projectId)
         {
 
             var problem = appDBContent.ProjectProblems.Find(id);
@@ -46,9 +46,47 @@ namespace Tablet.Data.Models
             }
         }
 
-        public List<ProjectProblems> GetProjectProblemsModels()
+        public List<MeetingModel> GetMeetingModels()
         {
-            return appDBContent.ProjectProblems.ToList();
+            return appDBContent.MeetingModel.ToList();
+        }
+
+
+        public List<ListOfMeetingsModel> ListOfMeetings { get; set; }
+
+        public void AddToListOfMeetings(String id, String number, String projectId, String problem)
+        {
+
+            appDBContent.ListOfMeetingsModel.Add(new ListOfMeetingsModel
+            {
+
+            });
+
+            appDBContent.SaveChanges();
+        }
+
+        public void DeleteListOfMeetings(String id, String projectId)
+        {
+
+            var problem = appDBContent.ProjectProblems.Find(id);
+
+            try
+            {
+                if (problem != null && appDBContent.ProjectProblems.Contains(problem))
+                {
+                    appDBContent.ProjectProblems.Remove(problem);
+                    appDBContent.SaveChangesAsync();
+                }
+            }
+            catch (Exception e)
+            {
+                ///////////
+            }
+        }
+
+        public List<ListOfMeetingsModel> GetListOfMeetingsModel()
+        {
+            return appDBContent.ListOfMeetingsModel.ToList();
         }
 
     }

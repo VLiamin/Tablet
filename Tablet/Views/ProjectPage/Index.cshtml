@@ -143,6 +143,9 @@
         <a class="btn btn-warning" href="/ProjectPage/AddRisks">Добавить значение</a>
 
         <hr>
-
-        <a class="btn btn-warning" href="/MeetingPage/GetList">Перейти к списку встреч</a>
-    </div>
+        <form method="post">
+            <button type="submit" asp-controller="MeetingPage" asp-action="GetList" asp-route-id="@ProjectPageViewModel.projectId">
+                Перейти к списку встреч
+            </button>
+        </form>
+</div>
