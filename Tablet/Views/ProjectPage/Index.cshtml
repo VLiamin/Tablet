@@ -82,12 +82,12 @@
             {
                 if (item.Project.Equals(ProjectPageViewModel.projectId))
                 {
-                <tr>
-                    <td>@item.Description</td>
-                    <td>@item.Date</td>
+                    <tr>
+                        <td>@item.Description</td>
+                        <td>@item.Date</td>
 
 
-                </tr>
+                    </tr>
                 }
             }
         </table>
@@ -103,14 +103,14 @@
             {
                 if (item.Project.Equals(ProjectPageViewModel.projectId))
                 {
-                <tr>
-                    <td>@item.Description</td>
-                    <td>@item.Date</td>
-                    <td>@item.RedLine</td>
-                    <td>@item.Responsible</td>
-                    <td>@item.Persent</td>
+                    <tr>
+                        <td>@item.Description</td>
+                        <td>@item.Date</td>
+                        <td>@item.RedLine</td>
+                        <td>@item.Responsible</td>
+                        <td>@item.Persent</td>
 
-                </tr>
+                    </tr>
                 }
             }
         </table>
@@ -143,4 +143,6 @@
         <a class="btn btn-warning" href="/ProjectPage/AddRisks">Добавить значение</a>
 
         <hr>
+
+        <a class="btn btn-warning" href="/MeetingPage/GetList">Перейти к списку встреч</a>
     </div>
