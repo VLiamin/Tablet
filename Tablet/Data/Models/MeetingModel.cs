@@ -16,5 +16,7 @@ namespace Tablet.Data.Models
         public String Comment { get; set; }
 
         public String Suggestion { get; set; }
+
+        public String MeetingId { get; set; }
     }
 }
