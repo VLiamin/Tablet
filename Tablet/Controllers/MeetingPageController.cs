@@ -20,6 +20,7 @@ namespace Tablet.Controllers
         [HttpPost]
         public ViewResult GetList(String projectId)
         {
+            MeetingsPageModel.ProjectId = projectId;
 
             var items = meetingPageModel.GetListOfMeetingsModel();
             meetingPageModel.ListOfMeetings = items;
@@ -31,13 +32,23 @@ namespace Tablet.Controllers
             var obj = new MeetingsPageModel
             {
                 MeetingPageModel = this.meetingPageModel,
-
+                
             };
+
+            
             return View(obj);
         }
 
         public ViewResult AddMeeting()
         {
+            return View();
+        }
+
+        [HttpPost]
+        public ViewResult AddMeeting(ListOfMeetingsModel listOfMeetingsModel)
+        {
+            var Id = Guid.NewGuid().ToString();
+            meetingPageModel.AddToListOfMeetings(Id, listOfMeetingsModel.Number, MeetingsPageModel.ProjectId);
             return View();
         }
     }

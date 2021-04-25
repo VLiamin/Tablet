@@ -16,12 +16,12 @@ namespace Tablet.Data.Models
 
         public List<MeetingModel> MeetingModel { get; set; }
 
-        public void AddToMeeting(String id, String number, String projectId, String problem)
+        public void AddToMeeting(String id, String number, String projectId)
         {
 
             appDBContent.MeetingModel.Add(new MeetingModel
             {
-                
+
             });
 
             appDBContent.SaveChanges();
@@ -54,12 +54,14 @@ namespace Tablet.Data.Models
 
         public List<ListOfMeetingsModel> ListOfMeetings { get; set; }
 
-        public void AddToListOfMeetings(String id, String number, String projectId, String problem)
+        public void AddToListOfMeetings(String id, int number, String projectId)
         {
 
             appDBContent.ListOfMeetingsModel.Add(new ListOfMeetingsModel
             {
-
+                Id = id,
+                Number = number,
+                ProjectId = projectId
             });
 
             appDBContent.SaveChanges();
