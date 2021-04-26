@@ -51,5 +51,24 @@ namespace Tablet.Controllers
             meetingPageModel.AddToListOfMeetings(Id, listOfMeetingsModel.Number, MeetingsPageModel.ProjectId);
             return View();
         }
+
+        public ViewResult GoToMeeting(String Id)
+        {
+            MeetingsPageModel.MeetingId = Id;
+
+            var items = meetingPageModel.GetListOfMeetingsModel();
+            meetingPageModel.ListOfMeetings = items;
+
+            var secondItems = meetingPageModel.GetMeetingModels();
+            meetingPageModel.MeetingModel = secondItems;
+
+
+            var obj = new MeetingsPageModel
+            {
+                MeetingPageModel = this.meetingPageModel,
+
+            };
+            return View(obj);
+        }
     }
 }

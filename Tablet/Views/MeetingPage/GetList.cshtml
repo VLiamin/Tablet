@@ -23,15 +23,12 @@
 
         @foreach (var el in Model.MeetingPageModel.ListOfMeetings)
         {
-                <td>Номер встречи: @el.Number</td>
-                    <br>
-                        
-                <a class="" asp-controller="" asp-action="" asp-route-id="">Перейти на встречу</a>
-                    <br>
-                  <hr />
-        }
-        <hr />
-        <hr />
-        <a class="btn btn-warning" href="/MeetingPage/AddMeeting">Добавить встречу</a>
+            <td>Номер встречи: @el.Number</td>
 
-    </div>
+            <a class="" asp-controller="MeetingPage" asp-action="GoToMeeting" asp-route-id="@el.Id">Перейти на встречу</a>
+                }
+                <hr />
+                <hr />
+                <a class="btn btn-warning" href="/MeetingPage/AddMeeting">Добавить встречу</a>
+
+        </div>

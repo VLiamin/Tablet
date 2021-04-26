@@ -1,0 +1,27 @@
+﻿@model MeetingsPageModel
+
+<div class="container mt-5 mb-5">
+    <hr />
+    <hr />
+    <div class="currencies float-left">
+        <h2>
+            Повестка текущей встречи <br />
+        </h2>
+
+        <h3>
+            @foreach (var item in Model.MeetingPageModel.MeetingModel)
+            {
+                if (item.MeetingId.Equals(MeetingsPageModel.MeetingId))
+                {
+                    <td>Номер: @item.Number</td> <br />
+                    <td>Вопрос к обсуждению: @item.Question</td> <br />
+                    <td>Комментарий: @item.Comment</td> <br />
+                    <td>Предложения: @item.Suggestion</td> <br />
+                }
+
+            }
+
+            <a class="btn btn-warning" href="/Project/Editor">Изменить значения</a>
+        </h3>
+        <hr>
+    </div>
