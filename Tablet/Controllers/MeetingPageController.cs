@@ -54,6 +54,7 @@ namespace Tablet.Controllers
         public RedirectToActionResult AddMeeting(ListOfMeetingsModel listOfMeetingsModel)
         {
             var Id = Guid.NewGuid().ToString();
+            Id = listOfMeetingsModel.Number + Id;
             meetingPageModel.AddToListOfMeetings(Id, listOfMeetingsModel.Number, MeetingsPageViewModel.ProjectId);
             return RedirectToAction("GetList");
         }
