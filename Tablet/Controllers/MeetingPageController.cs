@@ -41,9 +41,6 @@ namespace Tablet.Controllers
         [HttpPost]
         public RedirectToActionResult GoToList(String projectId)
         {
-            int x = 0;
-            if (projectId == null)
-                x = 3 / x;
             MeetingsPageViewModel.ProjectId = projectId;
             return RedirectToAction("GetList");
         }
@@ -54,11 +51,11 @@ namespace Tablet.Controllers
         }
 
         [HttpPost]
-        public ViewResult AddMeeting(ListOfMeetingsModel listOfMeetingsModel)
+        public RedirectToActionResult AddMeeting(ListOfMeetingsModel listOfMeetingsModel)
         {
             var Id = Guid.NewGuid().ToString();
             meetingPageModel.AddToListOfMeetings(Id, listOfMeetingsModel.Number, MeetingsPageViewModel.ProjectId);
-            return View();
+            return RedirectToAction("GetList");
         }
 
         public ViewResult GoToMeeting(String Id)
@@ -94,7 +91,7 @@ namespace Tablet.Controllers
 
             meetingPageModel.AddToMeeting(Id, MeetingsPageViewModel.MeetingId, meetingModel.Number,
                 meetingModel.Question, meetingModel.Comment, meetingModel.Suggestion);
-            return RedirectToAction("GoToMeeting");
+            return RedirectToAction("GoToMeeting", "MeetingPage", new { Id = MeetingsPageViewModel.MeetingId });
         }
     }
 }

@@ -23,14 +23,16 @@
 
         @foreach (var el in Model.MeetingPageModel.ListOfMeetings)
         {
-            if (el.ProjectId!= null && el.ProjectId.Equals(MeetingsPageViewModel.ProjectId)) {
-            <td>Номер встречи: @el.Number</td>
+            if (el.ProjectId.Equals(MeetingsPageViewModel.ProjectId))
+            {
 
-            <a class="" asp-controller="MeetingPage" asp-action="GoToMeeting" asp-route-id="@el.Id">Перейти на встречу</a>
+                <td>Номер встречи: @el.Number</td>
+                <a class="" asp-controller="MeetingPage" asp-action="GoToMeeting" asp-route-id="@el.Id">Перейти на встречу</a>
+                <hr />
             }
         }
-                <hr />
-                <hr />
-                <a class="btn btn-warning" href="/MeetingPage/AddMeeting">Добавить встречу</a>
+        <hr />
+        <hr />
+        <a class="btn btn-warning" href="/MeetingPage/AddMeeting">Добавить встречу</a>
 
-        </div>
+    </div>
