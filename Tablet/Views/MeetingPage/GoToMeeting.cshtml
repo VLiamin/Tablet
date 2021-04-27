@@ -1,4 +1,4 @@
-﻿@model MeetingsPageModel
+﻿@model MeetingsPageViewModel
 
 <div class="container mt-5 mb-5">
     <hr />
@@ -9,19 +9,23 @@
         </h2>
 
         <h3>
-            @foreach (var item in Model.MeetingPageModel.MeetingModel)
-            {
-                if (item.MeetingId.Equals(MeetingsPageModel.MeetingId))
+            <table class="table">
+                <tr><td>Номер</td><td>Вопрос к обсуждению:</td><td>Комментарий:</td><td>Предложения:</td></tr>
+                @foreach (var item in Model.MeetingPageModel.MeetingModel)
                 {
-                    <td>Номер: @item.Number</td> <br />
-                    <td>Вопрос к обсуждению: @item.Question</td> <br />
-                    <td>Комментарий: @item.Comment</td> <br />
-                    <td>Предложения: @item.Suggestion</td> <br />
-                }
+                    if (item.MeetingId.Equals(MeetingsPageViewModel.MeetingId))
+                    {
+                        <tr>
+                            <td>@item.Number</td>
+                            <td>@item.Question</td>
+                            <td>@item.Comment</td>
+                            <td>@item.Suggestion</td>
+                        </tr>
+                    }
 
-            }
-
-            <a class="btn btn-warning" href="/Project/Editor">Изменить значения</a>
+                 }
+            </table>
+            <a class="btn btn-warning" href="/MeetingPage/AddNewParameters">Добавить значение</a>
         </h3>
         <hr>
     </div>

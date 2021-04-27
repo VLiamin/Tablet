@@ -7,7 +7,7 @@ using Tablet.Data.Models;
 
 namespace Tablet.ViewModels
 {
-    public class MeetingsPageModel : PageModel
+    public class MeetingsPageViewModel : PageModel
     {
 
         public MeetingPageModel MeetingPageModel { get; set; }

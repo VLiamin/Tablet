@@ -144,8 +144,15 @@
 
         <hr>
         <form method="post">
-            <button type="submit" asp-controller="MeetingPage" asp-action="GetList" asp-route-id="@ProjectPageViewModel.projectId">
+        </form>
+
+        @using (Html.BeginForm("GoToList", "MeetingPage"))
+        {
+            <button type="submit" name="projectId" value="@ProjectPageViewModel.projectId">
                 Перейти к списку встреч
             </button>
-        </form>
-</div>
+            
+        }
+
+
+    </div>

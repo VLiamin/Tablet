@@ -16,12 +16,18 @@ namespace Tablet.Data.Models
 
         public List<MeetingModel> MeetingModel { get; set; }
 
-        public void AddToMeeting(String id, String number, String projectId)
+        public void AddToMeeting(String id, String meetingId, int number, 
+            String question, String comment, String suggestion)
         {
 
             appDBContent.MeetingModel.Add(new MeetingModel
             {
-
+                Id = id,
+                MeetingId = meetingId,
+                Number = number,
+                Question = question,
+                Comment = comment,
+                Suggestion = suggestion
             });
 
             appDBContent.SaveChanges();
