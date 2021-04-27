@@ -27,6 +27,9 @@ namespace Tablet.Controllers
             var secondItems = meetingPageModel.GetMeetingModels();
             meetingPageModel.MeetingModel = secondItems;
 
+            var thirdItems = meetingPageModel.GetMeetingAssignmentModel();
+            meetingPageModel.MeetingAssignment = thirdItems;
+
 
             var obj = new MeetingsPageViewModel
             {
@@ -69,6 +72,8 @@ namespace Tablet.Controllers
             var secondItems = meetingPageModel.GetMeetingModels();
             meetingPageModel.MeetingModel = secondItems;
 
+            var thirdItems = meetingPageModel.GetMeetingAssignmentModel();
+            meetingPageModel.MeetingAssignment = thirdItems;
 
             var obj = new MeetingsPageViewModel
             {

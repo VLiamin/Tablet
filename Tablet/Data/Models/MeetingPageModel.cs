@@ -97,5 +97,41 @@ namespace Tablet.Data.Models
             return appDBContent.ListOfMeetingsModel.ToList();
         }
 
+        public List<MeetingAssignmentModel> MeetingAssignment { get; set; }
+
+        public void AddToMeetingAssignments(String id, int number, String projectId)
+        {
+
+            appDBContent.MeetingAssignmentModel.Add(new MeetingAssignmentModel
+            {
+
+            });
+
+            appDBContent.SaveChanges();
+        }
+
+        public void DeleteMeetingAssignmentModel(String id, String projectId)
+        {
+
+            var problem = appDBContent.ProjectProblems.Find(id);
+
+            try
+            {
+                if (problem != null && appDBContent.ProjectProblems.Contains(problem))
+                {
+                    appDBContent.ProjectProblems.Remove(problem);
+                    appDBContent.SaveChangesAsync();
+                }
+            }
+            catch (Exception e)
+            {
+                ///////////
+            }
+        }
+
+        public List<MeetingAssignmentModel> GetMeetingAssignmentModel()
+        {
+            return appDBContent.MeetingAssignmentModel.ToList();
+        }
     }
 }
