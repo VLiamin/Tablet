@@ -257,16 +257,16 @@ namespace Tablet.Data.Models
             appDBContent.SaveChanges();
         }
 
-        public void DeleteProjectRisks(String id, String projectId)
+        public void DeleteProjectRisks(String id)
         {
 
-            var stage = appDBContent.Stages.Find(id);
+            var risk = appDBContent.ProjectRisks.Find(id);
 
             try
             {
-                if (stage != null && appDBContent.Stages.Contains(stage))
+                if (risk != null && appDBContent.ProjectRisks.Contains(risk))
                 {
-                    appDBContent.Stages.Remove(stage);
+                    appDBContent.ProjectRisks.Remove(risk);
                     appDBContent.SaveChangesAsync();
                 }
             }
