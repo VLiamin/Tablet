@@ -34,7 +34,7 @@
             if (item.Project.Equals(ProjectPageViewModel.projectId))
             {
                 <td> @item.Number </td>
-                <td> @item.Problem</td> <br />
+                <td> @item.Problem</td> 
                 <td>
                     <form method="post">
                         <button type="submit" asp-controller="ProjectPage" asp-action="DeleteProblem" asp-route-id="@item.Id">
@@ -85,7 +85,13 @@
                     <tr>
                         <td>@item.Description</td>
                         <td>@item.Date</td>
-
+                        <td>
+                            <form method="post">
+                                <button type="submit" asp-controller="ProjectPage" asp-action="DeleteStage" asp-route-id="@item.Id">
+                                    Удалить
+                                </button>
+                            </form>
+                        </td>
 
                     </tr>
                 }
