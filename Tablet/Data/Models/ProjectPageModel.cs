@@ -165,16 +165,16 @@ namespace Tablet.Data.Models
             appDBContent.SaveChanges();
         }
 
-        public void DeleteGeneralProblems(String id, String projectId)
+        public void DeleteGeneralProblems(String id)
         {
 
-            var stage = appDBContent.Stages.Find(id);
+            var generalProblem = appDBContent.ProjectGeneralProblems.Find(id);
 
             try
             {
-                if (stage != null && appDBContent.Stages.Contains(stage))
+                if (generalProblem != null && appDBContent.ProjectGeneralProblems.Contains(generalProblem))
                 {
-                    appDBContent.Stages.Remove(stage);
+                    appDBContent.ProjectGeneralProblems.Remove(generalProblem);
                     appDBContent.SaveChangesAsync();
                 }
             }
