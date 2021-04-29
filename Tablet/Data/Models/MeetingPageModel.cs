@@ -33,16 +33,16 @@ namespace Tablet.Data.Models
             appDBContent.SaveChanges();
         }
 
-        public void DeleteMeeting(String id, String projectId)
+        public void DeleteMeeting(String id)
         {
 
-            var problem = appDBContent.ProjectProblems.Find(id);
+            var meeting = appDBContent.MeetingModel.Find(id);
 
             try
             {
-                if (problem != null && appDBContent.ProjectProblems.Contains(problem))
+                if (meeting != null && appDBContent.MeetingModel.Contains(meeting))
                 {
-                    appDBContent.ProjectProblems.Remove(problem);
+                    appDBContent.MeetingModel.Remove(meeting);
                     appDBContent.SaveChangesAsync();
                 }
             }

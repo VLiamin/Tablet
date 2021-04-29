@@ -99,5 +99,12 @@ namespace Tablet.Controllers
                 meetingModel.Question, meetingModel.Comment, meetingModel.Suggestion);
             return RedirectToAction("GoToMeeting", "MeetingPage", new { Id = MeetingsPageViewModel.MeetingId });
         }
+
+        [HttpPost]
+        public RedirectToActionResult DeleteMeeting(String ID)
+        {
+            meetingPageModel.DeleteMeeting(ID);
+            return RedirectToAction("GoToMeeting", "MeetingPage", new { Id = MeetingsPageViewModel.MeetingId });
+        }
     }
 }
