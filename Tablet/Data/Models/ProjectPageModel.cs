@@ -212,16 +212,16 @@ namespace Tablet.Data.Models
             appDBContent.SaveChanges();
         }
 
-        public void DeleteGeneralWorks(String id, String projectId)
+        public void DeleteGeneralWorks(String id)
         {
 
-            var stage = appDBContent.Stages.Find(id);
+            var generalWorks = appDBContent.ProjectGeneralWorks.Find(id);
 
             try
             {
-                if (stage != null && appDBContent.Stages.Contains(stage))
+                if (generalWorks != null && appDBContent.ProjectGeneralWorks.Contains(generalWorks))
                 {
-                    appDBContent.Stages.Remove(stage);
+                    appDBContent.ProjectGeneralWorks.Remove(generalWorks);
                     appDBContent.SaveChangesAsync();
                 }
             }

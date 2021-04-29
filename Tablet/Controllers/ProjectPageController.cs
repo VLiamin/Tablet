@@ -153,5 +153,12 @@ namespace Tablet.Controllers
             projectPageModel.DeleteGeneralProblems(ID);
             return RedirectToAction("Index");
         }
+
+        [HttpPost]
+        public RedirectToActionResult DeleteGeneralWorks(String ID)
+        {
+            projectPageModel.DeleteGeneralWorks(ID);
+            return RedirectToAction("Index");
+        }
     }
 }
