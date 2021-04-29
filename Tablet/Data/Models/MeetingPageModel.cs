@@ -99,27 +99,33 @@ namespace Tablet.Data.Models
 
         public List<MeetingAssignmentModel> MeetingAssignment { get; set; }
 
-        public void AddToMeetingAssignments(String id, int number, String projectId)
+        public void AddToMeetingAssignments(String id, String meetingId, int number, String asignment, 
+            DateTime redLine, String responsible)
         {
 
             appDBContent.MeetingAssignmentModel.Add(new MeetingAssignmentModel
             {
-
+                Id = id,
+                MeetingId = meetingId,
+                Number = number,
+                Asignment = asignment,
+                RedLine = redLine,
+                Responsible = responsible
             });
 
             appDBContent.SaveChanges();
         }
 
-        public void DeleteMeetingAssignmentModel(String id, String projectId)
+        public void DeleteMeetingAssignmentModel(String id)
         {
 
-            var problem = appDBContent.ProjectProblems.Find(id);
+            var assignment = appDBContent.MeetingAssignmentModel.Find(id);
 
             try
             {
-                if (problem != null && appDBContent.ProjectProblems.Contains(problem))
+                if (assignment != null && appDBContent.MeetingAssignmentModel.Contains(assignment))
                 {
-                    appDBContent.ProjectProblems.Remove(problem);
+                    appDBContent.MeetingAssignmentModel.Remove(assignment);
                     appDBContent.SaveChangesAsync();
                 }
             }

@@ -1,38 +1,38 @@
 ﻿@model MeetingsPageViewModel
 
-    <div class="container mt-5 mb-5">
-        <hr />
-        <hr />
-        <div class="currencies float-left">
-            <h2>
-                Все встречи
-            </h2>
-
-        </div>
-        <hr />
-        <hr />
-        <hr />
-        <style>
-            button {
-                border: 2px solid #e34761; /* Параметры рамки */
-                background: #f3dbdf; /* Цвет фона */
-                font-size: 14px; /* Размер текста */
-                padding: 5px 20px; /* Поля вокруг текста */
-            }
-        </style>
-
-        @foreach (var el in Model.MeetingPageModel.ListOfMeetings)
-        {
-            if (el.ProjectId.Equals(MeetingsPageViewModel.ProjectId))
-            {
-
-                <td>Номер встречи: @el.Number</td>
-                <a class="" asp-controller="MeetingPage" asp-action="GoToMeeting" asp-route-id="@el.Id">Перейти на встречу</a>
-                <hr />
-            }
-        }
-        <hr />
-        <hr />
-        <a class="btn btn-warning" href="/MeetingPage/AddMeeting">Добавить встречу</a>
+<div class="container mt-5 mb-5">
+    <hr />
+    <hr />
+    <div class="currencies float-left">
+        <h2>
+            Все встречи
+        </h2>
 
     </div>
+    <hr />
+    <hr />
+    <hr />
+    <style>
+        button {
+            border: 2px solid #e34761; /* Параметры рамки */
+            background: #f3dbdf; /* Цвет фона */
+            font-size: 14px; /* Размер текста */
+            padding: 5px 20px; /* Поля вокруг текста */
+        }
+    </style>
+
+    @foreach (var el in Model.MeetingPageModel.ListOfMeetings)
+    {
+        if (el.ProjectId.Equals(MeetingsPageViewModel.ProjectId))
+        {
+
+            <td>Номер встречи: @el.Number</td>
+            <a class="" asp-controller="MeetingPage" asp-action="GoToMeeting" asp-route-id="@el.Id">Перейти на встречу</a>
+            <hr />
+        }
+    }
+    <hr />
+    <hr />
+    <a class="btn btn-warning" href="/MeetingPage/AddMeeting">Добавить встречу</a>
+
+</div>
