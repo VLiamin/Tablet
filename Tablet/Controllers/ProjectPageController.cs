@@ -23,7 +23,7 @@ namespace Tablet.Controllers
         public ViewResult Index()
         {
             var items = projectPageModel.getProjectModels();
-            projectPageModel.project = items;
+            projectPageModel.Project = items;
 
             var secondItems = projectPageModel.GetProjectProblemsModels();
             projectPageModel.projectProblems = secondItems;

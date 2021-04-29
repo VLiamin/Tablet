@@ -13,6 +13,7 @@ namespace Tablet.Data.Models
         public String Description { get; set; }
 
         public DateTime Date { get; set; }
+
         public String Project { get; set; }
 
     }

@@ -22,7 +22,7 @@ namespace Tablet.Controllers
         }
 
         [Authorize]
-        public ViewResult Index()
+        public IActionResult Index()
         {
             if (HomeViewModel.measurement == null)
                 HomeViewModel.measurement = "Трудозатраты";

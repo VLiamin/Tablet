@@ -1,0 +1,27 @@
+﻿@model ListOfMeetingsModel
+
+<div class="row  mt-5 mb-5">
+    <hr />
+    <hr />
+    <div class="currencies float-left">
+        <h2>
+            Добавление новой встречи
+        </h2>
+
+    </div>
+    <hr />
+    <hr />
+
+    <form asp-action="AddMeeting" method="post" class="form">
+        <hr />
+        <hr />
+        <div class="form-group">
+            <label asp-for="Number"></label>
+            <div class="col-md-12">
+                <input asp-for="Number" class="form-control" />
+                <span asp-validation-for="Number" class="text-danger"></span>
+            </div>
+        </div>
+        <input class="btn btn-success" type="submit" value="Добавить в таблицу" />
+    </form>
+</div>

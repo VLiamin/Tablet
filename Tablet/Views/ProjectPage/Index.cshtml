@@ -9,7 +9,7 @@
         </h2>
 
         <h3>
-            @foreach (var item in Model.projectPageModel.project)
+            @foreach (var item in Model.projectPageModel.Project)
             {
                 if (item.Id.Equals(ProjectPageViewModel.projectId))
                 {
@@ -34,7 +34,7 @@
             if (item.Project.Equals(ProjectPageViewModel.projectId))
             {
                 <td> @item.Number </td>
-                <td> @item.Problem</td> <br />
+                <td> @item.Problem</td> 
                 <td>
                     <form method="post">
                         <button type="submit" asp-controller="ProjectPage" asp-action="DeleteProblem" asp-route-id="@item.Id">
@@ -82,12 +82,18 @@
             {
                 if (item.Project.Equals(ProjectPageViewModel.projectId))
                 {
-                <tr>
-                    <td>@item.Description</td>
-                    <td>@item.Date</td>
+                    <tr>
+                        <td>@item.Description</td>
+                        <td>@item.Date</td>
+                        <td>
+                            <form method="post">
+                                <button type="submit" asp-controller="ProjectPage" asp-action="DeleteStage" asp-route-id="@item.Id">
+                                    Удалить
+                                </button>
+                            </form>
+                        </td>
 
-
-                </tr>
+                    </tr>
                 }
             }
         </table>
@@ -103,14 +109,14 @@
             {
                 if (item.Project.Equals(ProjectPageViewModel.projectId))
                 {
-                <tr>
-                    <td>@item.Description</td>
-                    <td>@item.Date</td>
-                    <td>@item.RedLine</td>
-                    <td>@item.Responsible</td>
-                    <td>@item.Persent</td>
+                    <tr>
+                        <td>@item.Description</td>
+                        <td>@item.Date</td>
+                        <td>@item.RedLine</td>
+                        <td>@item.Responsible</td>
+                        <td>@item.Persent</td>
 
-                </tr>
+                    </tr>
                 }
             }
         </table>
@@ -143,4 +149,16 @@
         <a class="btn btn-warning" href="/ProjectPage/AddRisks">Добавить значение</a>
 
         <hr>
+        <form method="post">
+        </form>
+
+        @using (Html.BeginForm("GoToList", "MeetingPage"))
+        {
+            <button type="submit" name="projectId" value="@ProjectPageViewModel.projectId">
+                Перейти к списку встреч
+            </button>
+            
+        }
+
+
     </div>

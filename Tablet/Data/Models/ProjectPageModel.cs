@@ -15,7 +15,7 @@ namespace Tablet.Data.Models
             this.appDBContent = appDBContent;
         }
 
-        public List<Project> project { get; set; }
+        public List<Project> Project { get; set; }
 
         public void AddToProject(string id, String name, String customer, String developer, String technology, int cost)
         {
