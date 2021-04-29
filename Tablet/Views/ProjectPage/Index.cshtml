@@ -116,6 +116,14 @@
                         <td>@item.Responsible</td>
                         <td>@item.Persent</td>
 
+                        <td>
+                            <form method="post">
+                                <button type="submit" asp-controller="ProjectPage" asp-action="DeleteProblem" asp-route-id="@item.Id">
+                                    Удалить
+                                </button>
+                            </form>
+                        </td>
+
                     </tr>
                 }
             }
@@ -140,7 +148,13 @@
                         <td>@item.OTV</td>
                         <td>@item.RedLine</td>
                         <td>@item.Solution</td>
-
+                        <td>
+                            <form method="post">
+                                <button type="submit" asp-controller="ProjectPage" asp-action="DeleteProblem" asp-route-id="@item.Id">
+                                    Удалить
+                                </button>
+                            </form>
+                        </td>
                     </tr>
                 }
             }
