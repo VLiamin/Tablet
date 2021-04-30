@@ -20,6 +20,13 @@
                             <td>@item.Question</td>
                             <td>@item.Comment</td>
                             <td>@item.Suggestion</td>
+                            <td>
+                                <form method="post">
+                                    <button type="submit" asp-controller="MeetingPage" asp-action="DeleteMeeting" asp-route-id="@item.Id">
+                                        Удалить
+                                    </button>
+                                </form>
+                            </td>
                         </tr>
                     }
 
@@ -43,11 +50,18 @@
                             <td>@item.Asignment</td>
                             <td>@item.RedLine</td>
                             <td>@item.Responsible</td>
+                            <td>
+                                <form method="post">
+                                    <button type="submit" asp-controller="MeetingPage" asp-action="DeleteAssignment" asp-route-id="@item.Id">
+                                        Удалить
+                                    </button>
+                                </form>
+                            </td>
                         </tr>
                     }
 
                 }
             </table>
-            <a class="btn btn-warning" href="/MeetingPage/AddNewParameters">Добавить значение</a>
+            <a class="btn btn-warning" href="/MeetingPage/AddNewAssignment">Добавить значение</a>
         </h3>
     </div>

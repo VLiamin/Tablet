@@ -99,5 +99,36 @@ namespace Tablet.Controllers
                 meetingModel.Question, meetingModel.Comment, meetingModel.Suggestion);
             return RedirectToAction("GoToMeeting", "MeetingPage", new { Id = MeetingsPageViewModel.MeetingId });
         }
+
+        public ViewResult AddNewAssignment()
+        {
+
+            return View();
+        }
+
+        [HttpPost]
+        public RedirectToActionResult AddNewAssignment(MeetingAssignmentModel meetingAssignmentModel)
+        {
+            String Id = Guid.NewGuid().ToString();
+            Id = meetingAssignmentModel.Number + Id;
+
+            meetingPageModel.AddToMeetingAssignments(Id, MeetingsPageViewModel.MeetingId, meetingAssignmentModel.Number,
+                meetingAssignmentModel.Asignment, meetingAssignmentModel.RedLine, meetingAssignmentModel.Responsible);
+            return RedirectToAction("GoToMeeting", "MeetingPage", new { Id = MeetingsPageViewModel.MeetingId });
+        }
+
+        [HttpPost]
+        public RedirectToActionResult DeleteMeeting(String ID)
+        {
+            meetingPageModel.DeleteMeeting(ID);
+            return RedirectToAction("GoToMeeting", "MeetingPage", new { Id = MeetingsPageViewModel.MeetingId });
+        }
+
+        [HttpPost]
+        public RedirectToActionResult DeleteAssignment(String ID)
+        {
+            meetingPageModel.DeleteMeetingAssignmentModel(ID);
+            return RedirectToAction("GoToMeeting", "MeetingPage", new { Id = MeetingsPageViewModel.MeetingId });
+        }
     }
 }

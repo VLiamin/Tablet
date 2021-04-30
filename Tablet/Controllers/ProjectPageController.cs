@@ -146,5 +146,26 @@ namespace Tablet.Controllers
                 project.Technology, project.Cost);
             return RedirectToAction("Index");
         }
+
+        [HttpPost]
+        public RedirectToActionResult DeleteFinalProblems(String ID)
+        {
+            projectPageModel.DeleteGeneralProblems(ID);
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public RedirectToActionResult DeleteGeneralWorks(String ID)
+        {
+            projectPageModel.DeleteGeneralWorks(ID);
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public RedirectToActionResult DeleteRisks(String ID)
+        {
+            projectPageModel.DeleteProjectRisks(ID);
+            return RedirectToAction("Index");
+        }
     }
 }
