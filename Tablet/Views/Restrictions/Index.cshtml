@@ -33,11 +33,200 @@
                 background: yellow;
             }
     </style>
-    <table cellspacing="0">
-        <tr>
-            <td class="col1"><input type="text" id="ss" name="measurement" value="jdjdjjd" /></td>
-            <td class="col2">Шаг 2</td>
-            <td class="col3">Шаг 3</td>
-        </tr>
+    @foreach(var item in Model.RestrictionsPage.Restrictions) {
+        if (item.ProjectId.Equals(RestrictionsPageViewModel.ProjectId))
+        {
+            <table class="table">
+                <tr>
+                    <td>Название</td>
+                    <td>Цвет</td>
+                    <td>Хорошо/Плохо/Удовлетворительно</td>
+                </tr>
+                <tr>
+                    <td>Финансы</td>
+                    
+                        @if (item.Finance != null && item.Finance.Equals("Хорошо"))
+                        {
+                            <td class="col2"></td>
+                        }
+                        else if (item.Finance != null && item.Finance.Equals("Плохо"))
+                        {
+                            <td class="col3"></td>
+                        }
+                        else
+                        {
+                            <td class="col1"></td>
+                        }
+                        
+                        <td>
+                            @using (Html.BeginForm("EditFinance", "Restrictions"))
+                            {
+                                <input type="text" id="ss" name="value" value="@item.Finance" />
+                                <input type="submit" value="Изменить" style="display:none;" />
+                            }
+                        </td>
+                </tr>
+                <tr>
+                    <td>Архитектура</td>
+                    @if (item.Architecture != null && item.Architecture.Equals("Хорошо"))
+                    {
+                        <td class="col2"></td>
+                    }
+                    else if (item.Architecture != null && item.Architecture.Equals("Плохо"))
+                    {
+                        <td class="col3"></td>
+                    }
+                    else
+                    {
+                        <td class="col1"></td>
+                    }
+                    <td>
+                        @using (Html.BeginForm("ChangeMeasurement", "Restrictions"))
+                         {
+                            <input type="text" id="ss" name="measurement" value="@item.Architecture" />
+                            <input type="submit" value="Изменить" style="display:none;" />
+                         }
+                    </td>
+                </tr>
+                <tr>
+                    <td>Безопасность</td>
+                    @if (item.Safety != null && item.Safety.Equals("Хорошо"))
+                    {
+                        <td class="col2"></td>
+                    }
+                    else if (item.Safety != null && item.Safety.Equals("Плохо"))
+                    {
+                        <td class="col3"></td>
+                    }
+                    else
+                    {
+                        <td class="col1"></td>
+                    }
+                    <td>
+                        @using (Html.BeginForm("ChangeMeasurement", "Restrictions"))
+                        {
+                            <input type="text" id="ss" name="measurement" value="@item.Safety" />
+                            <input type="submit" value="Изменить" style="display:none;" />
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <td>Данные</td>
+                    @if (item.Data != null && item.Data.Equals("Хорошо"))
+                    {
+                        <td class="col2"></td>
+                    }
+                    else if (item.Data != null && item.Data.Equals("Плохо"))
+                    {
+                        <td class="col3"></td>
+                    }
+                    else
+                    {
+                        <td class="col1"></td>
+                    }
+                    <td>
+                        @using (Html.BeginForm("ChangeMeasurement", "Restrictions"))
+                        {
+                            <input type="text" id="ss" name="measurement" value="@item.Data" />
+                            <input type="submit" value="Изменить" style="display:none;" />
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <td>Сроки</td>
+                    @if (item.RedLine != null && item.RedLine.Equals("Хорошо"))
+                    {
+                        <td class="col2"></td>
+                    }
+                    else if (item.RedLine != null && item.RedLine.Equals("Плохо"))
+                    {
+                        <td class="col3"></td>
+                    }
+                    else
+                    {
+                        <td class="col1"></td>
+                    }
+                    <td>
+                        @using (Html.BeginForm("ChangeMeasurement", "Restrictions"))
+                        {
+                            <input type="text" id="ss" name="measurement" value="@item.RedLine" />
+                            <input type="submit" value="Изменить" style="display:none;" />
+                        }
+                    </td>
+                <tr>
+                    <td>Документ</td>
+                    @if (item.Document != null && item.Document.Equals("Хорошо"))
+                    {
+                        <td class="col2"></td>
+                    }
+                    else if (item.Document != null && item.Document.Equals("Плохо"))
+                    {
+                        <td class="col3"></td>
+                    }
+                    else
+                    {
+                        <td class="col1"></td>
+                    }
+                    <td>
+                        @using (Html.BeginForm("ChangeMeasurement", "Restrictions"))
+                        {
+                            <input type="text" id="ss" name="measurement" value="@item.Document" />
+                            <input type="submit" value="Изменить" style="display:none;" />
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <td>Инфраструктура</td>
+                    @if (item.Infrastructure != null && item.Infrastructure.Equals("Хорошо"))
+                    {
+                        <td class="col2"></td>
+                    }
+                    else if (item.Infrastructure != null && item.Infrastructure.Equals("Плохо"))
+                    {
+                        <td class="col3"></td>
+                    }
+                    else
+                    {
+                        <td class="col1"></td>
+                    }
+                    <td>
+                        @using (Html.BeginForm("ChangeMeasurement", "Restrictions"))
+                        {
+                            <input type="text" id="ss" name="measurement" value="@item.Infrastructure" />
+                            <input type="submit" value="Изменить" style="display:none;" />
+                        }
+                    </td>
+                <tr>
+                    <td>Лицензия</td>
+                    @if (item.License != null && item.License.Equals("Хорошо"))
+                    {
+                        <td class="col2"></td>
+                    }
+                    else if (item.License != null && item.License.Equals("Плохо"))
+                    {
+                        <td class="col3"></td>
+                    }
+                    else
+                    {
+                        <td class="col1"></td>
+                    }
+                    <td>
+                        @using (Html.BeginForm("ChangeMeasurement", "Restrictions"))
+                        {
+                            <input type="text" id="ss" name="measurement" value="@item.License" />
+                            <input type="submit" value="Изменить" style="display:none;" />
+                        }
+                    </td>
+                </tr>
+
+                
+                <tr>
+                    <td class="col1"><input type="text" id="ss" name="measurement" value="jdjdjjd" /></td>
+                    <td class="col2">Шаг 2</td>
+                    <td class="col3">Шаг 3</td>
+                </tr>
+        
     </table>
+        }
+    }
 </div>

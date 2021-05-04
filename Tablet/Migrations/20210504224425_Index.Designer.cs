@@ -10,8 +10,8 @@ using Tablet.Data;
 namespace Tablet.Migrations
 {
     [DbContext(typeof(AppDBContent))]
-    [Migration("20210504120353_Restrictions")]
-    partial class Restrictions
+    [Migration("20210504224425_Index")]
+    partial class Index
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

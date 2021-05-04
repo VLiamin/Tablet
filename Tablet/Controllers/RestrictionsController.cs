@@ -19,15 +19,31 @@ namespace Tablet.Controllers
 
         public IActionResult Index()
         {
+
+            if (RestrictionsPageViewModel.ProjectId == null)
+            {
+                restrictionsPageModel.AddRestrictions(Guid.NewGuid().ToString(), ProjectPageViewModel.projectId);
+            }
             var items = restrictionsPageModel.getRestrictions();
             restrictionsPageModel.Restrictions = items;
 
+            
             var obj = new RestrictionsPageViewModel
             {
                 RestrictionsPage = this.restrictionsPageModel
 
             };
+
+            RestrictionsPageViewModel.ProjectId = ProjectPageViewModel.projectId;
+
             return View(obj);
+        }
+
+        [HttpPost]
+        public RedirectToActionResult EditFinance(String value)
+        {
+            restrictionsPageModel.Edit("Finance", value, RestrictionsPageViewModel.ProjectId);
+            return RedirectToAction("Index");
         }
     }
 }

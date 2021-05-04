@@ -9,5 +9,6 @@ namespace Tablet.ViewModels
     public class RestrictionsPageViewModel
     {
         public RestrictionsPageModel RestrictionsPage { get; set; }
+        public static String ProjectId { get; set; }
     }
 }
