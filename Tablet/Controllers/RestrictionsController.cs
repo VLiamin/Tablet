@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Tablet.Data.Models;
+using Tablet.ViewModels;
 
 namespace Tablet.Controllers
 {
@@ -18,8 +19,15 @@ namespace Tablet.Controllers
 
         public IActionResult Index()
         {
+            var items = restrictionsPageModel.getRestrictions();
+            restrictionsPageModel.Restrictions = items;
 
-            return View();
+            var obj = new RestrictionsPageViewModel
+            {
+                RestrictionsPage = this.restrictionsPageModel
+
+            };
+            return View(obj);
         }
     }
 }
