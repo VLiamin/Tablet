@@ -27,5 +27,6 @@ namespace Tablet.Data
         public DbSet<MeetingModel> MeetingModel { get; set; }
         public DbSet<ListOfMeetingsModel> ListOfMeetingsModel { get; set; }
         public DbSet<MeetingAssignmentModel> MeetingAssignmentModel { get; set; }
+        public DbSet<Restrictions> RestrictionsModel { get; set; }
     }
 }

@@ -7,15 +7,15 @@ namespace Tablet.Data.Models
 {
     public class Restrictions
     {
-        String Id { get; set; }
-        String ProjectId { get; set; }
-        String RedLine { get; set; }
-        String Finance { get; set; }
-        String License { get; set; }
-        String Architecture { get; set; }
-        String Safety { get; set; }
-        String Data { get; set; }
-        String Document { get; set; }
-        String Infrastructure { get; set; }
+        public String Id { get; set; }
+        public String ProjectId { get; set; }
+        public String RedLine { get; set; }
+        public String Finance { get; set; }
+        public String License { get; set; }
+        public String Architecture { get; set; }
+        public String Safety { get; set; }
+        public String Data { get; set; }
+        public String Document { get; set; }
+        public String Infrastructure { get; set; }
     }
 }
