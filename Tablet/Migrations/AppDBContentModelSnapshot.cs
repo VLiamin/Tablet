@@ -233,6 +233,43 @@ namespace Tablet.Migrations
                     b.ToTable("ProjectRisks");
                 });
 
+            modelBuilder.Entity("Tablet.Data.Models.Restrictions", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Architecture")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Data")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Document")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Finance")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Infrastructure")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("License")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProjectId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RedLine")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Safety")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("RestrictionsModel");
+                });
+
             modelBuilder.Entity("Tablet.Data.Models.Stages", b =>
                 {
                     b.Property<string>("Id")

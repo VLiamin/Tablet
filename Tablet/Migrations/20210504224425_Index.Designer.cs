@@ -10,8 +10,8 @@ using Tablet.Data;
 namespace Tablet.Migrations
 {
     [DbContext(typeof(AppDBContent))]
-    [Migration("20210427215741_Assignment2")]
-    partial class Assignment2
+    [Migration("20210504224425_Index")]
+    partial class Index
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -233,6 +233,43 @@ namespace Tablet.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ProjectRisks");
+                });
+
+            modelBuilder.Entity("Tablet.Data.Models.Restrictions", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Architecture")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Data")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Document")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Finance")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Infrastructure")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("License")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProjectId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RedLine")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Safety")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("RestrictionsModel");
                 });
 
             modelBuilder.Entity("Tablet.Data.Models.Stages", b =>

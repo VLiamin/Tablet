@@ -40,6 +40,7 @@ namespace Tablet
             services.AddTransient<ProjectPageModel>();
             services.AddTransient<MeetingPageModel>();
             services.AddTransient<ProjectModels>();
+            services.AddTransient<RestrictionsPageModel>();
             services.AddTransient<IGeneralDevelopment, GeneralDevelopmentRepository>();
             services.AddTransient<IStructure, SructureRepository>();
 

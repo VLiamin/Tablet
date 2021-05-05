@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Tablet.Migrations
 {
-    public partial class Initial2 : Migration
+    public partial class Index : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -44,6 +44,22 @@ namespace Tablet.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ListOfMeetingsModel", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "MeetingAssignmentModel",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false),
+                    Number = table.Column<int>(nullable: false),
+                    Asignment = table.Column<string>(nullable: true),
+                    RedLine = table.Column<DateTime>(nullable: false),
+                    Responsible = table.Column<string>(nullable: true),
+                    MeetingId = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MeetingAssignmentModel", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -140,6 +156,26 @@ namespace Tablet.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "RestrictionsModel",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false),
+                    ProjectId = table.Column<string>(nullable: true),
+                    RedLine = table.Column<string>(nullable: true),
+                    Finance = table.Column<string>(nullable: true),
+                    License = table.Column<string>(nullable: true),
+                    Architecture = table.Column<string>(nullable: true),
+                    Safety = table.Column<string>(nullable: true),
+                    Data = table.Column<string>(nullable: true),
+                    Document = table.Column<string>(nullable: true),
+                    Infrastructure = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RestrictionsModel", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Stages",
                 columns: table => new
                 {
@@ -193,6 +229,9 @@ namespace Tablet.Migrations
                 name: "ListOfMeetingsModel");
 
             migrationBuilder.DropTable(
+                name: "MeetingAssignmentModel");
+
+            migrationBuilder.DropTable(
                 name: "MeetingModel");
 
             migrationBuilder.DropTable(
@@ -209,6 +248,9 @@ namespace Tablet.Migrations
 
             migrationBuilder.DropTable(
                 name: "ProjectRisks");
+
+            migrationBuilder.DropTable(
+                name: "RestrictionsModel");
 
             migrationBuilder.DropTable(
                 name: "Stages");
