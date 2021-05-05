@@ -47,15 +47,15 @@
                     
                         @if (item.Finance != null && item.Finance.Equals("Хорошо"))
                         {
-                            <td class="col2"></td>
+                            <td class="col3"></td>
                         }
                         else if (item.Finance != null && item.Finance.Equals("Плохо"))
                         {
-                            <td class="col3"></td>
+                            <td class="col1"></td>
                         }
                         else
                         {
-                            <td class="col1"></td>
+                            <td class="col2"></td>
                         }
                         
                         <td>
@@ -70,20 +70,20 @@
                     <td>Архитектура</td>
                     @if (item.Architecture != null && item.Architecture.Equals("Хорошо"))
                     {
-                        <td class="col2"></td>
+                        <td class="col3"></td>
                     }
                     else if (item.Architecture != null && item.Architecture.Equals("Плохо"))
                     {
-                        <td class="col3"></td>
+                        <td class="col1"></td>
                     }
                     else
                     {
-                        <td class="col1"></td>
+                        <td class="col2"></td>
                     }
                     <td>
-                        @using (Html.BeginForm("ChangeMeasurement", "Restrictions"))
+                        @using (Html.BeginForm("EditArchitecture", "Restrictions"))
                          {
-                            <input type="text" id="ss" name="measurement" value="@item.Architecture" />
+                            <input type="text" id="ss" name="value" value="@item.Architecture" />
                             <input type="submit" value="Изменить" style="display:none;" />
                          }
                     </td>
@@ -92,20 +92,20 @@
                     <td>Безопасность</td>
                     @if (item.Safety != null && item.Safety.Equals("Хорошо"))
                     {
-                        <td class="col2"></td>
+                        <td class="col3"></td>
                     }
                     else if (item.Safety != null && item.Safety.Equals("Плохо"))
                     {
-                        <td class="col3"></td>
+                        <td class="col1"></td>
                     }
                     else
                     {
-                        <td class="col1"></td>
+                        <td class="col2"></td>
                     }
                     <td>
-                        @using (Html.BeginForm("ChangeMeasurement", "Restrictions"))
+                        @using (Html.BeginForm("EditSafety", "Restrictions"))
                         {
-                            <input type="text" id="ss" name="measurement" value="@item.Safety" />
+                            <input type="text" id="ss" name="value" value="@item.Safety" />
                             <input type="submit" value="Изменить" style="display:none;" />
                         }
                     </td>
@@ -114,20 +114,20 @@
                     <td>Данные</td>
                     @if (item.Data != null && item.Data.Equals("Хорошо"))
                     {
-                        <td class="col2"></td>
+                        <td class="col3"></td>
                     }
                     else if (item.Data != null && item.Data.Equals("Плохо"))
                     {
-                        <td class="col3"></td>
+                        <td class="col1"></td>
                     }
                     else
                     {
-                        <td class="col1"></td>
+                        <td class="col2"></td>
                     }
                     <td>
-                        @using (Html.BeginForm("ChangeMeasurement", "Restrictions"))
+                        @using (Html.BeginForm("EditData", "Restrictions"))
                         {
-                            <input type="text" id="ss" name="measurement" value="@item.Data" />
+                            <input type="text" id="ss" name="value" value="@item.Data" />
                             <input type="submit" value="Изменить" style="display:none;" />
                         }
                     </td>
@@ -136,20 +136,20 @@
                     <td>Сроки</td>
                     @if (item.RedLine != null && item.RedLine.Equals("Хорошо"))
                     {
-                        <td class="col2"></td>
+                        <td class="col3"></td>
                     }
                     else if (item.RedLine != null && item.RedLine.Equals("Плохо"))
                     {
-                        <td class="col3"></td>
+                        <td class="col1"></td>
                     }
                     else
                     {
-                        <td class="col1"></td>
+                        <td class="col2"></td>
                     }
                     <td>
-                        @using (Html.BeginForm("ChangeMeasurement", "Restrictions"))
+                        @using (Html.BeginForm("EditRedLine", "Restrictions"))
                         {
-                            <input type="text" id="ss" name="measurement" value="@item.RedLine" />
+                            <input type="text" id="ss" name="value" value="@item.RedLine" />
                             <input type="submit" value="Изменить" style="display:none;" />
                         }
                     </td>
@@ -157,20 +157,20 @@
                     <td>Документ</td>
                     @if (item.Document != null && item.Document.Equals("Хорошо"))
                     {
-                        <td class="col2"></td>
+                        <td class="col3"></td>
                     }
                     else if (item.Document != null && item.Document.Equals("Плохо"))
                     {
-                        <td class="col3"></td>
+                        <td class="col1"></td>
                     }
                     else
                     {
-                        <td class="col1"></td>
+                        <td class="col2"></td>
                     }
                     <td>
-                        @using (Html.BeginForm("ChangeMeasurement", "Restrictions"))
+                        @using (Html.BeginForm("EditDocument", "Restrictions"))
                         {
-                            <input type="text" id="ss" name="measurement" value="@item.Document" />
+                            <input type="text" id="ss" name="value" value="@item.Document" />
                             <input type="submit" value="Изменить" style="display:none;" />
                         }
                     </td>
@@ -179,20 +179,20 @@
                     <td>Инфраструктура</td>
                     @if (item.Infrastructure != null && item.Infrastructure.Equals("Хорошо"))
                     {
-                        <td class="col2"></td>
+                        <td class="col3"></td>
                     }
                     else if (item.Infrastructure != null && item.Infrastructure.Equals("Плохо"))
                     {
-                        <td class="col3"></td>
+                        <td class="col1"></td>
                     }
                     else
                     {
-                        <td class="col1"></td>
+                        <td class="col2"></td>
                     }
                     <td>
-                        @using (Html.BeginForm("ChangeMeasurement", "Restrictions"))
+                        @using (Html.BeginForm("EditInfrastructure", "Restrictions"))
                         {
-                            <input type="text" id="ss" name="measurement" value="@item.Infrastructure" />
+                            <input type="text" id="ss" name="value" value="@item.Infrastructure" />
                             <input type="submit" value="Изменить" style="display:none;" />
                         }
                     </td>
@@ -200,30 +200,23 @@
                     <td>Лицензия</td>
                     @if (item.License != null && item.License.Equals("Хорошо"))
                     {
-                        <td class="col2"></td>
+                        <td class="col3"></td>
                     }
                     else if (item.License != null && item.License.Equals("Плохо"))
                     {
-                        <td class="col3"></td>
+                        <td class="col1"></td>
                     }
                     else
                     {
-                        <td class="col1"></td>
+                        <td class="col2"></td>
                     }
                     <td>
-                        @using (Html.BeginForm("ChangeMeasurement", "Restrictions"))
+                        @using (Html.BeginForm("EditLicense", "Restrictions"))
                         {
-                            <input type="text" id="ss" name="measurement" value="@item.License" />
+                            <input type="text" id="ss" name="value" value="@item.License" />
                             <input type="submit" value="Изменить" style="display:none;" />
                         }
                     </td>
-                </tr>
-
-                
-                <tr>
-                    <td class="col1"><input type="text" id="ss" name="measurement" value="jdjdjjd" /></td>
-                    <td class="col2">Шаг 2</td>
-                    <td class="col3">Шаг 3</td>
                 </tr>
         
     </table>

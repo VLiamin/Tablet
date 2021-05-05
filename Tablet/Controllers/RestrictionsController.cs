@@ -45,5 +45,50 @@ namespace Tablet.Controllers
             restrictionsPageModel.Edit("Finance", value, RestrictionsPageViewModel.ProjectId);
             return RedirectToAction("Index");
         }
+        [HttpPost]
+        public RedirectToActionResult EditArchitecture(String value)
+        {
+            restrictionsPageModel.Edit("Architecture", value, RestrictionsPageViewModel.ProjectId);
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public RedirectToActionResult EditSafety(String value)
+        {
+            restrictionsPageModel.Edit("Safety", value, RestrictionsPageViewModel.ProjectId);
+            return RedirectToAction("Index");
+        }
+        [HttpPost]
+        public RedirectToActionResult EditData(String value)
+        {
+            restrictionsPageModel.Edit("Data", value, RestrictionsPageViewModel.ProjectId);
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public RedirectToActionResult EditRedLine(String value)
+        {
+            restrictionsPageModel.Edit("RedLine", value, RestrictionsPageViewModel.ProjectId);
+            return RedirectToAction("Index");
+        }
+        [HttpPost]
+        public RedirectToActionResult EditDocument(String value)
+        {
+            restrictionsPageModel.Edit("Document", value, RestrictionsPageViewModel.ProjectId);
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public RedirectToActionResult EditInfrastructure(String value)
+        {
+            restrictionsPageModel.Edit("Infrastructure", value, RestrictionsPageViewModel.ProjectId);
+            return RedirectToAction("Index");
+        }
+        [HttpPost]
+        public RedirectToActionResult EditLicense(String value)
+        {
+            restrictionsPageModel.Edit("License", value, RestrictionsPageViewModel.ProjectId);
+            return RedirectToAction("Index");
+        }
     }
 }

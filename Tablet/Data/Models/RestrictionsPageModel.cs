@@ -61,21 +61,40 @@ namespace Tablet.Data.Models
                 if (el.ProjectId.Equals(projectId))
                 {
                     item = el;
-
+                    break;
                 }
-
-
             }
         
         
             switch (name)
             {
                 case "Finance":
-                    item.Finance = value;
-                    appDBContent.SaveChanges();
+                    item.Finance = value;                    
+                    break;
+                case "RedLine":
+                    item.RedLine = value;
+                    break;
+                case "License":
+                    item.License = value;
+                    break;
+                case "Architecture":
+                    item.Architecture = value;
+                    break;
+                case "Safety":
+                    item.Safety = value;
+                    break;
+                case "Data":
+                    item.Data = value;
+                    break;
+                case "Document":
+                    item.Document = value;
+                    break;
+                case "Infrastructure":
+                    item.Infrastructure = value;
                     break;
             }
-            
+            appDBContent.SaveChanges();
+
         }
     }
 }
