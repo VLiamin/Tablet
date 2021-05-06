@@ -94,6 +94,30 @@ namespace Tablet.Controllers
 
 
             doc.Add(table);
+
+            cell = new PdfPCell(new Phrase("Структура проекта", font));
+            table = new PdfPTable(2);
+            cell.Colspan = 2;
+            cell.HorizontalAlignment = 1;
+            cell.Border = 0;
+            table.AddCell(cell);
+            cell = new PdfPCell(new Phrase(new Phrase("Наименование", font)));
+            table.AddCell(cell);
+            cell = new PdfPCell(new Phrase(new Phrase("Проценты", font)));
+            table.AddCell(cell);
+            var items2 = mainModel.GetStructures();
+            if (items2 != null)
+            {
+                foreach (var el in items2)
+                {
+                    table.AddCell(new Phrase(el.Name, font));
+                    table.AddCell(new Phrase(el.Proportion.ToString(), font));
+                }
+            }
+
+
+            doc.Add(table);
+
             doc.Close();
             return RedirectToAction("Index");
         }
