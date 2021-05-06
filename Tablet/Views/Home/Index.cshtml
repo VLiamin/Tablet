@@ -1,82 +1,82 @@
 ﻿@model Tablet.ViewModels.HomeViewModel
 
-<div class="container mt-5 mb-5">
-    <hr />
-    <hr />
-    <div class="currencies float-left">
-        <h2>
-            Готовность проекта
-        </h2>
+    <div class="container mt-5 mb-5">
+        <hr />
+        <hr />
+        <div class="currencies float-left">
+            <h2>
+                Готовность проекта
+            </h2>
 
-    </div>
-    <hr />
-    <hr />
-    <hr />
-    <table class="table">
-        <tr><td>Дата</td><td>Прогноз</td><td>Факт</td></tr>
-        @foreach (var item in Model.mainModel.generalDevelopmentModels)
+        </div>
+        <hr />
+        <hr />
+        <hr />
+        <table class="table">
+            <tr><td>Дата</td><td>Прогноз</td><td>Факт</td></tr>
+            @foreach (var item in Model.mainModel.generalDevelopmentModels)
 
-        {
+            {
+                <tr>
+                    <td>@item.Date</td>
+                    <td>@item.Forecast</td>
+                    <td>@item.Progress</td>
+                    <td>
+                        <form method="post">
+                            <button type="submit" asp-controller="GeneralDevelopment" asp-action="DeleteValue" asp-route-id="@item.Id">
+                                Удалить
+                            </button>
+                        </form>
+                    </td>
+
+                </tr>
+            }
+        </table>
+        <hr />
+        <hr />
+        <a class="btn btn-warning" href="/GeneralDevelopment/Checkout">Добавить значение</a>
+        <hr />
+        <div class="currencies float-left">
+            <h2>
+                Структура проекта
+            </h2>
+
+        </div>
+        <hr />
+        <hr />
+        <hr />
+        <table class="table">
+
             <tr>
-                <td>@item.Date</td>
-                <td>@item.Forecast</td>
-                <td>@item.Progress</td>
+                <td>Название, единица измерения: </td>
                 <td>
-                    <form method="post">
-                        <button type="submit" asp-controller="GeneralDevelopment" asp-action="DeleteValue" asp-route-id="@item.Id">
-                            Удалить
-                        </button>
-                    </form>
-                </td>
-
-            </tr>
-        }
-    </table>
-    <hr />
-    <hr />
-    <a class="btn btn-warning" href="/GeneralDevelopment/Checkout">Добавить значение</a>
-    <hr />
-    <div class="currencies float-left">
-        <h2>
-            Структура проекта
-        </h2>
-
-    </div>
-    <hr />
-    <hr />
-    <hr />
-    <table class="table">
-
-        <tr>
-            <td>Название, единица измерения: </td>
-            <td>
-                @using (Html.BeginForm("ChangeMeasurement", "Home"))
-                {
-                    <input type="text" id="ss" name="measurement" value="@HomeViewModel.measurement" />
-                    <input type="submit" value="Изменить" style="display:none;" />
-                }
-            </td>
-        </tr>
-        @foreach (var item in Model.mainModel.Structures)
-        {
-            <tr>
-                <td>@item.Name</td>
-                <td>@item.Proportion</td>
-                <td>
-                    <form method="post">
-                        <button type="submit" asp-controller="Structure" asp-action="DeleteValue" asp-route-id="@item.Id">
-                            Удалить
-                        </button>
-                    </form>
+                    @using (Html.BeginForm("ChangeMeasurement", "Home"))
+                    {
+                        <input type="text" id="ss" name="measurement" value="@HomeViewModel.measurement" />
+                        <input type="submit" value="Изменить" style="display:none;" />
+                    }
                 </td>
             </tr>
-        }
-    </table>
-    <hr />
-    <hr />
-    <a class="btn btn-warning" href="/Structure/SecondCheckout">Добавить значение</a>
+            @foreach (var item in Model.mainModel.Structures)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Proportion</td>
+                    <td>
+                        <form method="post">
+                            <button type="submit" asp-controller="Structure" asp-action="DeleteValue" asp-route-id="@item.Id">
+                                Удалить
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </table>
+        <hr />
+        <hr />
+        <a class="btn btn-warning" href="/Structure/SecondCheckout">Добавить значение</a>
+        <hr />
 
+        <a class="btn btn-warning" href="/Home/MakePDF">Создать отчет</a>
 
-
-
-</div>
+    </div>
