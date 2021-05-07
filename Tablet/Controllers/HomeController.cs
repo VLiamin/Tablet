@@ -94,6 +94,7 @@ namespace Tablet.Controllers
 
 
             doc.Add(table);
+            doc.Add(new Paragraph("\n\n"));
 
             cell = new PdfPCell(new Phrase("Структура проекта", font));
             table = new PdfPTable(2);
