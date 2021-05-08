@@ -25,7 +25,7 @@ namespace Tablet.Controllers
             this.mainModel = mainModel;
         }
 
-        [Authorize]
+        [Authorize(Roles = "admin, user")]
         public IActionResult Index()
         {
             if (HomeViewModel.measurement == null)
