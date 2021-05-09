@@ -66,6 +66,9 @@ namespace AuthApp.Controllers
                     .FirstOrDefaultAsync(u => u.Email == model.Email && u.Password == model.Password);
                 if (user != null)
                 {
+                    ////
+                    LoginModel.Role = user.Role.Name;
+                    ////
                     await Authenticate(user); // аутентификация
 
                     return RedirectToAction("Index", "Home");

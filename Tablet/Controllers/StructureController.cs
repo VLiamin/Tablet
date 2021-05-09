@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Tablet.Data.interfaces;
 using Tablet.Data.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Tablet.Controllers
 {
@@ -18,6 +19,7 @@ namespace Tablet.Controllers
             this.mainModel = mainModel;
         }
 
+        [Authorize(Roles = "admin")]
         public IActionResult SecondCheckout()
         {
 

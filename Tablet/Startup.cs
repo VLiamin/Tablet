@@ -19,7 +19,7 @@ namespace Tablet
 {
     public class Startup
     {
-        private IConfigurationRoot _confString;
+        private IConfigurationRoot _confString { get; }
 
         public Startup(Microsoft.AspNetCore.Hosting.IHostingEnvironment hostEnv) {
             _confString = new ConfigurationBuilder().SetBasePath(hostEnv.ContentRootPath).AddJsonFile("dbsettings.json").Build();
