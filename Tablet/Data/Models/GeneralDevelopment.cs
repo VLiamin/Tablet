@@ -10,6 +10,7 @@ namespace Tablet.Data.Models
 {
     public class GeneralDevelopment
     {
+        [Display(Name = "Введите идентификатор")]
         public String Id { get; set; }
 
         [Display(Name = "Введите дату")]
