@@ -270,6 +270,21 @@ namespace Tablet.Migrations
                     b.ToTable("RestrictionsModel");
                 });
 
+            modelBuilder.Entity("Tablet.Data.Models.Role", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Role");
+                });
+
             modelBuilder.Entity("Tablet.Data.Models.Stages", b =>
                 {
                     b.Property<string>("Id")
@@ -305,7 +320,7 @@ namespace Tablet.Migrations
                     b.ToTable("Structures");
                 });
 
-            modelBuilder.Entity("Tablet.Data.Models.Users", b =>
+            modelBuilder.Entity("Tablet.Data.Models.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -318,9 +333,21 @@ namespace Tablet.Migrations
                     b.Property<string>("Password")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("RoleId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
+                    b.HasIndex("RoleId");
+
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("Tablet.Data.Models.User", b =>
+                {
+                    b.HasOne("Tablet.Data.Models.Role", "Role")
+                        .WithMany("Users")
+                        .HasForeignKey("RoleId");
                 });
 #pragma warning restore 612, 618
         }

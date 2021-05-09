@@ -14,5 +14,6 @@ namespace Tablet.ViewModels
         [Required(ErrorMessage = "Не указан пароль")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
+        public static string Role { get; set; }
     }
 }

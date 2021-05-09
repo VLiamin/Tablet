@@ -34,7 +34,13 @@
         </table>
         <hr />
         <hr />
-        <a class="btn btn-warning" href="/GeneralDevelopment/Checkout">Добавить значение</a>
+        @if (User.IsInRole("admin"))
+        {
+            <a class="btn btn-warning" href="/GeneralDevelopment/Checkout">Добавить значение</a>
+        }
+
+
+
         <hr />
         <div class="currencies float-left">
             <h2>
@@ -74,9 +80,11 @@
         </table>
         <hr />
         <hr />
-        <a class="btn btn-warning" href="/Structure/SecondCheckout">Добавить значение</a>
-        <hr />
+        @if (User.IsInRole("admin"))
+        {
+            <a class="btn btn-warning" href="/Structure/SecondCheckout">Добавить значение</a>
+            <hr />
+        }
+            <a class="btn btn-warning" href="/Home/MakePDF">Создать отчет</a>
 
-        <a class="btn btn-warning" href="/Home/MakePDF">Создать отчет</a>
-
-    </div>
+        </div>

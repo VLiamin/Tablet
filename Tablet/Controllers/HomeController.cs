@@ -12,6 +12,7 @@ using iTextSharp;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using System.IO;
+using Microsoft.Extensions.Configuration;
 
 namespace Tablet.Controllers
 {
@@ -25,7 +26,9 @@ namespace Tablet.Controllers
             this.mainModel = mainModel;
         }
 
-        [Authorize]
+        public IConfiguration Configuration { get; }
+
+        [Authorize(Roles = "admin, user")]
         public IActionResult Index()
         {
             if (HomeViewModel.measurement == null)
@@ -51,6 +54,7 @@ namespace Tablet.Controllers
             return View(obj);
         }
 
+        [Authorize(Roles = "admin")]
         [HttpPost]
         public RedirectToActionResult ChangeMeasurement(String measurement)
         {
