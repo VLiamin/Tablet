@@ -174,7 +174,7 @@ namespace Tablet.Controllers
         public RedirectToActionResult MakePDF()
         {
             iTextSharp.text.Document doc = new iTextSharp.text.Document();
-            PdfWriter.GetInstance(doc, new FileStream("C:\\spbu\\pdfProject.pdf", FileMode.Create));
+            PdfWriter.GetInstance(doc, new FileStream("C:\\Project\\"  + (id) +"_Project.pdf", FileMode.Create));
             doc.Open();
 
             BaseFont baseFont = BaseFont.CreateFont("C:\\Windows\\Fonts\\arial.ttf", BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
