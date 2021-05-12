@@ -8,7 +8,7 @@
             Повестка текущей встречи <br />
         </h2>
 
-        <h3>
+        
             <table class="table">
                 <tr><td>Номер</td><td>Вопрос к обсуждению:</td><td>Комментарий:</td><td>Предложения:</td></tr>
                 @foreach (var item in Model.MeetingPageModel.MeetingModel)
@@ -33,12 +33,12 @@
                 }
             </table>
             <a class="btn badge-light border-dark" href="/MeetingPage/AddNewParameters">Добавить значение</a>
-        </h3>
+        
         <hr>
         <h2>
             Поручения <br />
         </h2>
-        <h3>
+        
             <table class="table">
                 <tr><td>Номер</td><td>Поручение:</td><td>Срок:</td><td>Ответственный:</td></tr>
                 @foreach (var item in Model.MeetingPageModel.MeetingAssignment)
@@ -64,5 +64,5 @@
             </table>
             <a class="btn badge-light border-dark" href="/MeetingPage/AddNewAssignment">Добавить значение</a>
             
-        </h3>
+        
     </div>

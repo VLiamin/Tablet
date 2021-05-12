@@ -1,17 +1,14 @@
 ﻿@model Tablet.ViewModels.HomeViewModel
 
     <div class="container mt-5 mb-5">
-        <hr />
-        <hr />
+        <br><br>
         <div class="currencies float-left">
             <h2>
                 Готовность проекта
             </h2>
 
         </div>
-        <hr />
-        <hr />
-        <hr />
+        <br><br><br>
         <table class="table">
             <tr><td>Дата</td><td>Прогноз</td><td>Факт</td></tr>
             @foreach (var item in Model.mainModel.generalDevelopmentModels)
@@ -32,8 +29,7 @@
                 </tr>
             }
         </table>
-        <hr />
-        <hr />
+        <br><br>
         @if (User.IsInRole("admin"))
         {
             <a class="btn badge-light border-dark" href="/GeneralDevelopment/Checkout">Добавить значение</a>
@@ -48,9 +44,7 @@
             </h2>
 
         </div>
-        <hr />
-        <hr />
-        <hr />
+        <br><br><br>
         <table class="table">
 
             <tr>
@@ -78,13 +72,13 @@
                 </tr>
             }
         </table>
-        <hr />
-        <hr />
+        <br><br>
         @if (User.IsInRole("admin"))
         {
             <a class="btn badge-light border-dark" href="/Structure/SecondCheckout">Добавить значение</a>
-            <hr />
+            <br>
         }
-            <a class="btn badge-light border-dark" href="/Home/MakePDF">Создать отчет</a>
+        <br>
+        <a class="btn badge-light border-dark" href="/Home/MakePDF">Создать отчет</a>
 
-        </div>
+    </div>
