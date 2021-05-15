@@ -28,7 +28,7 @@ namespace Tablet.Controllers
 
         public IConfiguration Configuration { get; }
 
-        [Authorize(Roles = "admin, user")]
+       [Authorize(Roles = "Admin, User")]
         public IActionResult Index()
         {
             if (HomeViewModel.measurement == null)
@@ -54,7 +54,7 @@ namespace Tablet.Controllers
             return View(obj);
         }
 
-        [Authorize(Roles = "admin")]
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public RedirectToActionResult ChangeMeasurement(String measurement)
         {
