@@ -54,7 +54,7 @@ namespace Tablet.Controllers
         }
 
         [HttpPost]
-        public RedirectToActionResult AddMeeting(ListOfMeetingsModel listOfMeetingsModel)
+        public RedirectToActionResult AddMeeting(MeetingModel listOfMeetingsModel)
         {
             var Id = Guid.NewGuid().ToString();
             Id = listOfMeetingsModel.Number + Id;
@@ -90,7 +90,7 @@ namespace Tablet.Controllers
         }
 
         [HttpPost]
-        public RedirectToActionResult AddNewParameters(MeetingModel meetingModel)
+        public RedirectToActionResult AddNewParameters(Agenda meetingModel)
         {
             String Id = Guid.NewGuid().ToString();
             Id = meetingModel.Number + Id;

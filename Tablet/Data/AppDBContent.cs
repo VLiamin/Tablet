@@ -25,8 +25,8 @@ namespace Tablet.Data
         public DbSet<ProjectGeneralWorks> ProjectGeneralWorks { get; set; }
         public DbSet<ProjectRisks> ProjectRisks { get; set; }
         public DbSet<InformationModel> InformationModel { get; set; }
+        public DbSet<Agenda> Agenda { get; set; }
         public DbSet<MeetingModel> MeetingModel { get; set; }
-        public DbSet<ListOfMeetingsModel> ListOfMeetingsModel { get; set; }
         public DbSet<MeetingAssignmentModel> MeetingAssignmentModel { get; set; }
         public DbSet<Restrictions> RestrictionsModel { get; set; }
     }

@@ -8,6 +8,22 @@ namespace Tablet.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Agenda",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false),
+                    Number = table.Column<int>(nullable: false),
+                    Question = table.Column<string>(nullable: true),
+                    Comment = table.Column<string>(nullable: true),
+                    Suggestion = table.Column<string>(nullable: true),
+                    MeetingId = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Agenda", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "GeneralDevelopmentModels",
                 columns: table => new
                 {
@@ -34,19 +50,6 @@ namespace Tablet.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ListOfMeetingsModel",
-                columns: table => new
-                {
-                    Id = table.Column<string>(nullable: false),
-                    Number = table.Column<int>(nullable: false),
-                    ProjectId = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ListOfMeetingsModel", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "MeetingAssignmentModel",
                 columns: table => new
                 {
@@ -68,10 +71,7 @@ namespace Tablet.Migrations
                 {
                     Id = table.Column<string>(nullable: false),
                     Number = table.Column<int>(nullable: false),
-                    Question = table.Column<string>(nullable: true),
-                    Comment = table.Column<string>(nullable: true),
-                    Suggestion = table.Column<string>(nullable: true),
-                    MeetingId = table.Column<string>(nullable: true)
+                    ProjectId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -245,13 +245,13 @@ namespace Tablet.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "Agenda");
+
+            migrationBuilder.DropTable(
                 name: "GeneralDevelopmentModels");
 
             migrationBuilder.DropTable(
                 name: "InformationModel");
-
-            migrationBuilder.DropTable(
-                name: "ListOfMeetingsModel");
 
             migrationBuilder.DropTable(
                 name: "MeetingAssignmentModel");

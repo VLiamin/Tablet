@@ -10,7 +10,7 @@ using Tablet.Data;
 namespace Tablet.Migrations
 {
     [DbContext(typeof(AppDBContent))]
-    [Migration("20210508224640_Initial")]
+    [Migration("20210515231356_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -20,6 +20,31 @@ namespace Tablet.Migrations
                 .HasAnnotation("ProductVersion", "3.1.10")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("Tablet.Data.Models.Agenda", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Comment")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MeetingId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Number")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Question")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Suggestion")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Agenda");
+                });
 
             modelBuilder.Entity("Tablet.Data.Models.GeneralDevelopment", b =>
                 {
@@ -53,22 +78,6 @@ namespace Tablet.Migrations
                     b.ToTable("InformationModel");
                 });
 
-            modelBuilder.Entity("Tablet.Data.Models.ListOfMeetingsModel", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("Number")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ProjectId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ListOfMeetingsModel");
-                });
-
             modelBuilder.Entity("Tablet.Data.Models.MeetingAssignmentModel", b =>
                 {
                     b.Property<string>("Id")
@@ -99,19 +108,10 @@ namespace Tablet.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("Comment")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("MeetingId")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("Number")
                         .HasColumnType("int");
 
-                    b.Property<string>("Question")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Suggestion")
+                    b.Property<string>("ProjectId")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");

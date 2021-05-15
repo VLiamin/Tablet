@@ -240,8 +240,6 @@ namespace Tablet.Controllers
                     
                     if (el.Project.Equals(id))
                     {
-                        table.AddCell(new Phrase("ghhj", font));
-                        table.AddCell(new Phrase("fkfk", font));
                         table.AddCell(new Phrase(el.Number, font));
                         table.AddCell(new Phrase(el.Stage.ToString(), font));
                     }
