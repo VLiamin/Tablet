@@ -11,8 +11,8 @@ namespace Tablet.ViewModels
     {
 
         public MeetingPageModel MeetingPageModel { get; set; }
-        public ListOfMeetingsModel ListOfMeetingsModel { get; set; }
-        public MeetingModel MeetingModel { get; set; }
+        public MeetingModel ListOfMeetingsModel { get; set; }
+        public Agenda MeetingModel { get; set; }
         public static String ProjectId { get; set; }
         public static String MeetingId { get; set; }
     }
