@@ -82,11 +82,11 @@ namespace Tablet.Migrations
                 name: "Project",
                 columns: table => new
                 {
-                    Id = table.Column<string>(nullable: false),
-                    Name = table.Column<string>(nullable: true),
-                    Customer = table.Column<string>(nullable: true),
-                    Developer = table.Column<string>(nullable: true),
-                    Technology = table.Column<string>(nullable: true),
+                    Id = table.Column<string>(maxLength: 20, nullable: false),
+                    Name = table.Column<string>(maxLength: 20, nullable: true),
+                    Customer = table.Column<string>(maxLength: 20, nullable: true),
+                    Developer = table.Column<string>(maxLength: 20, nullable: true),
+                    Technology = table.Column<string>(maxLength: 10, nullable: true),
                     Cost = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -98,7 +98,8 @@ namespace Tablet.Migrations
                 name: "ProjectGeneralProblems",
                 columns: table => new
                 {
-                    Id = table.Column<string>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Description = table.Column<string>(nullable: true),
                     Date = table.Column<DateTime>(nullable: false),
                     Project = table.Column<string>(nullable: true)
@@ -112,7 +113,8 @@ namespace Tablet.Migrations
                 name: "ProjectGeneralWorks",
                 columns: table => new
                 {
-                    Id = table.Column<string>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Description = table.Column<string>(nullable: true),
                     Date = table.Column<DateTime>(nullable: false),
                     RedLine = table.Column<DateTime>(nullable: false),
@@ -129,8 +131,8 @@ namespace Tablet.Migrations
                 name: "ProjectProblems",
                 columns: table => new
                 {
-                    Id = table.Column<string>(nullable: false),
-                    Number = table.Column<string>(nullable: true),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Project = table.Column<string>(nullable: true),
                     Problem = table.Column<string>(nullable: true)
                 },
@@ -143,7 +145,8 @@ namespace Tablet.Migrations
                 name: "ProjectRisks",
                 columns: table => new
                 {
-                    Id = table.Column<string>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Description = table.Column<string>(nullable: true),
                     RedLine = table.Column<DateTime>(nullable: false),
                     OTV = table.Column<string>(nullable: true),

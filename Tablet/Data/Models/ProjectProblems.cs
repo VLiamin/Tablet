@@ -9,10 +9,8 @@ namespace Tablet.Data.Models
     public class ProjectProblems
     {
 
-        public String Id { get; set; }
-
         [Display(Name = "Введите номер")]
-        public String Number { get; set; }
+        public int Id { get; set; }
 
         public String Project { get; set; }
 

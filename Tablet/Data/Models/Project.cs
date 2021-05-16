@@ -10,18 +10,23 @@ namespace Tablet.Data.Models
     public class Project
     {
         [Display(Name = "Введите идентификатор")]
+        [MaxLength(20)]
         public String Id { set; get; }
 
         [Display(Name = "Введите название")]
+        [MaxLength(20)]
         public String Name { set; get; }
 
         [Display(Name = "Введите заказчика")]
+        [MaxLength(20)]
         public String Customer { set; get; }
 
         [Display(Name = "Введите разработчика")]
+        [MaxLength(20)]
         public String Developer { set; get; }
 
         [Display(Name = "Введите технологию")]
+        [MaxLength(10)]
         public String Technology { get; set; }
 
         [Display(Name = "Введите стоимость")]

@@ -8,7 +8,7 @@ namespace Tablet.Data.Models
 {
     public class ProjectGeneralWorks
     {
-        public String Id { get; set; }
+        public int Id { get; set; }
 
         [Display(Name = "Введите описание")]
         public String Description { get; set; }

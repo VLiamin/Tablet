@@ -69,13 +69,12 @@ namespace Tablet.Data.Models
 
         public List<ProjectProblems> projectProblems { get; set; }
 
-        public void AddToProjectProblems(String id, String number, String projectId, String problem)
+        public void AddToProjectProblems(int id, String projectId, String problem)
         {
 
                appDBContent.ProjectProblems.Add(new ProjectProblems
                {
                    Id = id,
-                   Number = number,
                    Project = projectId,
                    Problem = problem
                });
@@ -151,12 +150,11 @@ namespace Tablet.Data.Models
 
         public List<ProjectGeneralProblems> GeneralProblems { get; set; }
 
-        public void AddToProjectGeneralProblems(String id, String description, DateTime date, String projectId)
+        public void AddToProjectGeneralProblems(String description, DateTime date, String projectId)
         {
 
             appDBContent.ProjectGeneralProblems.Add(new ProjectGeneralProblems
             {
-                Id = id,
                 Description = description,
                 Date = date,
                 Project = projectId
@@ -194,13 +192,13 @@ namespace Tablet.Data.Models
 
         public List<ProjectGeneralWorks> GeneralWorks { get; set; }
 
-        public void AddToProjectGeneralWorks(String id, String description, DateTime date, DateTime redLine,
+        public void AddToProjectGeneralWorks(String description, DateTime date, DateTime redLine,
             String responsible, String persent, String projectId)
         {
+            
 
             appDBContent.ProjectGeneralWorks.Add(new ProjectGeneralWorks
             {
-                Id = id,
                 Description = description,
                 Date = date,
                 RedLine = redLine,
@@ -240,13 +238,12 @@ namespace Tablet.Data.Models
 
         public List<ProjectRisks> ProjectRisks { get; set; }
 
-        public void AddToProjectRisks(String id, String description, String otv, DateTime redLine,
+        public void AddToProjectRisks(String description, String otv, DateTime redLine,
             String solution, String project)
         {
 
             appDBContent.ProjectRisks.Add(new ProjectRisks
             {
-                Id = id,
                 Description = description,
                 OTV = otv,
                 RedLine = redLine,

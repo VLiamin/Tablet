@@ -66,9 +66,7 @@ namespace Tablet.Controllers
         [HttpPost]
         public RedirectToActionResult AddProblem(ProjectProblems projectProblems)
         {
-            String problemId = Guid.NewGuid().ToString();
-            problemId = projectProblems.Number + problemId;
-            projectPageModel.AddToProjectProblems(problemId, projectProblems.Number, id, projectProblems.Problem);
+            projectPageModel.AddToProjectProblems(projectProblems.Id, id, projectProblems.Problem);
             return RedirectToAction("Index");
         }
 
@@ -108,8 +106,7 @@ namespace Tablet.Controllers
         [HttpPost]
         public RedirectToActionResult AddGeneralProblem(ProjectGeneralProblems projectGeneralProblems)
         {
-            String problemId = Guid.NewGuid().ToString();
-            projectPageModel.AddToProjectGeneralProblems(problemId, projectGeneralProblems.Description, projectGeneralProblems.Date, id);
+            projectPageModel.AddToProjectGeneralProblems(projectGeneralProblems.Description, projectGeneralProblems.Date, id);
             return RedirectToAction("Index");
         }
 
@@ -121,8 +118,7 @@ namespace Tablet.Controllers
         [HttpPost]
         public RedirectToActionResult AddGeneralWorks(ProjectGeneralWorks projectGeneralWorks)
         {
-            String problemId = Guid.NewGuid().ToString();
-            projectPageModel.AddToProjectGeneralWorks(problemId, projectGeneralWorks.Description, projectGeneralWorks.Date,
+            projectPageModel.AddToProjectGeneralWorks(projectGeneralWorks.Description, projectGeneralWorks.Date,
                 projectGeneralWorks.RedLine,  projectGeneralWorks.Responsible, projectGeneralWorks.Persent, id);
             return RedirectToAction("Index");
         }
@@ -135,8 +131,8 @@ namespace Tablet.Controllers
         [HttpPost]
         public RedirectToActionResult AddRisks(ProjectRisks projectRisks)
         {
-            String problemId = Guid.NewGuid().ToString();
-            projectPageModel.AddToProjectRisks(problemId, projectRisks.Description, projectRisks.OTV,
+            
+            projectPageModel.AddToProjectRisks(projectRisks.Description, projectRisks.OTV,
                 projectRisks.RedLine, projectRisks.Solution, id);
             return RedirectToAction("Index");
         }
@@ -270,7 +266,7 @@ namespace Tablet.Controllers
                 {
                     if (el.Project.Equals(id))
                     {
-                        table.AddCell(new Phrase(el.Number, font));
+                        table.AddCell(new Phrase(el.Id.ToString(), font));
                         table.AddCell(new Phrase(el.Problem.ToString(), font));
                     }
                 }
