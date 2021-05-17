@@ -10,7 +10,7 @@ using Tablet.Data;
 namespace Tablet.Migrations
 {
     [DbContext(typeof(AppDBContent))]
-    [Migration("20210516111249_Initial")]
+    [Migration("20210517232027_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,17 +23,16 @@ namespace Tablet.Migrations
 
             modelBuilder.Entity("Tablet.Data.Models.Agenda", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Comment")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("MeetingId")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Number")
-                        .HasColumnType("int");
 
                     b.Property<string>("Question")
                         .HasColumnType("nvarchar(max)");
@@ -80,17 +79,16 @@ namespace Tablet.Migrations
 
             modelBuilder.Entity("Tablet.Data.Models.MeetingAssignmentModel", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Asignment")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("MeetingId")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Number")
-                        .HasColumnType("int");
 
                     b.Property<DateTime>("RedLine")
                         .HasColumnType("datetime2");
@@ -162,10 +160,13 @@ namespace Tablet.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Project")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<string>("ProjectId")
+                        .HasColumnType("nvarchar(20)")
+                        .HasMaxLength(20);
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ProjectId");
 
                     b.ToTable("ProjectGeneralProblems");
                 });
@@ -186,8 +187,9 @@ namespace Tablet.Migrations
                     b.Property<string>("Persent")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Project")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<string>("ProjectId")
+                        .HasColumnType("nvarchar(20)")
+                        .HasMaxLength(20);
 
                     b.Property<DateTime>("RedLine")
                         .HasColumnType("datetime2");
@@ -196,6 +198,8 @@ namespace Tablet.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ProjectId");
 
                     b.ToTable("ProjectGeneralWorks");
                 });
@@ -210,10 +214,13 @@ namespace Tablet.Migrations
                     b.Property<string>("Problem")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Project")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<string>("ProjectId")
+                        .HasColumnType("nvarchar(20)")
+                        .HasMaxLength(20);
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ProjectId");
 
                     b.ToTable("ProjectProblems");
                 });
@@ -231,8 +238,9 @@ namespace Tablet.Migrations
                     b.Property<string>("OTV")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Project")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<string>("ProjectId")
+                        .HasColumnType("nvarchar(20)")
+                        .HasMaxLength(20);
 
                     b.Property<DateTime>("RedLine")
                         .HasColumnType("datetime2");
@@ -241,6 +249,8 @@ namespace Tablet.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ProjectId");
 
                     b.ToTable("ProjectRisks");
                 });
@@ -299,19 +309,21 @@ namespace Tablet.Migrations
 
             modelBuilder.Entity("Tablet.Data.Models.Stages", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Number")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Project")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<string>("ProjectId")
+                        .HasColumnType("nvarchar(20)")
+                        .HasMaxLength(20);
 
                     b.Property<string>("Stage")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ProjectId");
 
                     b.ToTable("Stages");
                 });
@@ -353,6 +365,41 @@ namespace Tablet.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("Tablet.Data.Models.ProjectGeneralProblems", b =>
+                {
+                    b.HasOne("Tablet.Data.Models.Project", "Project")
+                        .WithMany("ProjectGeneralProblems")
+                        .HasForeignKey("ProjectId");
+                });
+
+            modelBuilder.Entity("Tablet.Data.Models.ProjectGeneralWorks", b =>
+                {
+                    b.HasOne("Tablet.Data.Models.Project", "Project")
+                        .WithMany("ProjectGeneralWorks")
+                        .HasForeignKey("ProjectId");
+                });
+
+            modelBuilder.Entity("Tablet.Data.Models.ProjectProblems", b =>
+                {
+                    b.HasOne("Tablet.Data.Models.Project", "Project")
+                        .WithMany("ProjectProblems")
+                        .HasForeignKey("ProjectId");
+                });
+
+            modelBuilder.Entity("Tablet.Data.Models.ProjectRisks", b =>
+                {
+                    b.HasOne("Tablet.Data.Models.Project", "Project")
+                        .WithMany("ProjectRisks")
+                        .HasForeignKey("ProjectId");
+                });
+
+            modelBuilder.Entity("Tablet.Data.Models.Stages", b =>
+                {
+                    b.HasOne("Tablet.Data.Models.Project", "Project")
+                        .WithMany("Stages")
+                        .HasForeignKey("ProjectId");
                 });
 
             modelBuilder.Entity("Tablet.Data.Models.User", b =>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -8,10 +9,9 @@ namespace Tablet.Data.Models
 {
     public class Agenda
     {
-        public String Id { get; set; }
-
         [Display(Name = "Введите номер")]
-        public int Number { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int Id { get; set; }
 
         [Display(Name = "Введите вопрос")]
         public String Question { get; set; }

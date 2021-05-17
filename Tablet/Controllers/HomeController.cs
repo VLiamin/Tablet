@@ -66,7 +66,7 @@ namespace Tablet.Controllers
         public RedirectToActionResult MakePDF()
         {
             iTextSharp.text.Document doc = new iTextSharp.text.Document();
-            PdfWriter.GetInstance(doc, new FileStream("C:\\Project\\HomePage.pdf", FileMode.Create));
+            PdfWriter.GetInstance(doc, new FileStream("C:\\ProjectId\\HomePage.pdf", FileMode.Create));
             doc.Open();
 
             string ttf = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Fonts), "ARIAL.TTF");

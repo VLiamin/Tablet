@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -75,7 +76,7 @@ namespace Tablet.Data.Models
                appDBContent.ProjectProblems.Add(new ProjectProblems
                {
                    Id = id,
-                   Project = projectId,
+                   ProjectId = projectId,
                    Problem = problem
                });
 
@@ -108,14 +109,13 @@ namespace Tablet.Data.Models
 
         public List<Stages> Stages { get; set; }
 
-        public void AddToProjectStage(String id, String number, String projectId, String stage)
+        public void AddToProjectStage(int id, String projectId, String stage)
         {
 
             appDBContent.Stages.Add(new Stages
             {
                 Id = id,
-                Number = number,
-                Project = projectId,
+                ProjectId = projectId,
                 Stage = stage
             });
 
@@ -157,7 +157,7 @@ namespace Tablet.Data.Models
             {
                 Description = description,
                 Date = date,
-                Project = projectId
+                ProjectId = projectId
             });
 
             appDBContent.SaveChanges();
@@ -183,8 +183,9 @@ namespace Tablet.Data.Models
         }
 
 
-        public List<ProjectGeneralProblems> GetProjectGeneralProblems()
+        public List<ProjectGeneralProblems> GetProjectGeneralProblems(String Id)
         {
+            appDBContent.ProjectId = Id;
             return appDBContent.ProjectGeneralProblems.ToList();
         }
 
@@ -204,7 +205,7 @@ namespace Tablet.Data.Models
                 RedLine = redLine,
                 Responsible = responsible,
                 Persent = persent,
-                Project = projectId
+                ProjectId = projectId
             });
 
             appDBContent.SaveChanges();
@@ -248,7 +249,7 @@ namespace Tablet.Data.Models
                 OTV = otv,
                 RedLine = redLine,
                 Solution = solution,
-                Project = project
+                ProjectId = project
             });
 
             appDBContent.SaveChanges();

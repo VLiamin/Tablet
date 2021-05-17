@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +17,7 @@ namespace Tablet.Data.Models
 
         public List<Agenda> MeetingModel { get; set; }
 
-        public void AddToMeeting(String id, String meetingId, int number, 
+        public void AddToMeeting(int id, String meetingId, 
             String question, String comment, String suggestion)
         {
 
@@ -24,13 +25,14 @@ namespace Tablet.Data.Models
             {
                 Id = id,
                 MeetingId = meetingId,
-                Number = number,
                 Question = question,
                 Comment = comment,
                 Suggestion = suggestion
             });
-
+            appDBContent.Database.OpenConnection();
+            appDBContent.Database.ExecuteSqlCommand("SET IDENTITY_INSERT Agenda ON;");
             appDBContent.SaveChanges();
+            appDBContent.Database.CloseConnection();
         }
 
         public void DeleteMeeting(String id)
@@ -99,7 +101,7 @@ namespace Tablet.Data.Models
 
         public List<MeetingAssignmentModel> MeetingAssignment { get; set; }
 
-        public void AddToMeetingAssignments(String id, String meetingId, int number, String asignment, 
+        public void AddToMeetingAssignments(int id, String meetingId, String asignment, 
             DateTime redLine, String responsible)
         {
 
@@ -107,7 +109,6 @@ namespace Tablet.Data.Models
             {
                 Id = id,
                 MeetingId = meetingId,
-                Number = number,
                 Asignment = asignment,
                 RedLine = redLine,
                 Responsible = responsible

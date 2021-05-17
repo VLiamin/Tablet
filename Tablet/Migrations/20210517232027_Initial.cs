@@ -11,8 +11,8 @@ namespace Tablet.Migrations
                 name: "Agenda",
                 columns: table => new
                 {
-                    Id = table.Column<string>(nullable: false),
-                    Number = table.Column<int>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Question = table.Column<string>(nullable: true),
                     Comment = table.Column<string>(nullable: true),
                     Suggestion = table.Column<string>(nullable: true),
@@ -53,8 +53,8 @@ namespace Tablet.Migrations
                 name: "MeetingAssignmentModel",
                 columns: table => new
                 {
-                    Id = table.Column<string>(nullable: false),
-                    Number = table.Column<int>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Asignment = table.Column<string>(nullable: true),
                     RedLine = table.Column<DateTime>(nullable: false),
                     Responsible = table.Column<string>(nullable: true),
@@ -95,70 +95,6 @@ namespace Tablet.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ProjectGeneralProblems",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Description = table.Column<string>(nullable: true),
-                    Date = table.Column<DateTime>(nullable: false),
-                    Project = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ProjectGeneralProblems", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "ProjectGeneralWorks",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Description = table.Column<string>(nullable: true),
-                    Date = table.Column<DateTime>(nullable: false),
-                    RedLine = table.Column<DateTime>(nullable: false),
-                    Responsible = table.Column<string>(nullable: true),
-                    Persent = table.Column<string>(nullable: true),
-                    Project = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ProjectGeneralWorks", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "ProjectProblems",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Project = table.Column<string>(nullable: true),
-                    Problem = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ProjectProblems", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "ProjectRisks",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Description = table.Column<string>(nullable: true),
-                    RedLine = table.Column<DateTime>(nullable: false),
-                    OTV = table.Column<string>(nullable: true),
-                    Solution = table.Column<string>(nullable: true),
-                    Project = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ProjectRisks", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "RestrictionsModel",
                 columns: table => new
                 {
@@ -192,20 +128,6 @@ namespace Tablet.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Stages",
-                columns: table => new
-                {
-                    Id = table.Column<string>(nullable: false),
-                    Number = table.Column<string>(nullable: true),
-                    Project = table.Column<string>(nullable: true),
-                    Stage = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Stages", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Structures",
                 columns: table => new
                 {
@@ -216,6 +138,114 @@ namespace Tablet.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Structures", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ProjectGeneralProblems",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Description = table.Column<string>(nullable: true),
+                    Date = table.Column<DateTime>(nullable: false),
+                    ProjectId = table.Column<string>(maxLength: 20, nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ProjectGeneralProblems", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ProjectGeneralProblems_Project_ProjectId",
+                        column: x => x.ProjectId,
+                        principalTable: "Project",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ProjectGeneralWorks",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Description = table.Column<string>(nullable: true),
+                    Date = table.Column<DateTime>(nullable: false),
+                    RedLine = table.Column<DateTime>(nullable: false),
+                    Responsible = table.Column<string>(nullable: true),
+                    Persent = table.Column<string>(nullable: true),
+                    ProjectId = table.Column<string>(maxLength: 20, nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ProjectGeneralWorks", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ProjectGeneralWorks_Project_ProjectId",
+                        column: x => x.ProjectId,
+                        principalTable: "Project",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ProjectProblems",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ProjectId = table.Column<string>(maxLength: 20, nullable: true),
+                    Problem = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ProjectProblems", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ProjectProblems_Project_ProjectId",
+                        column: x => x.ProjectId,
+                        principalTable: "Project",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ProjectRisks",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Description = table.Column<string>(nullable: true),
+                    RedLine = table.Column<DateTime>(nullable: false),
+                    OTV = table.Column<string>(nullable: true),
+                    Solution = table.Column<string>(nullable: true),
+                    ProjectId = table.Column<string>(maxLength: 20, nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ProjectRisks", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ProjectRisks_Project_ProjectId",
+                        column: x => x.ProjectId,
+                        principalTable: "Project",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Stages",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ProjectId = table.Column<string>(maxLength: 20, nullable: true),
+                    Stage = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Stages", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Stages_Project_ProjectId",
+                        column: x => x.ProjectId,
+                        principalTable: "Project",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -238,6 +268,31 @@ namespace Tablet.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ProjectGeneralProblems_ProjectId",
+                table: "ProjectGeneralProblems",
+                column: "ProjectId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ProjectGeneralWorks_ProjectId",
+                table: "ProjectGeneralWorks",
+                column: "ProjectId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ProjectProblems_ProjectId",
+                table: "ProjectProblems",
+                column: "ProjectId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ProjectRisks_ProjectId",
+                table: "ProjectRisks",
+                column: "ProjectId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Stages_ProjectId",
+                table: "Stages",
+                column: "ProjectId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Users_RoleId",
@@ -263,9 +318,6 @@ namespace Tablet.Migrations
                 name: "MeetingModel");
 
             migrationBuilder.DropTable(
-                name: "Project");
-
-            migrationBuilder.DropTable(
                 name: "ProjectGeneralProblems");
 
             migrationBuilder.DropTable(
@@ -288,6 +340,9 @@ namespace Tablet.Migrations
 
             migrationBuilder.DropTable(
                 name: "Users");
+
+            migrationBuilder.DropTable(
+                name: "Project");
 
             migrationBuilder.DropTable(
                 name: "Role");

@@ -34,7 +34,7 @@ namespace Tablet.Controllers
             var thirdItems = projectPageModel.GetProjectStagesModels();
             projectPageModel.Stages = thirdItems;
 
-            var fourthItems = projectPageModel.GetProjectGeneralProblems();
+            var fourthItems = projectPageModel.GetProjectGeneralProblems(ProjectPageController.id);
             projectPageModel.GeneralProblems = fourthItems;
 
             var fifthItems = projectPageModel.GetProjectGeneralWorks();
@@ -85,9 +85,7 @@ namespace Tablet.Controllers
         [HttpPost]
         public RedirectToActionResult AddStage(Stages stages)
         {
-            String stageId = Guid.NewGuid().ToString();
-            stageId = stages.Number + stageId;
-            projectPageModel.AddToProjectStage(stageId, stages.Number, id, stages.Stage);
+            projectPageModel.AddToProjectStage(stages.Id, id, stages.Stage);
             return RedirectToAction("Index");
         }
 
@@ -170,12 +168,12 @@ namespace Tablet.Controllers
         public RedirectToActionResult MakePDF()
         {
             iTextSharp.text.Document doc = new iTextSharp.text.Document();
-            PdfWriter.GetInstance(doc, new FileStream("C:\\Project\\"  + (id) +"_Project.pdf", FileMode.Create));
+            PdfWriter.GetInstance(doc, new FileStream("C:\\ProjectId\\"  + (id) +"_Project.pdf", FileMode.Create));
             doc.Open();
 
-            BaseFont baseFont = BaseFont.CreateFont("C:\\Windows\\Fonts\\arial.ttf", BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
+            string ttf = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Fonts), "ARIAL.TTF");
+            BaseFont baseFont = BaseFont.CreateFont(ttf, BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
             iTextSharp.text.Font font = new iTextSharp.text.Font(baseFont, iTextSharp.text.Font.DEFAULTSIZE, iTextSharp.text.Font.NORMAL);
-
 
             PdfPCell cell = new PdfPCell(new Phrase("Общая информация о проекте", font));
             PdfPTable table = new PdfPTable(6);
@@ -234,9 +232,9 @@ namespace Tablet.Controllers
                 foreach (var el in items2)
                 {
                     
-                    if (el.Project.Equals(id))
+                    if (el.ProjectId.Equals(id))
                     {
-                        table.AddCell(new Phrase(el.Number, font));
+                        table.AddCell(new Phrase(el.Id.ToString(), font));
                         table.AddCell(new Phrase(el.Stage.ToString(), font));
                     }
                 }
@@ -264,7 +262,7 @@ namespace Tablet.Controllers
             {
                 foreach (var el in items3)
                 {
-                    if (el.Project.Equals(id))
+                    if (el.ProjectId.Equals(id))
                     {
                         table.AddCell(new Phrase(el.Id.ToString(), font));
                         table.AddCell(new Phrase(el.Problem.ToString(), font));
@@ -288,14 +286,14 @@ namespace Tablet.Controllers
             cell = new PdfPCell(new Phrase(new Phrase("Срок", font)));
             table.AddCell(cell);
 
-            var items4 = projectPageModel.GetProjectGeneralProblems();
+            var items4 = projectPageModel.GetProjectGeneralProblems(ProjectPageController.id);
 
 
             if (items4 != null)
             {
                 foreach (var el in items4)
                 {
-                    if (el.Project.Equals(id))
+                    if (el.ProjectId.Equals(id))
                     {
                         table.AddCell(new Phrase(el.Description, font));
                         table.AddCell(new Phrase(el.Date.ToString(), font));
@@ -332,7 +330,7 @@ namespace Tablet.Controllers
             {
                 foreach (var el in items5)
                 {
-                    if (el.Project.Equals(id))
+                    if (el.ProjectId.Equals(id))
                     {
                         table.AddCell(new Phrase(el.Description, font));
                         table.AddCell(new Phrase(el.Date.ToString(), font));
@@ -369,7 +367,7 @@ namespace Tablet.Controllers
             {
                 foreach (var el in items6)
                 {
-                    if (el.Project.Equals(id))
+                    if (el.ProjectId.Equals(id))
                     {
                         table.AddCell(new Phrase(el.Description, font));
                         table.AddCell(new Phrase(el.OTV.ToString(), font));
