@@ -11,6 +11,7 @@ namespace Tablet.Data.Models
     {
 
         [Display(Name = "Введите номер")]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
 
         [MaxLength(20)]

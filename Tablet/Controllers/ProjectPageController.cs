@@ -25,7 +25,9 @@ namespace Tablet.Controllers
 
         public ViewResult Index()
         {
-            var items = projectPageModel.getProjectModels();
+            ProjectPageViewModel.projectId = id;
+
+            var items = projectPageModel.getProjectModels(ProjectPageController.id);
             projectPageModel.Project = items;
 
             var secondItems = projectPageModel.GetProjectProblemsModels();
@@ -48,7 +50,7 @@ namespace Tablet.Controllers
                 projectPageModel = this.projectPageModel,
 
             };
-            ProjectPageViewModel.projectId = id;
+            
             return View(obj);
         }
 
@@ -193,7 +195,7 @@ namespace Tablet.Controllers
             table.AddCell(cell);
             cell = new PdfPCell(new Phrase(new Phrase("Стоимость", font)));
             table.AddCell(cell);
-            var items = projectPageModel.getProjectModels();
+            var items = projectPageModel.getProjectModels(id);
             
             if (items != null)
             {

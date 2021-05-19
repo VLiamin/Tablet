@@ -63,8 +63,10 @@ namespace Tablet.Data.Models
             appDBContent.SaveChanges();
         }
 
-        public List<Project> getProjectModels()
+        public List<Project> getProjectModels(String Id)
         {
+            appDBContent.ProjectId = Id; 
+
             return appDBContent.Project.ToList();
         }
 
@@ -80,7 +82,10 @@ namespace Tablet.Data.Models
                    Problem = problem
                });
 
+            appDBContent.Database.OpenConnection();
+            appDBContent.Database.ExecuteSqlCommand("SET IDENTITY_INSERT ProjectProblems ON;");
             appDBContent.SaveChanges();
+            appDBContent.Database.CloseConnection();
         }
 
         public void DeleteProjectProblems(String id, String projectId)
@@ -119,7 +124,10 @@ namespace Tablet.Data.Models
                 Stage = stage
             });
 
+            appDBContent.Database.OpenConnection();
+            appDBContent.Database.ExecuteSqlCommand("SET IDENTITY_INSERT Stages ON;");
             appDBContent.SaveChanges();
+            appDBContent.Database.CloseConnection();
         }
 
         public void DeleteProjectStage(String id, String projectId)

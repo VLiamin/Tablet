@@ -114,7 +114,10 @@ namespace Tablet.Data.Models
                 Responsible = responsible
             });
 
+            appDBContent.Database.OpenConnection();
+            appDBContent.Database.ExecuteSqlCommand("SET IDENTITY_INSERT MeetingAssignmentModel ON;");
             appDBContent.SaveChanges();
+            appDBContent.Database.CloseConnection();
         }
 
         public void DeleteMeetingAssignmentModel(int id)

@@ -80,19 +80,19 @@
             @foreach (var item in Model.projectPageModel.GeneralProblems)
 
             {
-                    <tr>
-                        <td>@item.Description</td>
-                        <td>@item.Date</td>
-                        <td>
-                            <form method="post">
-                                <button type="submit" asp-controller="ProjectPage" asp-action="DeleteFinalProblems" asp-route-id="@item.Id">
-                                    Удалить
-                                </button>
-                            </form>
-                        </td>
+                <tr>
+                    <td>@item.Description</td>
+                    <td>@item.Date</td>
+                    <td>
+                        <form method="post">
+                            <button type="submit" asp-controller="ProjectPage" asp-action="DeleteFinalProblems" asp-route-id="@item.Id">
+                                Удалить
+                            </button>
+                        </form>
+                    </td>
 
-                    </tr>
-               
+                </tr>
+
             }
         </table>
 
