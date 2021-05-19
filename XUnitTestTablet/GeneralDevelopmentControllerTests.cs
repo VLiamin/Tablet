@@ -7,10 +7,10 @@ using Xunit;
 
 namespace XUnitTestTablet
 {
-    public class HomeControllerTests
+    public class GeneralDevelopmentControllerTests
     {
         [Fact]
-        public void Test1()
+        public void CheckoutTest()
         {
 
             AppDBContent app = new AppDBContent();

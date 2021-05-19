@@ -35,7 +35,7 @@ namespace Tablet.Data.Models
             appDBContent.Database.CloseConnection();
         }
 
-        public void DeleteMeeting(String id)
+        public void DeleteAgenda(int id)
         {
 
             var meeting = appDBContent.Agenda.Find(id);
@@ -117,7 +117,7 @@ namespace Tablet.Data.Models
             appDBContent.SaveChanges();
         }
 
-        public void DeleteMeetingAssignmentModel(String id)
+        public void DeleteMeetingAssignmentModel(int id)
         {
 
             var assignment = appDBContent.MeetingAssignmentModel.Find(id);

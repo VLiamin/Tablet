@@ -114,14 +114,14 @@ namespace Tablet.Controllers
         }
 
         [HttpPost]
-        public RedirectToActionResult DeleteMeeting(String ID)
+        public RedirectToActionResult DeleteAgenda(int ID)
         {
-            meetingPageModel.DeleteMeeting(ID);
+            meetingPageModel.DeleteAgenda(ID);
             return RedirectToAction("GoToMeeting", "MeetingPage", new { Id = MeetingsPageViewModel.MeetingId });
         }
 
         [HttpPost]
-        public RedirectToActionResult DeleteAssignment(String ID)
+        public RedirectToActionResult DeleteAssignment(int ID)
         {
             meetingPageModel.DeleteMeetingAssignmentModel(ID);
             return RedirectToAction("GoToMeeting", "MeetingPage", new { Id = MeetingsPageViewModel.MeetingId });
