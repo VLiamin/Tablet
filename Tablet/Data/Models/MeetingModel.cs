@@ -13,15 +13,6 @@ namespace Tablet.Data.Models
         [Display(Name = "Введите номер")]
         public int Number { get; set; }
 
-        [Display(Name = "Введите вопрос")]
-        public String Question { get; set; }
-
-        [Display(Name = "Введите комментарий")]
-        public String Comment { get; set; }
-
-        [Display(Name = "Введите предложение")]
-        public String Suggestion { get; set; }
-
-        public String MeetingId { get; set; }
+        public String ProjectId { get; set; }
     }
 }

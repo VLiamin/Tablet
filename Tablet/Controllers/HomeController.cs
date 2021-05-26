@@ -28,7 +28,7 @@ namespace Tablet.Controllers
 
         public IConfiguration Configuration { get; }
 
-        [Authorize(Roles = "admin, user")]
+       [Authorize(Roles = "Admin, User")]
         public IActionResult Index()
         {
             if (HomeViewModel.measurement == null)
@@ -54,7 +54,7 @@ namespace Tablet.Controllers
             return View(obj);
         }
 
-        [Authorize(Roles = "admin")]
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public RedirectToActionResult ChangeMeasurement(String measurement)
         {
@@ -66,10 +66,11 @@ namespace Tablet.Controllers
         public RedirectToActionResult MakePDF()
         {
             iTextSharp.text.Document doc = new iTextSharp.text.Document();
-            PdfWriter.GetInstance(doc, new FileStream("C:\\Project\\HomePage.pdf", FileMode.Create));
+            PdfWriter.GetInstance(doc, new FileStream("C:\\ProjectId\\HomePage.pdf", FileMode.Create));
             doc.Open();
 
-            BaseFont baseFont = BaseFont.CreateFont("C:\\Windows\\Fonts\\arial.ttf", BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
+            string ttf = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Fonts), "ARIAL.TTF");
+            BaseFont baseFont = BaseFont.CreateFont(ttf, BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
             iTextSharp.text.Font font = new iTextSharp.text.Font(baseFont, iTextSharp.text.Font.DEFAULTSIZE, iTextSharp.text.Font.NORMAL);
             
 

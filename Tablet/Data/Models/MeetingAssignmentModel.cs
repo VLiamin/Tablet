@@ -8,10 +8,8 @@ namespace Tablet.Data.Models
 {
     public class MeetingAssignmentModel
     {
-        public String Id { get; set; }
-
         [Display(Name = "Введите номер")]
-        public int Number { get; set; }
+        public int Id { get; set; }
 
         [Display(Name = "Введите поручение")]
         public String Asignment { get; set; }

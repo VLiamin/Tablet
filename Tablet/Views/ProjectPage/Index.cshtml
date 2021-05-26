@@ -31,9 +31,7 @@
 
         @foreach (var item in Model.projectPageModel.projectProblems)
         {
-            if (item.Project.Equals(ProjectPageViewModel.projectId))
-            {
-                <td> @item.Number </td>
+                <td> @item.Id </td>
                 <td> @item.Problem</td>
                 <td>
                     <form method="post">
@@ -42,7 +40,6 @@
                         </button>
                     </form>
                 </td>
-            }
 
         }
         <a class="btn badge-light border-dark" href="/ProjectPage/AddProblem">Добавить значение</a>
@@ -54,9 +51,8 @@
 
         @foreach (var item in Model.projectPageModel.Stages)
         {
-            if (item.Project.Equals(ProjectPageViewModel.projectId))
-            {
-                <td> @item.Number </td>
+
+                <td> @item.Id </td>
                 <td> @item.Stage</td> <br />
                 <td>
                     <form method="post">
@@ -65,7 +61,7 @@
                         </button>
                     </form>
                 </td>
-            }
+
 
         }
         <a class="btn badge-light border-dark" href="/ProjectPage/AddStage">Добавить значение</a>
@@ -80,21 +76,19 @@
             @foreach (var item in Model.projectPageModel.GeneralProblems)
 
             {
-                if (item.Project.Equals(ProjectPageViewModel.projectId))
-                {
-                    <tr>
-                        <td>@item.Description</td>
-                        <td>@item.Date</td>
-                        <td>
-                            <form method="post">
-                                <button type="submit" asp-controller="ProjectPage" asp-action="DeleteFinalProblems" asp-route-id="@item.Id">
-                                    Удалить
-                                </button>
-                            </form>
-                        </td>
+                <tr>
+                    <td>@item.Description</td>
+                    <td>@item.Date</td>
+                    <td>
+                        <form method="post">
+                            <button type="submit" asp-controller="ProjectPage" asp-action="DeleteFinalProblems" asp-route-id="@item.Id">
+                                Удалить
+                            </button>
+                        </form>
+                    </td>
 
-                    </tr>
-                }
+                </tr>
+
             }
         </table>
 
@@ -106,8 +100,7 @@
             @foreach (var item in Model.projectPageModel.GeneralWorks)
 
             {
-                if (item.Project.Equals(ProjectPageViewModel.projectId))
-                {
+
                     <tr>
                         <td>@item.Description</td>
                         <td>@item.Date</td>
@@ -124,7 +117,7 @@
                         </td>
 
                     </tr>
-                }
+
             }
         </table>
 
@@ -140,8 +133,7 @@
             @foreach (var item in Model.projectPageModel.ProjectRisks)
 
             {
-                if (item.Project.Equals(ProjectPageViewModel.projectId))
-                {
+
                     <tr>
                         <td>@item.Description</td>
                         <td>@item.OTV</td>
@@ -155,7 +147,6 @@
                             </form>
                         </td>
                     </tr>
-                }
             }
         </table>
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,35 +15,36 @@ namespace Tablet.Data.Models
             this.appDBContent = appDBContent;
         }
 
-        public List<MeetingModel> MeetingModel { get; set; }
+        public List<Agenda> MeetingModel { get; set; }
 
-        public void AddToMeeting(String id, String meetingId, int number, 
+        public void AddToMeeting(int id, String meetingId, 
             String question, String comment, String suggestion)
         {
 
-            appDBContent.MeetingModel.Add(new MeetingModel
+            appDBContent.Agenda.Add(new Agenda
             {
                 Id = id,
                 MeetingId = meetingId,
-                Number = number,
                 Question = question,
                 Comment = comment,
                 Suggestion = suggestion
             });
-
+            appDBContent.Database.OpenConnection();
+            appDBContent.Database.ExecuteSqlCommand("SET IDENTITY_INSERT Agenda ON;");
             appDBContent.SaveChanges();
+            appDBContent.Database.CloseConnection();
         }
 
-        public void DeleteMeeting(String id)
+        public void DeleteAgenda(int id)
         {
 
-            var meeting = appDBContent.MeetingModel.Find(id);
+            var meeting = appDBContent.Agenda.Find(id);
 
             try
             {
-                if (meeting != null && appDBContent.MeetingModel.Contains(meeting))
+                if (meeting != null && appDBContent.Agenda.Contains(meeting))
                 {
-                    appDBContent.MeetingModel.Remove(meeting);
+                    appDBContent.Agenda.Remove(meeting);
                     appDBContent.SaveChangesAsync();
                 }
             }
@@ -52,18 +54,18 @@ namespace Tablet.Data.Models
             }
         }
 
-        public List<MeetingModel> GetMeetingModels()
+        public List<Agenda> GetMeetingModels()
         {
-            return appDBContent.MeetingModel.ToList();
+            return appDBContent.Agenda.ToList();
         }
 
 
-        public List<ListOfMeetingsModel> ListOfMeetings { get; set; }
+        public List<MeetingModel> ListOfMeetings { get; set; }
 
         public void AddToListOfMeetings(String id, int number, String projectId)
         {
 
-            appDBContent.ListOfMeetingsModel.Add(new ListOfMeetingsModel
+            appDBContent.MeetingModel.Add(new MeetingModel
             {
                 Id = id,
                 Number = number,
@@ -92,14 +94,14 @@ namespace Tablet.Data.Models
             }
         }
 
-        public List<ListOfMeetingsModel> GetListOfMeetingsModel()
+        public List<MeetingModel> GetListOfMeetingsModel()
         {
-            return appDBContent.ListOfMeetingsModel.ToList();
+            return appDBContent.MeetingModel.ToList();
         }
 
         public List<MeetingAssignmentModel> MeetingAssignment { get; set; }
 
-        public void AddToMeetingAssignments(String id, String meetingId, int number, String asignment, 
+        public void AddToMeetingAssignments(int id, String meetingId, String asignment, 
             DateTime redLine, String responsible)
         {
 
@@ -107,16 +109,18 @@ namespace Tablet.Data.Models
             {
                 Id = id,
                 MeetingId = meetingId,
-                Number = number,
                 Asignment = asignment,
                 RedLine = redLine,
                 Responsible = responsible
             });
 
+            appDBContent.Database.OpenConnection();
+            appDBContent.Database.ExecuteSqlCommand("SET IDENTITY_INSERT MeetingAssignmentModel ON;");
             appDBContent.SaveChanges();
+            appDBContent.Database.CloseConnection();
         }
 
-        public void DeleteMeetingAssignmentModel(String id)
+        public void DeleteMeetingAssignmentModel(int id)
         {
 
             var assignment = appDBContent.MeetingAssignmentModel.Find(id);

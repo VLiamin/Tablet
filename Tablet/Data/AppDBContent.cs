@@ -9,6 +9,10 @@ namespace Tablet.Data
 {
     public class AppDBContent : DbContext
     {
+        public AppDBContent()
+        {
+        }
+
         public AppDBContent(DbContextOptions<AppDBContent> options) : base(options)
         {
 
@@ -25,9 +29,23 @@ namespace Tablet.Data
         public DbSet<ProjectGeneralWorks> ProjectGeneralWorks { get; set; }
         public DbSet<ProjectRisks> ProjectRisks { get; set; }
         public DbSet<InformationModel> InformationModel { get; set; }
+        public DbSet<Agenda> Agenda { get; set; }
         public DbSet<MeetingModel> MeetingModel { get; set; }
-        public DbSet<ListOfMeetingsModel> ListOfMeetingsModel { get; set; }
         public DbSet<MeetingAssignmentModel> MeetingAssignmentModel { get; set; }
         public DbSet<Restrictions> RestrictionsModel { get; set; }
+
+        public String ProjectId { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<ProjectGeneralProblems>().HasQueryFilter(u => u.ProjectId.Equals(this.ProjectId));
+            modelBuilder.Entity<ProjectGeneralWorks>().HasQueryFilter(u => u.ProjectId.Equals(this.ProjectId));
+            modelBuilder.Entity<ProjectProblems>().HasQueryFilter(u => u.ProjectId.Equals(this.ProjectId));
+            modelBuilder.Entity<ProjectRisks>().HasQueryFilter(u => u.ProjectId.Equals(this.ProjectId));
+            modelBuilder.Entity<Stages>().HasQueryFilter(u => u.ProjectId.Equals(this.ProjectId));
+
+
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }

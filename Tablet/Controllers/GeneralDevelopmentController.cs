@@ -12,12 +12,11 @@ namespace Tablet.Controllers
     public class GeneralDevelopmentController : Controller
     {
 
-        private readonly IGeneralDevelopment general;
         private readonly MainModel mainModel;
 
-        public GeneralDevelopmentController(IGeneralDevelopment general, MainModel mainModel)
+        public GeneralDevelopmentController(MainModel mainModel)
         {
-            this.general = general;
+
             this.mainModel = mainModel;
         }
 

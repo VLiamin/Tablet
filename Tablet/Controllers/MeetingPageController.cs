@@ -54,7 +54,7 @@ namespace Tablet.Controllers
         }
 
         [HttpPost]
-        public RedirectToActionResult AddMeeting(ListOfMeetingsModel listOfMeetingsModel)
+        public RedirectToActionResult AddMeeting(MeetingModel listOfMeetingsModel)
         {
             var Id = Guid.NewGuid().ToString();
             Id = listOfMeetingsModel.Number + Id;
@@ -90,12 +90,10 @@ namespace Tablet.Controllers
         }
 
         [HttpPost]
-        public RedirectToActionResult AddNewParameters(MeetingModel meetingModel)
+        public RedirectToActionResult AddNewParameters(Agenda meetingModel)
         {
-            String Id = Guid.NewGuid().ToString();
-            Id = meetingModel.Number + Id;
-
-            meetingPageModel.AddToMeeting(Id, MeetingsPageViewModel.MeetingId, meetingModel.Number,
+            int id = meetingModel.Id;
+            meetingPageModel.AddToMeeting(id, MeetingsPageViewModel.MeetingId,
                 meetingModel.Question, meetingModel.Comment, meetingModel.Suggestion);
             return RedirectToAction("GoToMeeting", "MeetingPage", new { Id = MeetingsPageViewModel.MeetingId });
         }
@@ -109,23 +107,21 @@ namespace Tablet.Controllers
         [HttpPost]
         public RedirectToActionResult AddNewAssignment(MeetingAssignmentModel meetingAssignmentModel)
         {
-            String Id = Guid.NewGuid().ToString();
-            Id = meetingAssignmentModel.Number + Id;
 
-            meetingPageModel.AddToMeetingAssignments(Id, MeetingsPageViewModel.MeetingId, meetingAssignmentModel.Number,
+            meetingPageModel.AddToMeetingAssignments(meetingAssignmentModel.Id, MeetingsPageViewModel.MeetingId,
                 meetingAssignmentModel.Asignment, meetingAssignmentModel.RedLine, meetingAssignmentModel.Responsible);
             return RedirectToAction("GoToMeeting", "MeetingPage", new { Id = MeetingsPageViewModel.MeetingId });
         }
 
         [HttpPost]
-        public RedirectToActionResult DeleteMeeting(String ID)
+        public RedirectToActionResult DeleteAgenda(int ID)
         {
-            meetingPageModel.DeleteMeeting(ID);
+            meetingPageModel.DeleteAgenda(ID);
             return RedirectToAction("GoToMeeting", "MeetingPage", new { Id = MeetingsPageViewModel.MeetingId });
         }
 
         [HttpPost]
-        public RedirectToActionResult DeleteAssignment(String ID)
+        public RedirectToActionResult DeleteAssignment(int ID)
         {
             meetingPageModel.DeleteMeetingAssignmentModel(ID);
             return RedirectToAction("GoToMeeting", "MeetingPage", new { Id = MeetingsPageViewModel.MeetingId });

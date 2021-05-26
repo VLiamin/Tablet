@@ -14,7 +14,7 @@ namespace Tablet.Controllers
 
         private readonly MainModel mainModel;
 
-        public StructureController (IStructure structure, MainModel mainModel)
+        public StructureController (MainModel mainModel)
         {
             this.mainModel = mainModel;
         }

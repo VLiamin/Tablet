@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -62,25 +63,29 @@ namespace Tablet.Data.Models
             appDBContent.SaveChanges();
         }
 
-        public List<Project> getProjectModels()
+        public List<Project> getProjectModels(String Id)
         {
+            appDBContent.ProjectId = Id; 
+
             return appDBContent.Project.ToList();
         }
 
         public List<ProjectProblems> projectProblems { get; set; }
 
-        public void AddToProjectProblems(String id, String number, String projectId, String problem)
+        public void AddToProjectProblems(int id, String projectId, String problem)
         {
 
                appDBContent.ProjectProblems.Add(new ProjectProblems
                {
                    Id = id,
-                   Number = number,
-                   Project = projectId,
+                   ProjectId = projectId,
                    Problem = problem
                });
 
+            appDBContent.Database.OpenConnection();
+            appDBContent.Database.ExecuteSqlCommand("SET IDENTITY_INSERT ProjectProblems ON;");
             appDBContent.SaveChanges();
+            appDBContent.Database.CloseConnection();
         }
 
         public void DeleteProjectProblems(String id, String projectId)
@@ -109,18 +114,20 @@ namespace Tablet.Data.Models
 
         public List<Stages> Stages { get; set; }
 
-        public void AddToProjectStage(String id, String number, String projectId, String stage)
+        public void AddToProjectStage(int id, String projectId, String stage)
         {
 
             appDBContent.Stages.Add(new Stages
             {
                 Id = id,
-                Number = number,
-                Project = projectId,
+                ProjectId = projectId,
                 Stage = stage
             });
 
+            appDBContent.Database.OpenConnection();
+            appDBContent.Database.ExecuteSqlCommand("SET IDENTITY_INSERT Stages ON;");
             appDBContent.SaveChanges();
+            appDBContent.Database.CloseConnection();
         }
 
         public void DeleteProjectStage(String id, String projectId)
@@ -151,15 +158,14 @@ namespace Tablet.Data.Models
 
         public List<ProjectGeneralProblems> GeneralProblems { get; set; }
 
-        public void AddToProjectGeneralProblems(String id, String description, DateTime date, String projectId)
+        public void AddToProjectGeneralProblems(String description, DateTime date, String projectId)
         {
 
             appDBContent.ProjectGeneralProblems.Add(new ProjectGeneralProblems
             {
-                Id = id,
                 Description = description,
                 Date = date,
-                Project = projectId
+                ProjectId = projectId
             });
 
             appDBContent.SaveChanges();
@@ -185,8 +191,9 @@ namespace Tablet.Data.Models
         }
 
 
-        public List<ProjectGeneralProblems> GetProjectGeneralProblems()
+        public List<ProjectGeneralProblems> GetProjectGeneralProblems(String Id)
         {
+            appDBContent.ProjectId = Id;
             return appDBContent.ProjectGeneralProblems.ToList();
         }
 
@@ -194,19 +201,19 @@ namespace Tablet.Data.Models
 
         public List<ProjectGeneralWorks> GeneralWorks { get; set; }
 
-        public void AddToProjectGeneralWorks(String id, String description, DateTime date, DateTime redLine,
+        public void AddToProjectGeneralWorks(String description, DateTime date, DateTime redLine,
             String responsible, String persent, String projectId)
         {
+            
 
             appDBContent.ProjectGeneralWorks.Add(new ProjectGeneralWorks
             {
-                Id = id,
                 Description = description,
                 Date = date,
                 RedLine = redLine,
                 Responsible = responsible,
                 Persent = persent,
-                Project = projectId
+                ProjectId = projectId
             });
 
             appDBContent.SaveChanges();
@@ -240,18 +247,17 @@ namespace Tablet.Data.Models
 
         public List<ProjectRisks> ProjectRisks { get; set; }
 
-        public void AddToProjectRisks(String id, String description, String otv, DateTime redLine,
+        public void AddToProjectRisks(String description, String otv, DateTime redLine,
             String solution, String project)
         {
 
             appDBContent.ProjectRisks.Add(new ProjectRisks
             {
-                Id = id,
                 Description = description,
                 OTV = otv,
                 RedLine = redLine,
                 Solution = solution,
-                Project = project
+                ProjectId = project
             });
 
             appDBContent.SaveChanges();
