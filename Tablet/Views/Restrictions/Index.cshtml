@@ -1,74 +1,79 @@
 ﻿@model RestrictionsPageViewModel
-<div>
-    <header>
-        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-            <div class="navbar-collapse" id="navbarСollapse">
-                <ul class="navbar-nav mr-auto">
+    <div>
+        <header>
+            <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+                <div class="navbar-collapse" id="navbarСollapse">
+                    <ul class="navbar-nav mr-auto">
 
-                    <li class="nav-item active">
-                        <a class="nav-link">Главная</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/MeetingPage/GetList">Встречи по проекту</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/Restrictions/Index">Ограничения</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Общая информация</a>
-                    </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/Home/Index">Главная</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/MeetingPage/GetList">Встречи по проекту</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/Restrictions/Index">Ограничения</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/GeneralInformation/Index">Общая информация</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/ProjectPage/Index">Подробная информация</a>
+                        </li>
 
-                </ul>
+                    </ul>
 
-                <form class="form-inline mt-2 mt-md-0">
-                    <a class="nav-link" href="/Account/Logout">Выйти</a>
-                </form>
-            </div>
-        </nav>
+                    <form class="form-inline mt-2 mt-md-0">
+                        <a class="nav-link" href="/Account/Logout">Выйти</a>
+                    </form>
+                </div>
+            </nav>
 
-    </header>
-    <br />
-    <h2>
-        Таблица ограничений проекта <br />
-    </h2>
-    <style type="text/css">
-        body {
-        }
-
-        table {
-            width: 100%; /* Ширина таблицы */
-        }
-
-        td {
-            padding: 5px;
-        }
-
-            td.col1 {
-                background: red;
-                color: white;
+        </header>
+        <br />
+        <br />
+        <h2>
+            Таблица ограничений проекта <br />
+        </h2>
+        <style type="text/css">
+            body {
             }
 
-            td.col2 {
-                background: orange;
-                color: gray;
+            table {
+                width: 100%; /* Ширина таблицы */
             }
 
-            td.col3 {
-                background: green;
+            td {
+                padding: 5px;
             }
-    </style>
-    @foreach(var item in Model.RestrictionsPage.Restrictions) {
-        if (item.ProjectId.Equals(RestrictionsPageViewModel.ProjectId))
+
+                td.col1 {
+                    background: red;
+                    color: white;
+                }
+
+                td.col2 {
+                    background: orange;
+                    color: gray;
+                }
+
+                td.col3 {
+                    background: green;
+                }
+        </style>
+        @foreach (var item in Model.RestrictionsPage.Restrictions)
         {
-            <table class="table">
-                <tr>
-                    <td>Название</td>
-                    <td>Цвет</td>
-                    <td>Хорошо/Плохо/Удовлетворительно</td>
-                </tr>
-                <tr>
-                    <td>Финансы</td>
-                    
+            if (item.ProjectId.Equals(RestrictionsPageViewModel.ProjectId))
+            {
+                <table class="table">
+                    <tr>
+                        <td>Название</td>
+                        <td>Цвет</td>
+                        <td>Хорошо/Плохо/Удовлетворительно</td>
+                    </tr>
+                    <tr>
+                        <td>Финансы</td>
+
                         @if (item.Finance != null && item.Finance.Equals("Хорошо"))
                         {
                             <td class="col3"></td>
@@ -81,7 +86,7 @@
                         {
                             <td class="col2"></td>
                         }
-                        
+
                         <td>
                             @using (Html.BeginForm("EditFinance", "Restrictions"))
                             {
@@ -89,161 +94,161 @@
                                 <input type="submit" value="Изменить" style="display:none;" />
                             }
                         </td>
-                </tr>
-                <tr>
-                    <td>Архитектура</td>
-                    @if (item.Architecture != null && item.Architecture.Equals("Хорошо"))
-                    {
-                        <td class="col3"></td>
-                    }
-                    else if (item.Architecture != null && item.Architecture.Equals("Плохо"))
-                    {
-                        <td class="col1"></td>
-                    }
-                    else
-                    {
-                        <td class="col2"></td>
-                    }
-                    <td>
-                        @using (Html.BeginForm("EditArchitecture", "Restrictions"))
-                         {
-                            <input type="text" id="ss" name="value" value="@item.Architecture" />
-                            <input type="submit" value="Изменить" style="display:none;" />
-                         }
-                    </td>
-                </tr>
-                <tr>
-                    <td>Безопасность</td>
-                    @if (item.Safety != null && item.Safety.Equals("Хорошо"))
-                    {
-                        <td class="col3"></td>
-                    }
-                    else if (item.Safety != null && item.Safety.Equals("Плохо"))
-                    {
-                        <td class="col1"></td>
-                    }
-                    else
-                    {
-                        <td class="col2"></td>
-                    }
-                    <td>
-                        @using (Html.BeginForm("EditSafety", "Restrictions"))
+                    </tr>
+                    <tr>
+                        <td>Архитектура</td>
+                        @if (item.Architecture != null && item.Architecture.Equals("Хорошо"))
                         {
-                            <input type="text" id="ss" name="value" value="@item.Safety" />
-                            <input type="submit" value="Изменить" style="display:none;" />
+                            <td class="col3"></td>
                         }
-                    </td>
-                </tr>
-                <tr>
-                    <td>Данные</td>
-                    @if (item.Data != null && item.Data.Equals("Хорошо"))
-                    {
-                        <td class="col3"></td>
-                    }
-                    else if (item.Data != null && item.Data.Equals("Плохо"))
-                    {
-                        <td class="col1"></td>
-                    }
-                    else
-                    {
-                        <td class="col2"></td>
-                    }
-                    <td>
-                        @using (Html.BeginForm("EditData", "Restrictions"))
+                        else if (item.Architecture != null && item.Architecture.Equals("Плохо"))
                         {
-                            <input type="text" id="ss" name="value" value="@item.Data" />
-                            <input type="submit" value="Изменить" style="display:none;" />
+                            <td class="col1"></td>
                         }
-                    </td>
-                </tr>
-                <tr>
-                    <td>Сроки</td>
-                    @if (item.RedLine != null && item.RedLine.Equals("Хорошо"))
-                    {
-                        <td class="col3"></td>
-                    }
-                    else if (item.RedLine != null && item.RedLine.Equals("Плохо"))
-                    {
-                        <td class="col1"></td>
-                    }
-                    else
-                    {
-                        <td class="col2"></td>
-                    }
-                    <td>
-                        @using (Html.BeginForm("EditRedLine", "Restrictions"))
+                        else
                         {
-                            <input type="text" id="ss" name="value" value="@item.RedLine" />
-                            <input type="submit" value="Изменить" style="display:none;" />
+                            <td class="col2"></td>
                         }
-                    </td>
-                <tr>
-                    <td>Документ</td>
-                    @if (item.Document != null && item.Document.Equals("Хорошо"))
-                    {
-                        <td class="col3"></td>
-                    }
-                    else if (item.Document != null && item.Document.Equals("Плохо"))
-                    {
-                        <td class="col1"></td>
-                    }
-                    else
-                    {
-                        <td class="col2"></td>
-                    }
-                    <td>
-                        @using (Html.BeginForm("EditDocument", "Restrictions"))
+                        <td>
+                            @using (Html.BeginForm("EditArchitecture", "Restrictions"))
+                            {
+                                <input type="text" id="ss" name="value" value="@item.Architecture" />
+                                <input type="submit" value="Изменить" style="display:none;" />
+                            }
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Безопасность</td>
+                        @if (item.Safety != null && item.Safety.Equals("Хорошо"))
                         {
-                            <input type="text" id="ss" name="value" value="@item.Document" />
-                            <input type="submit" value="Изменить" style="display:none;" />
+                            <td class="col3"></td>
                         }
-                    </td>
-                </tr>
-                <tr>
-                    <td>Инфраструктура</td>
-                    @if (item.Infrastructure != null && item.Infrastructure.Equals("Хорошо"))
-                    {
-                        <td class="col3"></td>
-                    }
-                    else if (item.Infrastructure != null && item.Infrastructure.Equals("Плохо"))
-                    {
-                        <td class="col1"></td>
-                    }
-                    else
-                    {
-                        <td class="col2"></td>
-                    }
-                    <td>
-                        @using (Html.BeginForm("EditInfrastructure", "Restrictions"))
+                        else if (item.Safety != null && item.Safety.Equals("Плохо"))
                         {
-                            <input type="text" id="ss" name="value" value="@item.Infrastructure" />
-                            <input type="submit" value="Изменить" style="display:none;" />
+                            <td class="col1"></td>
                         }
-                    </td>
-                <tr>
-                    <td>Лицензия</td>
-                    @if (item.License != null && item.License.Equals("Хорошо"))
-                    {
-                        <td class="col3"></td>
-                    }
-                    else if (item.License != null && item.License.Equals("Плохо"))
-                    {
-                        <td class="col1"></td>
-                    }
-                    else
-                    {
-                        <td class="col2"></td>
-                    }
-                    <td>
-                        @using (Html.BeginForm("EditLicense", "Restrictions"))
+                        else
                         {
-                            <input type="text" id="ss" name="value" value="@item.License" />
-                            <input type="submit" value="Изменить" style="display:none;" />
+                            <td class="col2"></td>
                         }
-                    </td>
-                </tr>
-        
-    </table>
+                        <td>
+                            @using (Html.BeginForm("EditSafety", "Restrictions"))
+                            {
+                                <input type="text" id="ss" name="value" value="@item.Safety" />
+                                <input type="submit" value="Изменить" style="display:none;" />
+                            }
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Данные</td>
+                        @if (item.Data != null && item.Data.Equals("Хорошо"))
+                        {
+                            <td class="col3"></td>
+                        }
+                        else if (item.Data != null && item.Data.Equals("Плохо"))
+                        {
+                            <td class="col1"></td>
+                        }
+                        else
+                        {
+                            <td class="col2"></td>
+                        }
+                        <td>
+                            @using (Html.BeginForm("EditData", "Restrictions"))
+                            {
+                                <input type="text" id="ss" name="value" value="@item.Data" />
+                                <input type="submit" value="Изменить" style="display:none;" />
+                            }
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Сроки</td>
+                        @if (item.RedLine != null && item.RedLine.Equals("Хорошо"))
+                        {
+                            <td class="col3"></td>
+                        }
+                        else if (item.RedLine != null && item.RedLine.Equals("Плохо"))
+                        {
+                            <td class="col1"></td>
+                        }
+                        else
+                        {
+                            <td class="col2"></td>
+                        }
+                        <td>
+                            @using (Html.BeginForm("EditRedLine", "Restrictions"))
+                            {
+                                <input type="text" id="ss" name="value" value="@item.RedLine" />
+                                <input type="submit" value="Изменить" style="display:none;" />
+                            }
+                        </td>
+                    <tr>
+                        <td>Документ</td>
+                        @if (item.Document != null && item.Document.Equals("Хорошо"))
+                        {
+                            <td class="col3"></td>
+                        }
+                        else if (item.Document != null && item.Document.Equals("Плохо"))
+                        {
+                            <td class="col1"></td>
+                        }
+                        else
+                        {
+                            <td class="col2"></td>
+                        }
+                        <td>
+                            @using (Html.BeginForm("EditDocument", "Restrictions"))
+                            {
+                                <input type="text" id="ss" name="value" value="@item.Document" />
+                                <input type="submit" value="Изменить" style="display:none;" />
+                            }
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Инфраструктура</td>
+                        @if (item.Infrastructure != null && item.Infrastructure.Equals("Хорошо"))
+                        {
+                            <td class="col3"></td>
+                        }
+                        else if (item.Infrastructure != null && item.Infrastructure.Equals("Плохо"))
+                        {
+                            <td class="col1"></td>
+                        }
+                        else
+                        {
+                            <td class="col2"></td>
+                        }
+                        <td>
+                            @using (Html.BeginForm("EditInfrastructure", "Restrictions"))
+                            {
+                                <input type="text" id="ss" name="value" value="@item.Infrastructure" />
+                                <input type="submit" value="Изменить" style="display:none;" />
+                            }
+                        </td>
+                    <tr>
+                        <td>Лицензия</td>
+                        @if (item.License != null && item.License.Equals("Хорошо"))
+                        {
+                            <td class="col3"></td>
+                        }
+                        else if (item.License != null && item.License.Equals("Плохо"))
+                        {
+                            <td class="col1"></td>
+                        }
+                        else
+                        {
+                            <td class="col2"></td>
+                        }
+                        <td>
+                            @using (Html.BeginForm("EditLicense", "Restrictions"))
+                            {
+                                <input type="text" id="ss" name="value" value="@item.License" />
+                                <input type="submit" value="Изменить" style="display:none;" />
+                            }
+                        </td>
+                    </tr>
+
+                </table>
+            }
         }
-    }
-</div>
+    </div>

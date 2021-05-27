@@ -7,7 +7,7 @@
                     <ul class="navbar-nav mr-auto">
 
                         <li class="nav-item active">
-                            <a class="nav-link">Главная</a>
+                            <a class="nav-link" href="/Home/Index">Главная</a>
                         </li>
                         <li class="nav-item active">
                             <a class="nav-link" href="/MeetingPage/GetList">Встречи по проекту</a>
@@ -16,7 +16,10 @@
                             <a class="nav-link" href="/Restrictions/Index">Ограничения</a>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link" href="#">Общая информация</a>
+                            <a class="nav-link" href="/GeneralInformation/Index">Общая информация</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/ProjectPage/Index">Подробная информация</a>
                         </li>
 
                     </ul>
@@ -35,7 +38,7 @@
                 Общая информация о проекте <br />
             </h2>
 
-            <h3>
+            
                 @foreach (var item in Model.projectPageModel.Project)
                 {
                     if (item.Id.Equals(ProjectPageViewModel.projectId))
@@ -50,26 +53,7 @@
                 }
 
                 <a class="btn badge-light border-dark" href="/Project/Editor">Изменить значения</a>
-            </h3>
-            <hr>
-            <h2>
-                Задачи до конца проекта
-            </h2>
-
-            @foreach (var item in Model.projectPageModel.projectProblems)
-            {
-                <td> @item.Id </td>
-                <td> @item.Problem</td>
-                <td>
-                    <form method="post">
-                        <button type="submit" asp-controller="ProjectPage" asp-action="DeleteProblem" asp-route-id="@item.Id">
-                            Удалить
-                        </button>
-                    </form>
-                </td>
-
-            }
-            <a class="btn badge-light border-dark" href="/ProjectPage/AddProblem">Добавить значение</a>
+            
 
             <hr>
             <h2>
@@ -92,8 +76,28 @@
 
             }
             <a class="btn badge-light border-dark" href="/ProjectPage/AddStage">Добавить значение</a>
+            <hr>
+            <h2>
+                Задачи до конца проекта
+            </h2>
+
+            @foreach (var item in Model.projectPageModel.projectProblems)
+            {
+                <td> @item.Id </td>
+                <td> @item.Problem</td>
+                <td>
+                    <form method="post">
+                        <button type="submit" asp-controller="ProjectPage" asp-action="DeleteProblem" asp-route-id="@item.Id">
+                            Удалить
+                        </button>
+                    </form>
+                </td>
+
+            }
+            <a class="btn badge-light border-dark" href="/ProjectPage/AddProblem">Добавить значение</a>
 
             <hr>
+            
             <h2>
                 Основные задачи этапа
             </h2>

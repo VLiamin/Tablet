@@ -20,7 +20,7 @@ namespace Tablet.Controllers
         public IActionResult Index()
         {
 
-            if (RestrictionsPageViewModel.ProjectId == null)
+            if ((RestrictionsPageViewModel.ProjectId == null) || (!RestrictionsPageViewModel.ProjectId.Equals(ProjectPageViewModel.projectId)))
             {
                 restrictionsPageModel.AddRestrictions(Guid.NewGuid().ToString(), ProjectPageViewModel.projectId);
             }
