@@ -1,36 +1,63 @@
 ﻿@model ProjectPageViewModel
 
-<div class="container mt-5 mb-5">
-    <hr />
-    <hr />
-    <div class="currencies float-left">
-        <h2>
-            Общая информация о проекте <br />
-        </h2>
+    <div class="container mt-5 mb-5">
+        <header>
+            <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+                <div class="navbar-collapse" id="navbarСollapse">
+                    <ul class="navbar-nav mr-auto">
 
-        <h3>
-            @foreach (var item in Model.projectPageModel.Project)
-            {
-                if (item.Id.Equals(ProjectPageViewModel.projectId))
+                        <li class="nav-item active">
+                            <a class="nav-link">Главная</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/MeetingPage/GetList">Встречи по проекту</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/Restrictions/Index">Ограничения</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Общая информация</a>
+                        </li>
+
+                    </ul>
+
+                    <form class="form-inline mt-2 mt-md-0">
+                        <a class="nav-link" href="/Account/Logout">Выйти</a>
+                    </form>
+                </div>
+            </nav>
+
+        </header>
+        <hr />
+        <hr />
+        <div class="currencies float-left">
+            <h2>
+                Общая информация о проекте <br />
+            </h2>
+
+            <h3>
+                @foreach (var item in Model.projectPageModel.Project)
                 {
-                    <td>Название проекта: @item.Name</td> <br />
-                    <td>Заказчик: @item.Customer</td> <br />
-                    <td>Ответственный: @item.Developer</td> <br />
-                    <td>Технология: @item.Technology</td> <br />
-                    <td>Стоимость: @item.Cost</td> <br />
+                    if (item.Id.Equals(ProjectPageViewModel.projectId))
+                    {
+                        <td>Название проекта: @item.Name</td> <br />
+                        <td>Заказчик: @item.Customer</td> <br />
+                        <td>Ответственный: @item.Developer</td> <br />
+                        <td>Технология: @item.Technology</td> <br />
+                        <td>Стоимость: @item.Cost</td> <br />
+                    }
+
                 }
 
-            }
+                <a class="btn badge-light border-dark" href="/Project/Editor">Изменить значения</a>
+            </h3>
+            <hr>
+            <h2>
+                Задачи до конца проекта
+            </h2>
 
-            <a class="btn badge-light border-dark" href="/Project/Editor">Изменить значения</a>
-        </h3>
-        <hr>
-        <h2>
-            Задачи до конца проекта
-        </h2>
-
-        @foreach (var item in Model.projectPageModel.projectProblems)
-        {
+            @foreach (var item in Model.projectPageModel.projectProblems)
+            {
                 <td> @item.Id </td>
                 <td> @item.Problem</td>
                 <td>
@@ -41,16 +68,16 @@
                     </form>
                 </td>
 
-        }
-        <a class="btn badge-light border-dark" href="/ProjectPage/AddProblem">Добавить значение</a>
+            }
+            <a class="btn badge-light border-dark" href="/ProjectPage/AddProblem">Добавить значение</a>
 
-        <hr>
-        <h2>
-            Этапы
-        </h2>
+            <hr>
+            <h2>
+                Этапы
+            </h2>
 
-        @foreach (var item in Model.projectPageModel.Stages)
-        {
+            @foreach (var item in Model.projectPageModel.Stages)
+            {
 
                 <td> @item.Id </td>
                 <td> @item.Stage</td> <br />
@@ -63,43 +90,43 @@
                 </td>
 
 
-        }
-        <a class="btn badge-light border-dark" href="/ProjectPage/AddStage">Добавить значение</a>
-
-        <hr>
-        <h2>
-            Основные задачи этапа
-        </h2>
-
-        <table class="table">
-            <tr><td>Контрольные точки</td><td>Срок до:</td></tr>
-            @foreach (var item in Model.projectPageModel.GeneralProblems)
-
-            {
-                <tr>
-                    <td>@item.Description</td>
-                    <td>@item.Date</td>
-                    <td>
-                        <form method="post">
-                            <button type="submit" asp-controller="ProjectPage" asp-action="DeleteFinalProblems" asp-route-id="@item.Id">
-                                Удалить
-                            </button>
-                        </form>
-                    </td>
-
-                </tr>
-
             }
-        </table>
+            <a class="btn badge-light border-dark" href="/ProjectPage/AddStage">Добавить значение</a>
 
-        <a class="btn badge-light border-dark" href="/ProjectPage/AddGeneralProblem">Добавить значение</a>
+            <hr>
+            <h2>
+                Основные задачи этапа
+            </h2>
+
+            <table class="table">
+                <tr><td>Контрольные точки</td><td>Срок до:</td></tr>
+                @foreach (var item in Model.projectPageModel.GeneralProblems)
+
+                {
+                    <tr>
+                        <td>@item.Description</td>
+                        <td>@item.Date</td>
+                        <td>
+                            <form method="post">
+                                <button type="submit" asp-controller="ProjectPage" asp-action="DeleteFinalProblems" asp-route-id="@item.Id">
+                                    Удалить
+                                </button>
+                            </form>
+                        </td>
+
+                    </tr>
+
+                }
+            </table>
+
+            <a class="btn badge-light border-dark" href="/ProjectPage/AddGeneralProblem">Добавить значение</a>
 
 
-        <table class="table">
-            <tr><td>Основные текущие и предстоящие работы</td><td>Срок:</td><td>Точка невозрата</td><td>Ответственные</td><td>%</td></tr>
-            @foreach (var item in Model.projectPageModel.GeneralWorks)
+            <table class="table">
+                <tr><td>Основные текущие и предстоящие работы</td><td>Срок:</td><td>Точка невозрата</td><td>Ответственные</td><td>%</td></tr>
+                @foreach (var item in Model.projectPageModel.GeneralWorks)
 
-            {
+                {
 
                     <tr>
                         <td>@item.Description</td>
@@ -118,21 +145,21 @@
 
                     </tr>
 
-            }
-        </table>
+                }
+            </table>
 
-        <a class="btn badge-light border-dark" href="/ProjectPage/AddGeneralWorks">Добавить значение</a>
-        <hr>
+            <a class="btn badge-light border-dark" href="/ProjectPage/AddGeneralWorks">Добавить значение</a>
+            <hr>
 
-        <h2>
-            Риски:
-        </h2>
+            <h2>
+                Риски:
+            </h2>
 
-        <table class="table">
-            <tr><td>Описание рисков</td><td>ОТВ</td><td>Срок</td><td>Решение</td></tr>
-            @foreach (var item in Model.projectPageModel.ProjectRisks)
+            <table class="table">
+                <tr><td>Описание рисков</td><td>ОТВ</td><td>Срок</td><td>Решение</td></tr>
+                @foreach (var item in Model.projectPageModel.ProjectRisks)
 
-            {
+                {
 
                     <tr>
                         <td>@item.Description</td>
@@ -147,26 +174,15 @@
                             </form>
                         </td>
                     </tr>
-            }
-        </table>
+                }
+            </table>
 
-        <a class="btn badge-light border-dark" href="/ProjectPage/AddRisks">Добавить значение</a>
+            <a class="btn badge-light border-dark" href="/ProjectPage/AddRisks">Добавить значение</a>
 
-        <hr>
-        <form method="post">
-        </form>
+            <hr>
+            <form method="post">
+            </form>
 
-        @using (Html.BeginForm("GoToList", "MeetingPage"))
-        {
-            <button type="submit" name="projectId" value="@ProjectPageViewModel.projectId">
-                Перейти к списку встреч
-            </button>
-
-        }
-
-        <br>
-
-        <a class="btn badge-light border-dark" href="/Restrictions/Index">Ограничения проекта</a>
-        <br>
-        <a class="btn badge-light border-dark" href="/ProjectPage/MakePDF">Создать отчет</a>
-    </div>
+            <br>
+            <a class="btn badge-light border-dark" href="/ProjectPage/MakePDF">Создать отчет</a>
+        </div>

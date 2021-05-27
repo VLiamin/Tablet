@@ -1,9 +1,33 @@
 ﻿@model RestrictionsPageViewModel
 <div>
-    <hr />
-    <hr />
-    <hr />
-    <hr />
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <div class="navbar-collapse" id="navbarСollapse">
+                <ul class="navbar-nav mr-auto">
+
+                    <li class="nav-item active">
+                        <a class="nav-link">Главная</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/MeetingPage/GetList">Встречи по проекту</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/Restrictions/Index">Ограничения</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Общая информация</a>
+                    </li>
+
+                </ul>
+
+                <form class="form-inline mt-2 mt-md-0">
+                    <a class="nav-link" href="/Account/Logout">Выйти</a>
+                </form>
+            </div>
+        </nav>
+
+    </header>
+    <br />
     <h2>
         Таблица ограничений проекта <br />
     </h2>
