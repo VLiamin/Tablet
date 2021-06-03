@@ -124,6 +124,13 @@ namespace Tablet.Data.Models
                 Stage = stage
             });
 
+            appDBContent.RestrictionsModel.Add(new Restrictions
+            {
+                Id = "jjffj",
+                ProjectId = "1"
+
+            });
+
             appDBContent.Database.OpenConnection();
             appDBContent.Database.ExecuteSqlCommand("SET IDENTITY_INSERT Stages ON;");
             appDBContent.SaveChanges();

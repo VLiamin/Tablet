@@ -38,22 +38,22 @@
                 Общая информация о проекте <br />
             </h2>
 
-            
-                @foreach (var item in Model.projectPageModel.Project)
-                {
-                    if (item.Id.Equals(ProjectPageViewModel.projectId))
-                    {
-                        <td>Название проекта: @item.Name</td> <br />
-                        <td>Заказчик: @item.Customer</td> <br />
-                        <td>Ответственный: @item.Developer</td> <br />
-                        <td>Технология: @item.Technology</td> <br />
-                        <td>Стоимость: @item.Cost</td> <br />
-                    }
 
+            @foreach (var item in Model.projectPageModel.Project)
+            {
+                if (item.Id.Equals(ProjectPageViewModel.projectId))
+                {
+                    <td>Название проекта: @item.Name</td> <br />
+                    <td>Заказчик: @item.Customer</td> <br />
+                    <td>Ответственный: @item.Developer</td> <br />
+                    <td>Технология: @item.Technology</td> <br />
+                    <td>Стоимость: @item.Cost</td> <br />
                 }
 
-                <a class="btn badge-light border-dark" href="/Project/Editor">Изменить значения</a>
-            
+            }
+
+            <a class="btn badge-light border-dark" href="/Project/Editor">Изменить значения</a>
+
 
             <hr>
             <h2>
@@ -97,7 +97,7 @@
             <a class="btn badge-light border-dark" href="/ProjectPage/AddProblem">Добавить значение</a>
 
             <hr>
-            
+
             <h2>
                 Основные задачи этапа
             </h2>
@@ -125,7 +125,7 @@
 
             <a class="btn badge-light border-dark" href="/ProjectPage/AddGeneralProblem">Добавить значение</a>
 
-
+            <hr>
             <table class="table">
                 <tr><td>Основные текущие и предстоящие работы</td><td>Срок:</td><td>Точка невозрата</td><td>Ответственные</td><td>%</td></tr>
                 @foreach (var item in Model.projectPageModel.GeneralWorks)

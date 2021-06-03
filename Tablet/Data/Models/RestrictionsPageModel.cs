@@ -32,17 +32,14 @@ namespace Tablet.Data.Models
             appDBContent.SaveChanges();
         }
 
-        public void AddRestrictions(String id, String projectId)
+        public void AddRestrictions(String id, String projectId, DateTime date)
         {
-            foreach (var el in appDBContent.RestrictionsModel)
-            {
-                if (el.ProjectId.Equals(projectId))
-                    return;
-            }
             appDBContent.RestrictionsModel.Add(new Restrictions
             {
-                Id = id,
-                ProjectId = projectId
+                Id = "jjffj",
+                ProjectId = "1",
+                DateTime = date
+            
             });
 
             appDBContent.SaveChanges();

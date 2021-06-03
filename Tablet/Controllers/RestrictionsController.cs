@@ -19,11 +19,6 @@ namespace Tablet.Controllers
 
         public IActionResult Index()
         {
-
-            if ((RestrictionsPageViewModel.ProjectId == null) || (!RestrictionsPageViewModel.ProjectId.Equals(ProjectPageViewModel.projectId)))
-            {
-                restrictionsPageModel.AddRestrictions(Guid.NewGuid().ToString(), ProjectPageViewModel.projectId);
-            }
             var items = restrictionsPageModel.getRestrictions();
             restrictionsPageModel.Restrictions = items;
 
@@ -88,6 +83,19 @@ namespace Tablet.Controllers
         public RedirectToActionResult EditLicense(String value)
         {
             restrictionsPageModel.Edit("License", value, RestrictionsPageViewModel.ProjectId);
+            return RedirectToAction("Index");
+        }
+
+        public ViewResult AddTable()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public RedirectToActionResult AddTable(Restrictions restrictions)
+        {
+            String id = Guid.NewGuid().ToString();
+            restrictionsPageModel.AddRestrictions(id, ProjectPageViewModel.projectId, restrictions.DateTime);
             return RedirectToAction("Index");
         }
     }

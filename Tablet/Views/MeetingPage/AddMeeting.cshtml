@@ -1,27 +1,57 @@
 ﻿@model MeetingModel
 
-<div class="container  mt-5 mb-5">
-    <hr />
-    <hr />
-    <div class="currencies float-left">
-        <h2>
-            Добавление новой встречи
-        </h2>
+    <div class="container  mt-5 mb-5">
+        <header>
+            <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+                <div class="navbar-collapse" id="navbarСollapse">
+                    <ul class="navbar-nav mr-auto">
 
-    </div>
-    <hr />
-    <hr />
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/Home/Index">Главная</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/MeetingPage/GetList">Встречи по проекту</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/Restrictions/Index">Ограничения</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/GeneralInformation/Index">Общая информация</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/ProjectPage/Index">Подробная информация</a>
+                        </li>
 
-    <form asp-action="AddMeeting" method="post" class="form">
+                    </ul>
+
+                    <form class="form-inline mt-2 mt-md-0">
+                        <a class="nav-link" href="/Account/Logout">Выйти</a>
+                    </form>
+                </div>
+            </nav>
+
+        </header>
         <hr />
         <hr />
-        <div class="form-group">
-            <label asp-for="Number"></label>
-            <div class="col-md-12">
-                <input asp-for="Number" class="form-control" />
-                <span asp-validation-for="Number" class="text-danger"></span>
-            </div>
+        <div class="currencies float-left">
+            <h2>
+                Добавление новой встречи
+            </h2>
+
         </div>
-        <input class="btn btn-success" type="submit" value="Добавить в таблицу" />
-    </form>
-</div>
+        <hr />
+        <hr />
+
+        <form asp-action="AddMeeting" method="post" class="form">
+            <hr />
+            <hr />
+            <div class="form-group">
+                <label asp-for="Number"></label>
+                <div class="col-md-12">
+                    <input asp-for="Number" class="form-control" />
+                    <span asp-validation-for="Number" class="text-danger"></span>
+                </div>
+            </div>
+            <input class="btn btn-success" type="submit" value="Добавить в таблицу" />
+        </form>
+    </div>

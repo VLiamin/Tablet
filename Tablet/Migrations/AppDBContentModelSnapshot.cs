@@ -22,9 +22,7 @@ namespace Tablet.Migrations
             modelBuilder.Entity("Tablet.Data.Models.Agenda", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
                     b.Property<string>("Comment")
                         .HasColumnType("nvarchar(max)");
@@ -205,9 +203,7 @@ namespace Tablet.Migrations
             modelBuilder.Entity("Tablet.Data.Models.ProjectProblems", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
                     b.Property<string>("Problem")
                         .HasColumnType("nvarchar(max)");
@@ -263,6 +259,9 @@ namespace Tablet.Migrations
 
                     b.Property<string>("Data")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DateTime")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Document")
                         .HasColumnType("nvarchar(max)");
