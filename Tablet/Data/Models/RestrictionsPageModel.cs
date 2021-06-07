@@ -50,16 +50,17 @@ namespace Tablet.Data.Models
             return appDBContent.RestrictionsModel.ToList();
         }
 
-        public void Edit(String name, String value, String projectId)
+        public void Edit(String id, String name, String value)
         {
+
             Restrictions item = null;
             foreach (var el in appDBContent.RestrictionsModel)
             {
-                if (el.ProjectId.Equals(projectId))
-                {
-                    item = el;
-                    break;
-                }
+                  if (el.Id.Equals(id))
+                  {
+                      item = el;
+                      break;
+                  }
             }
         
         
