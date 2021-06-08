@@ -88,6 +88,21 @@ namespace Tablet.Controllers
             return View();
         }
 
+
+        public ViewResult EditTable(String id)
+        {
+            var items = restrictionsPageModel.getRestrictions();
+            restrictionsPageModel.Restrictions = items;
+
+
+            var obj = new RestrictionsPageViewModel
+            {
+                RestrictionsPage = this.restrictionsPageModel
+
+            };
+            RestrictionsPageViewModel.Id = id;
+            return View(obj);
+        }
         [HttpPost]
         public RedirectToActionResult AddTable(Restrictions restrictions)
         {

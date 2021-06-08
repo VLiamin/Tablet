@@ -248,6 +248,25 @@
 
         </tr>
 
+        <tr>
+            <td>Изменение значения</td>
+            @foreach (var item in Model.RestrictionsPage.Restrictions)
+            {
+                if (item.ProjectId.Equals(RestrictionsPageViewModel.ProjectId))
+                {
+                    <td>
+                        @using (Html.BeginForm("EditTable", "Restrictions"))
+                        {
+                             
+                            <input type="text" id="ss" name="id" value="@item.Id" style="display:none;"/>
+                            <input type="submit" value="Изменить"  />
+                        }
+                    </td>
+                }
+            }
+
+        </tr>
+
     </table>
 
     <hr />
