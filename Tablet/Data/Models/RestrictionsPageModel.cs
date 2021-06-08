@@ -36,8 +36,8 @@ namespace Tablet.Data.Models
         {
             appDBContent.RestrictionsModel.Add(new Restrictions
             {
-                Id = "jjffj",
-                ProjectId = "1",
+                Id = id,
+                ProjectId = projectId,
                 DateTime = date
             
             });
