@@ -12,5 +12,6 @@ namespace Tablet.ViewModels
         public ProjectProblems projectProblems { get; set; }
         public Project project { get; set; }
         public static String projectId { get; set; }
+        public static int Stage { get; set; }
     }
 }

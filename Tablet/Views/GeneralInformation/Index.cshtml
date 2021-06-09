@@ -70,7 +70,7 @@
         <hr />
         <div class="currencies float-left">
             <h2>
-                Структура проекта
+                Структура расходов
             </h2>
 
         </div>
@@ -79,6 +79,8 @@
 
             <tr>
                 <td>Название, единица измерения: </td>
+                <td>Факт </td>
+                <td>План </td>
                 <td>
                     @using (Html.BeginForm("ChangeMeasurement", "Home"))
                     {
@@ -89,17 +91,18 @@
             </tr>
             @foreach (var item in Model.mainModel.Structures)
             {
-                <tr>
-                    <td>@item.Name</td>
-                    <td>@item.Proportion</td>
-                    <td>
-                        <form method="post">
-                            <button type="submit" asp-controller="Structure" asp-action="DeleteValue" asp-route-id="@item.Id">
-                                Удалить
-                            </button>
-                        </form>
-                    </td>
-                </tr>
+        <tr>
+            <td>@item.Name</td>
+            <td>@item.Proportion</td>
+            <td>@item.Plan</td>
+            <td>
+                <form method="post">
+                    <button type="submit" asp-controller="Structure" asp-action="DeleteValue" asp-route-id="@item.Id">
+                        Удалить
+                    </button>
+                </form>
+            </td>
+        </tr>
             }
         </table>
         <br><br>

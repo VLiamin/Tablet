@@ -18,7 +18,6 @@ namespace Tablet.Data.Models
 
         [Display(Name = "Введите этап")]
         public String Stage { get; set; }
-
         public Project Project { get; set; }
     }
 }

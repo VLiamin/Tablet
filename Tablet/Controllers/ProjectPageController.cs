@@ -142,7 +142,7 @@ namespace Tablet.Controllers
         public RedirectToActionResult Editor(Project project)
         {
             projectPageModel.EditToProject(id, project.Customer, project.Developer,
-                project.Technology, project.Cost);
+                project.Technology, project.FinalDate, project.Cost);
             return RedirectToAction("Index");
         }
 
@@ -164,6 +164,13 @@ namespace Tablet.Controllers
         public RedirectToActionResult DeleteRisks(int ID)
         {
             projectPageModel.DeleteProjectRisks(ID);
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public RedirectToActionResult ChangeStage(int id)
+        {
+            ProjectPageViewModel.Stage = id;
             return RedirectToAction("Index");
         }
 

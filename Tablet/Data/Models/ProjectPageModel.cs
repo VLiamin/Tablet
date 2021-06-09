@@ -52,7 +52,7 @@ namespace Tablet.Data.Models
             }
         }
 
-        public void EditToProject(String id, String customer, String developer, String technology, int cost)
+        public void EditToProject(String id, String customer, String developer, String technology, DateTime dateTime, int cost)
         {
             var project = appDBContent.Project.Find(id);
 
@@ -60,6 +60,7 @@ namespace Tablet.Data.Models
             project.Customer = customer;
             project.Technology = technology;
             project.Cost = cost;
+            project.FinalDate = dateTime;
 
             appDBContent.SaveChanges();
         }
@@ -178,11 +179,6 @@ namespace Tablet.Data.Models
             var generalProblem = appDBContent.ProjectGeneralProblems.Where(o => o.Id == id)
               .FirstOrDefault();
 
-            if (!appDBContent.ProjectId.Equals("1"))
-            {
-                int x = 0;
-                x = 5 / x;
-            }
             try
             {
                 if (generalProblem != null && appDBContent.ProjectGeneralProblems.Contains(generalProblem))
@@ -228,7 +224,7 @@ namespace Tablet.Data.Models
 
         public void DeleteGeneralWorks(int id)
         {
-
+            appDBContent.ProjectId = ProjectPageViewModel.projectId;
             var generalWorks = appDBContent.ProjectGeneralWorks.Find(id);
 
             try
@@ -272,7 +268,7 @@ namespace Tablet.Data.Models
 
         public void DeleteProjectRisks(int id)
         {
-
+            appDBContent.ProjectId = ProjectPageViewModel.projectId;
             var risk = appDBContent.ProjectRisks.Find(id);
 
             try

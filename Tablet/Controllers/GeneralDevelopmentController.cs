@@ -38,7 +38,7 @@ namespace Tablet.Controllers
         public RedirectToActionResult DeleteValue(String Id)
         {
             mainModel.DeleteFromProgressTable(Id);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "GeneralInformation");
         }
     }
 }

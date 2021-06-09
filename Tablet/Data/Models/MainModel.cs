@@ -48,13 +48,14 @@ namespace Tablet.Data.Models
         }
 
         public List<Structure> Structures { get; set; }
-        public void AddToTableStructure(string name, int proportion)
+        public void AddToTableStructure(string name, int proportion, int plan)
         {
             appDBContent.Structures.Add(new Structure
             {
                 Id = Guid.NewGuid().ToString(),
                 Name = name,
-                Proportion = proportion
+                Proportion = proportion,
+                Plan = plan
 
             });
             appDBContent.SaveChanges();
