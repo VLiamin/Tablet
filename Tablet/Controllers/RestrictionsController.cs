@@ -83,6 +83,15 @@ namespace Tablet.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpPost]
+        public RedirectToActionResult EditDateTime(String id, DateTime value)
+        {
+         //   int x = 0;
+       //     x = 7 / x;
+            restrictionsPageModel.EditDateTime(id, value);
+            return RedirectToAction("Index");
+        }
+
         public ViewResult AddTable()
         {
             return View();

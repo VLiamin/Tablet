@@ -94,5 +94,21 @@ namespace Tablet.Data.Models
             appDBContent.SaveChanges();
 
         }
+
+        internal void EditDateTime(string id, DateTime value)
+        {
+            Restrictions item = null;
+            foreach (var el in appDBContent.RestrictionsModel)
+            {
+                if (el.Id.Equals(id))
+                {
+                    item = el;
+                    break;
+                }
+            }
+
+            item.DateTime = value;
+            appDBContent.SaveChanges();
+        }
     }
 }
