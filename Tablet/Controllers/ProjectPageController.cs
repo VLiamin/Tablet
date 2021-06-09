@@ -73,7 +73,7 @@ namespace Tablet.Controllers
         }
 
         [HttpPost]
-        public RedirectToActionResult DeleteProblem(String ID)
+        public RedirectToActionResult DeleteProblem(int ID)
         {
             projectPageModel.DeleteProjectProblems(ID, id);
             return RedirectToAction("Index");
@@ -92,7 +92,7 @@ namespace Tablet.Controllers
         }
 
         [HttpPost]
-        public RedirectToActionResult DeleteStage(String ID)
+        public RedirectToActionResult DeleteStage(int ID)
         {
             projectPageModel.DeleteProjectStage(ID, id);
             return RedirectToAction("Index");
@@ -147,21 +147,21 @@ namespace Tablet.Controllers
         }
 
         [HttpPost]
-        public RedirectToActionResult DeleteFinalProblems(String ID)
+        public RedirectToActionResult DeleteFinalProblems(int ID)
         {
             projectPageModel.DeleteGeneralProblems(ID);
             return RedirectToAction("Index");
         }
 
         [HttpPost]
-        public RedirectToActionResult DeleteGeneralWorks(String ID)
+        public RedirectToActionResult DeleteGeneralWorks(int ID)
         {
             projectPageModel.DeleteGeneralWorks(ID);
             return RedirectToAction("Index");
         }
 
         [HttpPost]
-        public RedirectToActionResult DeleteRisks(String ID)
+        public RedirectToActionResult DeleteRisks(int ID)
         {
             projectPageModel.DeleteProjectRisks(ID);
             return RedirectToAction("Index");

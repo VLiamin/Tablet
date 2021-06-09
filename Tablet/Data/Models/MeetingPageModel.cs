@@ -29,10 +29,10 @@ namespace Tablet.Data.Models
                 Comment = comment,
                 Suggestion = suggestion
             });
-            appDBContent.Database.OpenConnection();
-            appDBContent.Database.ExecuteSqlCommand("SET IDENTITY_INSERT Agenda ON;");
+    //        appDBContent.Database.OpenConnection();
+    //        appDBContent.Database.ExecuteSqlCommand("SET IDENTITY_INSERT Agenda ON;");
             appDBContent.SaveChanges();
-            appDBContent.Database.CloseConnection();
+     //       appDBContent.Database.CloseConnection();
         }
 
         public void DeleteAgenda(int id)

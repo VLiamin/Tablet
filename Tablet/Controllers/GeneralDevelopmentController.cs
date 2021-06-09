@@ -20,7 +20,7 @@ namespace Tablet.Controllers
             this.mainModel = mainModel;
         }
 
-        [Authorize(Roles = "admin")]
+        [Authorize(Roles = "Admin")]
         public IActionResult Checkout()
         {
             
