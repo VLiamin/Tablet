@@ -1,11 +1,40 @@
 ﻿@model RestrictionsPageViewModel
 <div>
-    <hr />
-    <hr />
-    <hr />
-    <hr />
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <div class="navbar-collapse" id="navbarСollapse">
+                <ul class="navbar-nav mr-auto">
+
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/Home/Index">Главная</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/ProjectPage/Index">Подробная информация</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/Restrictions/Index">Ограничения</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/MeetingPage/GetList">Встречи по проекту</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/GeneralInformation/Index">Исполнение проекта</a>
+                    </li>
+
+
+                </ul>
+
+                <form class="form-inline mt-2 mt-md-0">
+                    <a class="nav-link" href="/Account/Logout">Выйти</a>
+                </form>
+            </div>
+        </nav>
+
+    </header>
+    <br />
+    <br />
     <h2>
-        Таблица ограничений проекта <br />
+        Таблицы ограничений проекта <br />
     </h2>
     <style type="text/css">
         body {
@@ -16,7 +45,8 @@
         }
 
         td {
-            padding: 5px;
+            padding: 9px 8px;
+            width: 100px;
         }
 
             td.col1 {
@@ -33,41 +63,47 @@
                 background: green;
             }
     </style>
-    @foreach(var item in Model.RestrictionsPage.Restrictions) {
-        if (item.ProjectId.Equals(RestrictionsPageViewModel.ProjectId))
-        {
-            <table class="table">
-                <tr>
-                    <td>Название</td>
-                    <td>Цвет</td>
-                    <td>Хорошо/Плохо/Удовлетворительно</td>
-                </tr>
-                <tr>
-                    <td>Финансы</td>
-                    
-                        @if (item.Finance != null && item.Finance.Equals("Хорошо"))
-                        {
-                            <td class="col3"></td>
-                        }
-                        else if (item.Finance != null && item.Finance.Equals("Плохо"))
-                        {
-                            <td class="col1"></td>
-                        }
-                        else
-                        {
-                            <td class="col2"></td>
-                        }
-                        
-                        <td>
-                            @using (Html.BeginForm("EditFinance", "Restrictions"))
-                            {
-                                <input type="text" id="ss" name="value" value="@item.Finance" />
-                                <input type="submit" value="Изменить" style="display:none;" />
-                            }
-                        </td>
-                </tr>
-                <tr>
-                    <td>Архитектура</td>
+    <table class="table table-bordered">
+        <tr>
+            <td>Название</td>
+            @foreach (var item in Model.RestrictionsPage.Restrictions)
+            {
+                if (item.ProjectId.Equals(RestrictionsPageViewModel.ProjectId))
+                {
+                    <td>@item.DateTime</td>
+                }
+            }
+        </tr>
+        <tr>
+            <td>Финансы</td>
+
+            @foreach (var item in Model.RestrictionsPage.Restrictions)
+            {
+                if (item.ProjectId.Equals(RestrictionsPageViewModel.ProjectId))
+                {
+                    @if (item.Finance != null && item.Finance.Equals("Хорошо"))
+                    {
+                        <td class="col3"></td>
+                    }
+                    else if (item.Finance != null && item.Finance.Equals("Плохо"))
+                    {
+                        <td class="col1"></td>
+                    }
+                    else
+                    {
+                        <td class="col2"></td>
+                    }
+
+
+                }
+            }
+        </tr>
+        <tr>
+            <td>Архитектура</td>
+            @foreach (var item in Model.RestrictionsPage.Restrictions)
+            {
+                if (item.ProjectId.Equals(RestrictionsPageViewModel.ProjectId))
+                {
                     @if (item.Architecture != null && item.Architecture.Equals("Хорошо"))
                     {
                         <td class="col3"></td>
@@ -80,16 +116,15 @@
                     {
                         <td class="col2"></td>
                     }
-                    <td>
-                        @using (Html.BeginForm("EditArchitecture", "Restrictions"))
-                         {
-                            <input type="text" id="ss" name="value" value="@item.Architecture" />
-                            <input type="submit" value="Изменить" style="display:none;" />
-                         }
-                    </td>
-                </tr>
-                <tr>
-                    <td>Безопасность</td>
+                }
+            }
+        </tr>
+        <tr>
+            <td>Безопасность</td>
+            @foreach (var item in Model.RestrictionsPage.Restrictions)
+            {
+                if (item.ProjectId.Equals(RestrictionsPageViewModel.ProjectId))
+                {
                     @if (item.Safety != null && item.Safety.Equals("Хорошо"))
                     {
                         <td class="col3"></td>
@@ -102,16 +137,16 @@
                     {
                         <td class="col2"></td>
                     }
-                    <td>
-                        @using (Html.BeginForm("EditSafety", "Restrictions"))
-                        {
-                            <input type="text" id="ss" name="value" value="@item.Safety" />
-                            <input type="submit" value="Изменить" style="display:none;" />
-                        }
-                    </td>
-                </tr>
-                <tr>
-                    <td>Данные</td>
+                }
+            }
+
+        </tr>
+        <tr>
+            <td>Данные</td>
+            @foreach (var item in Model.RestrictionsPage.Restrictions)
+            {
+                if (item.ProjectId.Equals(RestrictionsPageViewModel.ProjectId))
+                {
                     @if (item.Data != null && item.Data.Equals("Хорошо"))
                     {
                         <td class="col3"></td>
@@ -124,16 +159,16 @@
                     {
                         <td class="col2"></td>
                     }
-                    <td>
-                        @using (Html.BeginForm("EditData", "Restrictions"))
-                        {
-                            <input type="text" id="ss" name="value" value="@item.Data" />
-                            <input type="submit" value="Изменить" style="display:none;" />
-                        }
-                    </td>
-                </tr>
-                <tr>
-                    <td>Сроки</td>
+                }
+            }
+
+        </tr>
+        <tr>
+            <td>Сроки</td>
+            @foreach (var item in Model.RestrictionsPage.Restrictions)
+            {
+                if (item.ProjectId.Equals(RestrictionsPageViewModel.ProjectId))
+                {
                     @if (item.RedLine != null && item.RedLine.Equals("Хорошо"))
                     {
                         <td class="col3"></td>
@@ -146,15 +181,15 @@
                     {
                         <td class="col2"></td>
                     }
-                    <td>
-                        @using (Html.BeginForm("EditRedLine", "Restrictions"))
-                        {
-                            <input type="text" id="ss" name="value" value="@item.RedLine" />
-                            <input type="submit" value="Изменить" style="display:none;" />
-                        }
-                    </td>
-                <tr>
-                    <td>Документ</td>
+                }
+            }
+
+        <tr>
+            <td>Документ</td>
+            @foreach (var item in Model.RestrictionsPage.Restrictions)
+            {
+                if (item.ProjectId.Equals(RestrictionsPageViewModel.ProjectId))
+                {
                     @if (item.Document != null && item.Document.Equals("Хорошо"))
                     {
                         <td class="col3"></td>
@@ -167,16 +202,15 @@
                     {
                         <td class="col2"></td>
                     }
-                    <td>
-                        @using (Html.BeginForm("EditDocument", "Restrictions"))
-                        {
-                            <input type="text" id="ss" name="value" value="@item.Document" />
-                            <input type="submit" value="Изменить" style="display:none;" />
-                        }
-                    </td>
-                </tr>
-                <tr>
-                    <td>Инфраструктура</td>
+                }
+            }
+        </tr>
+        <tr>
+            <td>Инфраструктура</td>
+            @foreach (var item in Model.RestrictionsPage.Restrictions)
+            {
+                if (item.ProjectId.Equals(RestrictionsPageViewModel.ProjectId))
+                {
                     @if (item.Infrastructure != null && item.Infrastructure.Equals("Хорошо"))
                     {
                         <td class="col3"></td>
@@ -189,15 +223,15 @@
                     {
                         <td class="col2"></td>
                     }
-                    <td>
-                        @using (Html.BeginForm("EditInfrastructure", "Restrictions"))
-                        {
-                            <input type="text" id="ss" name="value" value="@item.Infrastructure" />
-                            <input type="submit" value="Изменить" style="display:none;" />
-                        }
-                    </td>
-                <tr>
-                    <td>Лицензия</td>
+                }
+            }
+
+        <tr>
+            <td>Лицензия</td>
+            @foreach (var item in Model.RestrictionsPage.Restrictions)
+            {
+                if (item.ProjectId.Equals(RestrictionsPageViewModel.ProjectId))
+                {
                     @if (item.License != null && item.License.Equals("Хорошо"))
                     {
                         <td class="col3"></td>
@@ -210,16 +244,32 @@
                     {
                         <td class="col2"></td>
                     }
+                }
+            }
+
+        </tr>
+
+        <tr>
+            <td>Изменение значения</td>
+            @foreach (var item in Model.RestrictionsPage.Restrictions)
+            {
+                if (item.ProjectId.Equals(RestrictionsPageViewModel.ProjectId))
+                {
                     <td>
-                        @using (Html.BeginForm("EditLicense", "Restrictions"))
+                        @using (Html.BeginForm("EditTable", "Restrictions"))
                         {
-                            <input type="text" id="ss" name="value" value="@item.License" />
-                            <input type="submit" value="Изменить" style="display:none;" />
+                             
+                            <input type="text" id="ss" name="id" value="@item.Id" style="display:none;"/>
+                            <input type="submit" value="Изменить"  />
                         }
                     </td>
-                </tr>
-        
+                }
+            }
+
+        </tr>
+
     </table>
-        }
-    }
+
+    <hr />
+    <a class="btn badge-light border-dark" href="/Restrictions/AddTable">Добавить таблицу</a>
 </div>

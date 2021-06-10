@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Tablet.ViewModels;
 
 namespace Tablet.Data.Models
 {
@@ -51,7 +52,7 @@ namespace Tablet.Data.Models
             }
         }
 
-        public void EditToProject(String id, String customer, String developer, String technology, int cost)
+        public void EditToProject(String id, String customer, String developer, String technology, DateTime dateTime, int cost)
         {
             var project = appDBContent.Project.Find(id);
 
@@ -59,6 +60,7 @@ namespace Tablet.Data.Models
             project.Customer = customer;
             project.Technology = technology;
             project.Cost = cost;
+            project.FinalDate = dateTime;
 
             appDBContent.SaveChanges();
         }
@@ -82,13 +84,13 @@ namespace Tablet.Data.Models
                    Problem = problem
                });
 
-            appDBContent.Database.OpenConnection();
-            appDBContent.Database.ExecuteSqlCommand("SET IDENTITY_INSERT ProjectProblems ON;");
+         //   appDBContent.Database.OpenConnection();
+      //      appDBContent.Database.ExecuteSqlCommand("SET IDENTITY_INSERT ProjectProblems ON;");
             appDBContent.SaveChanges();
-            appDBContent.Database.CloseConnection();
+        //    appDBContent.Database.CloseConnection();
         }
 
-        public void DeleteProjectProblems(String id, String projectId)
+        public void DeleteProjectProblems(int id, String projectId)
         {
 
             var problem = appDBContent.ProjectProblems.Find(id);
@@ -130,9 +132,9 @@ namespace Tablet.Data.Models
             appDBContent.Database.CloseConnection();
         }
 
-        public void DeleteProjectStage(String id, String projectId)
+        public void DeleteProjectStage(int id, String projectId)
         {
-
+            appDBContent.ProjectId = ProjectPageViewModel.projectId;
             var stage = appDBContent.Stages.Find(id);
 
             try
@@ -160,7 +162,7 @@ namespace Tablet.Data.Models
 
         public void AddToProjectGeneralProblems(String description, DateTime date, String projectId)
         {
-
+            
             appDBContent.ProjectGeneralProblems.Add(new ProjectGeneralProblems
             {
                 Description = description,
@@ -171,10 +173,11 @@ namespace Tablet.Data.Models
             appDBContent.SaveChanges();
         }
 
-        public void DeleteGeneralProblems(String id)
+        public void DeleteGeneralProblems(int id)
         {
-
-            var generalProblem = appDBContent.ProjectGeneralProblems.Find(id);
+            appDBContent.ProjectId = ProjectPageViewModel.projectId;
+            var generalProblem = appDBContent.ProjectGeneralProblems.Where(o => o.Id == id)
+              .FirstOrDefault();
 
             try
             {
@@ -219,9 +222,9 @@ namespace Tablet.Data.Models
             appDBContent.SaveChanges();
         }
 
-        public void DeleteGeneralWorks(String id)
+        public void DeleteGeneralWorks(int id)
         {
-
+            appDBContent.ProjectId = ProjectPageViewModel.projectId;
             var generalWorks = appDBContent.ProjectGeneralWorks.Find(id);
 
             try
@@ -263,9 +266,9 @@ namespace Tablet.Data.Models
             appDBContent.SaveChanges();
         }
 
-        public void DeleteProjectRisks(String id)
+        public void DeleteProjectRisks(int id)
         {
-
+            appDBContent.ProjectId = ProjectPageViewModel.projectId;
             var risk = appDBContent.ProjectRisks.Find(id);
 
             try

@@ -10,7 +10,7 @@ using Tablet.Data;
 namespace Tablet.Migrations
 {
     [DbContext(typeof(AppDBContent))]
-    [Migration("20210517232027_Initial")]
+    [Migration("20210603115106_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,9 +24,7 @@ namespace Tablet.Migrations
             modelBuilder.Entity("Tablet.Data.Models.Agenda", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
                     b.Property<string>("Comment")
                         .HasColumnType("nvarchar(max)");
@@ -207,9 +205,7 @@ namespace Tablet.Migrations
             modelBuilder.Entity("Tablet.Data.Models.ProjectProblems", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
                     b.Property<string>("Problem")
                         .HasColumnType("nvarchar(max)");
@@ -265,6 +261,9 @@ namespace Tablet.Migrations
 
                     b.Property<string>("Data")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DateTime")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Document")
                         .HasColumnType("nvarchar(max)");

@@ -16,7 +16,10 @@ namespace Tablet.Data.Models
         [Display(Name = "Введите название")]
         public String Name { get; set; }
 
-        [Display(Name = "Введите проценты")]
+        [Display(Name = "Введите факт")]
         public int Proportion { get; set; }
+
+        [Display(Name = "Введите план")]
+        public int Plan { get; set; }
     }
 }

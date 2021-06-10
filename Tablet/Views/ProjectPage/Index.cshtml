@@ -1,14 +1,44 @@
 ﻿@model ProjectPageViewModel
 
-<div class="container mt-5 mb-5">
-    <hr />
-    <hr />
-    <div class="currencies float-left">
-        <h2>
-            Общая информация о проекте <br />
-        </h2>
+    <div class="container mt-5 mb-5">
+        <header>
+            <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+                <div class="navbar-collapse" id="navbarСollapse">
+                    <ul class="navbar-nav mr-auto">
 
-        <h3>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/Home/Index">Главная</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/ProjectPage/Index">Подробная информация</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/Restrictions/Index">Ограничения</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/MeetingPage/GetList">Встречи по проекту</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/GeneralInformation/Index">Исполнение проекта</a>
+                        </li>
+
+                    </ul>
+
+                    <form class="form-inline mt-2 mt-md-0">
+                        <a class="nav-link" href="/Account/Logout">Выйти</a>
+                    </form>
+                </div>
+            </nav>
+
+        </header>
+        <hr />
+        <hr />
+        <div class="currencies float-left">
+            <h2>
+                Общая информация о проекте <br />
+            </h2>
+
+
             @foreach (var item in Model.projectPageModel.Project)
             {
                 if (item.Id.Equals(ProjectPageViewModel.projectId))
@@ -17,156 +47,176 @@
                     <td>Заказчик: @item.Customer</td> <br />
                     <td>Ответственный: @item.Developer</td> <br />
                     <td>Технология: @item.Technology</td> <br />
+                    <td>Дата окончания проекта: @item.FinalDate</td> <br />
                     <td>Стоимость: @item.Cost</td> <br />
                 }
 
             }
 
             <a class="btn badge-light border-dark" href="/Project/Editor">Изменить значения</a>
-        </h3>
-        <hr>
-        <h2>
-            Задачи до конца проекта
-        </h2>
-
-        @foreach (var item in Model.projectPageModel.projectProblems)
-        {
-                <td> @item.Id </td>
-                <td> @item.Problem</td>
-                <td>
-                    <form method="post">
-                        <button type="submit" asp-controller="ProjectPage" asp-action="DeleteProblem" asp-route-id="@item.Id">
-                            Удалить
-                        </button>
-                    </form>
-                </td>
-
-        }
-        <a class="btn badge-light border-dark" href="/ProjectPage/AddProblem">Добавить значение</a>
-
-        <hr>
-        <h2>
-            Этапы
-        </h2>
-
-        @foreach (var item in Model.projectPageModel.Stages)
-        {
-
-                <td> @item.Id </td>
-                <td> @item.Stage</td> <br />
-                <td>
-                    <form method="post">
-                        <button type="submit" asp-controller="ProjectPage" asp-action="DeleteStage" asp-route-id="@item.Id">
-                            Удалить
-                        </button>
-                    </form>
-                </td>
 
 
-        }
-        <a class="btn badge-light border-dark" href="/ProjectPage/AddStage">Добавить значение</a>
-
-        <hr>
-        <h2>
-            Основные задачи этапа
-        </h2>
-
-        <table class="table">
-            <tr><td>Контрольные точки</td><td>Срок до:</td></tr>
-            @foreach (var item in Model.projectPageModel.GeneralProblems)
-
-            {
+            <hr>
+            <h2>
+                Этапы
+            </h2>
+            <table class="table">
                 <tr>
-                    <td>@item.Description</td>
-                    <td>@item.Date</td>
+                    <td>Номер </td>
+                    <td>Этап </td>
+                    <td>
+                        @using (Html.BeginForm("ChangeStage", "ProjectPage"))
+                        {
+                            <input type="text" id="ss" name="id" value="@ProjectPageViewModel.Stage" />
+                            <input type="submit" value="Изменить" style="display:none;" />
+                        }
+                    </td>
+                </tr>
+                @foreach (var item in Model.projectPageModel.Stages)
+                {
+                    @if (item.Id == ProjectPageViewModel.Stage)
+                    {
+                        <tr>
+                            <td bgcolor="#D3EDF6"> @item.Id </td>
+                            <td bgcolor="#D3EDF6"> @item.Stage </td>
+                            <td bgcolor="#D3EDF6">
+                                <form method="post">
+                                    <button type="submit" asp-controller="ProjectPage" asp-action="DeleteStage" asp-route-id="@item.Id">
+                                        Удалить
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                    else
+                    {
+                        <tr>
+                            <td> @item.Id </td>
+                            <td> @item.Stage </td>
+                            <td>
+                                <form method="post">
+                                    <button type="submit" asp-controller="ProjectPage" asp-action="DeleteStage" asp-route-id="@item.Id">
+                                        Удалить
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+
+                }
+            </table>
+                <a class="btn badge-light border-dark" href="/ProjectPage/AddStage">Добавить значение</a>
+                <hr>
+                <h2>
+                    Задачи до конца проекта
+                </h2>
+
+                @foreach (var item in Model.projectPageModel.projectProblems)
+                {
+                    <td> @item.Id </td>
+                    <td> @item.Problem</td>
                     <td>
                         <form method="post">
-                            <button type="submit" asp-controller="ProjectPage" asp-action="DeleteFinalProblems" asp-route-id="@item.Id">
+                            <button type="submit" asp-controller="ProjectPage" asp-action="DeleteProblem" asp-route-id="@item.Id">
                                 Удалить
                             </button>
                         </form>
                     </td>
 
-                </tr>
+                }
+                <a class="btn badge-light border-dark" href="/ProjectPage/AddProblem">Добавить значение</a>
 
-            }
-        </table>
+                <hr>
 
-        <a class="btn badge-light border-dark" href="/ProjectPage/AddGeneralProblem">Добавить значение</a>
+                <h2>
+                    Основные задачи этапа
+                </h2>
 
+                <table class="table">
+                    <tr><td>Контрольные точки</td><td>Срок до:</td></tr>
+                    @foreach (var item in Model.projectPageModel.GeneralProblems)
 
-        <table class="table">
-            <tr><td>Основные текущие и предстоящие работы</td><td>Срок:</td><td>Точка невозрата</td><td>Ответственные</td><td>%</td></tr>
-            @foreach (var item in Model.projectPageModel.GeneralWorks)
+                    {
+                        <tr>
+                            <td>@item.Description</td>
+                            <td>@item.Date</td>
+                            <td>
+                                <form method="post">
+                                    <button type="submit" asp-controller="ProjectPage" asp-action="DeleteFinalProblems" asp-route-id="@item.Id">
+                                        Удалить
+                                    </button>
+                                </form>
+                            </td>
 
-            {
+                        </tr>
 
-                    <tr>
-                        <td>@item.Description</td>
-                        <td>@item.Date</td>
-                        <td>@item.RedLine</td>
-                        <td>@item.Responsible</td>
-                        <td>@item.Persent</td>
+                    }
+                </table>
 
-                        <td>
-                            <form method="post">
-                                <button type="submit" asp-controller="ProjectPage" asp-action="DeleteGeneralWorks" asp-route-id="@item.Id">
-                                    Удалить
-                                </button>
-                            </form>
-                        </td>
+                <a class="btn badge-light border-dark" href="/ProjectPage/AddGeneralProblem">Добавить значение</a>
 
-                    </tr>
+                <hr>
+                <table class="table">
+                    <tr><td>Основные текущие и предстоящие работы</td><td>Срок:</td><td>Точка невозрата</td><td>Ответственные</td><td>%</td></tr>
+                    @foreach (var item in Model.projectPageModel.GeneralWorks)
 
-            }
-        </table>
+                    {
 
-        <a class="btn badge-light border-dark" href="/ProjectPage/AddGeneralWorks">Добавить значение</a>
-        <hr>
+                        <tr>
+                            <td>@item.Description</td>
+                            <td>@item.Date</td>
+                            <td>@item.RedLine</td>
+                            <td>@item.Responsible</td>
+                            <td>@item.Persent</td>
 
-        <h2>
-            Риски:
-        </h2>
+                            <td>
+                                <form method="post">
+                                    <button type="submit" asp-controller="ProjectPage" asp-action="DeleteGeneralWorks" asp-route-id="@item.Id">
+                                        Удалить
+                                    </button>
+                                </form>
+                            </td>
 
-        <table class="table">
-            <tr><td>Описание рисков</td><td>ОТВ</td><td>Срок</td><td>Решение</td></tr>
-            @foreach (var item in Model.projectPageModel.ProjectRisks)
+                        </tr>
 
-            {
+                    }
+                </table>
 
-                    <tr>
-                        <td>@item.Description</td>
-                        <td>@item.OTV</td>
-                        <td>@item.RedLine</td>
-                        <td>@item.Solution</td>
-                        <td>
-                            <form method="post">
-                                <button type="submit" asp-controller="ProjectPage" asp-action="DeleteRisks" asp-route-id="@item.Id">
-                                    Удалить
-                                </button>
-                            </form>
-                        </td>
-                    </tr>
-            }
-        </table>
+                <a class="btn badge-light border-dark" href="/ProjectPage/AddGeneralWorks">Добавить значение</a>
+                <hr>
 
-        <a class="btn badge-light border-dark" href="/ProjectPage/AddRisks">Добавить значение</a>
+                <h2>
+                    Риски:
+                </h2>
 
-        <hr>
-        <form method="post">
-        </form>
+                <table class="table">
+                    <tr><td>Описание рисков</td><td>ОТВ</td><td>Срок</td><td>Решение</td></tr>
+                    @foreach (var item in Model.projectPageModel.ProjectRisks)
 
-        @using (Html.BeginForm("GoToList", "MeetingPage"))
-        {
-            <button type="submit" name="projectId" value="@ProjectPageViewModel.projectId">
-                Перейти к списку встреч
-            </button>
+                    {
 
-        }
+                        <tr>
+                            <td>@item.Description</td>
+                            <td>@item.OTV</td>
+                            <td>@item.RedLine</td>
+                            <td>@item.Solution</td>
+                            <td>
+                                <form method="post">
+                                    <button type="submit" asp-controller="ProjectPage" asp-action="DeleteRisks" asp-route-id="@item.Id">
+                                        Удалить
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </table>
 
-        <br>
+                <a class="btn badge-light border-dark" href="/ProjectPage/AddRisks">Добавить значение</a>
 
-        <a class="btn badge-light border-dark" href="/Restrictions/Index">Ограничения проекта</a>
-        <br>
-        <a class="btn badge-light border-dark" href="/ProjectPage/MakePDF">Создать отчет</a>
-    </div>
+                <hr>
+                <form method="post">
+                </form>
+
+                <br>
+                <a class="btn badge-light border-dark" href="/ProjectPage/MakePDF">Создать отчет</a>
+        </div>

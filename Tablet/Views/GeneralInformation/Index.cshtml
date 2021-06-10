@@ -1,0 +1,117 @@
+﻿@model Tablet.ViewModels.HomeViewModel
+
+    <div class="container mt-5 mb-5">
+        <header>
+            <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+                <div class="navbar-collapse" id="navbarСollapse">
+                    <ul class="navbar-nav mr-auto">
+
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/Home/Index">Главная</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/ProjectPage/Index">Подробная информация</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/Restrictions/Index">Ограничения</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/MeetingPage/GetList">Встречи по проекту</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/GeneralInformation/Index">Исполнение проекта</a>
+                        </li>
+
+                    </ul>
+
+                    <form class="form-inline mt-2 mt-md-0">
+                        <a class="nav-link" href="/Account/Logout">Выйти</a>
+                    </form>
+                </div>
+            </nav>
+
+        </header>
+        <br><br>
+        <div class="currencies float-left">
+            <h2>
+                Готовность проекта
+            </h2>
+
+        </div>
+        <br><br><br>
+        <table class="table">
+            <tr><td>Дата</td><td>Прогноз</td><td>Факт</td></tr>
+            @foreach (var item in Model.mainModel.generalDevelopmentModels)
+
+            {
+                <tr>
+                    <td>@item.Date</td>
+                    <td>@item.Forecast</td>
+                    <td>@item.Progress</td>
+                    <td>
+                        <form method="post">
+                            <button type="submit" asp-controller="GeneralDevelopment" asp-action="DeleteValue" asp-route-id="@item.Id">
+                                Удалить
+                            </button>
+                        </form>
+                    </td>
+
+                </tr>
+            }
+        </table>
+        <br><br>
+        @if (User.IsInRole("Admin"))
+        {
+            <a class="btn badge-light border-dark" href="/GeneralDevelopment/Checkout">Добавить значение</a>
+        }
+
+
+
+        <hr />
+        <div class="currencies float-left">
+            <h2>
+                Структура расходов
+            </h2>
+
+        </div>
+        <br><br><br>
+        <table class="table">
+
+            <tr>
+                <td>Название, единица измерения: </td>
+                <td>Факт </td>
+                <td>План </td>
+                <td>
+                    @using (Html.BeginForm("ChangeMeasurement", "Home"))
+                    {
+                        <input type="text" id="ss" name="measurement" value="@HomeViewModel.measurement" />
+                        <input type="submit" value="Изменить" style="display:none;" />
+                    }
+                </td>
+            </tr>
+            @foreach (var item in Model.mainModel.Structures)
+            {
+        <tr>
+            <td>@item.Name</td>
+            <td>@item.Proportion</td>
+            <td>@item.Plan</td>
+            <td>
+                <form method="post">
+                    <button type="submit" asp-controller="Structure" asp-action="DeleteValue" asp-route-id="@item.Id">
+                        Удалить
+                    </button>
+                </form>
+            </td>
+        </tr>
+            }
+        </table>
+        <br><br>
+        @if (User.IsInRole("Admin"))
+        {
+            <a class="btn badge-light border-dark" href="/Structure/SecondCheckout">Добавить значение</a>
+            <br>
+        }
+        <br>
+        <a class="btn badge-light border-dark" href="/Home/MakePDF">Создать отчет</a>
+
+    </div>

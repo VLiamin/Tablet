@@ -1,50 +1,80 @@
 ﻿@model ProjectRisks
 
-<div class="container  mt-5 mb-5">
-    <hr />
-    <hr />
-    <div class="currencies float-left">
-        <h2>
-            Добавление значения
-        </h2>
+    <div class="container  mt-5 mb-5">
+        <header>
+            <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+                <div class="navbar-collapse" id="navbarСollapse">
+                    <ul class="navbar-nav mr-auto">
 
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/Home/Index">Главная</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/ProjectPage/Index">Подробная информация</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/Restrictions/Index">Ограничения</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/MeetingPage/GetList">Встречи по проекту</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/GeneralInformation/Index">Исполнение проекта</a>
+                        </li>
+
+                    </ul>
+
+                    <form class="form-inline mt-2 mt-md-0">
+                        <a class="nav-link" href="/Account/Logout">Выйти</a>
+                    </form>
+                </div>
+            </nav>
+
+        </header>
+        <hr />
+        <hr />
+        <div class="currencies float-left">
+            <h2>
+                Добавление значения
+            </h2>
+
+        </div>
+        <hr />
+        <hr />
+
+        <form asp-action="AddRisks" method="post" class="form">
+            <hr />
+            <hr />
+            <div class="form-group">
+                <label asp-for="Description"></label>
+                <div class="col-md-12">
+                    <input asp-for="Description" class="form-control" />
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="OTV"></label>
+                <div class="col-md-12">
+                    <input asp-for="OTV" class="form-control" />
+                    <span asp-validation-for="OTV" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="RedLine"></label>
+                <div class="col-md-12">
+                    <input asp-for="RedLine" class="form-control" />
+                    <span asp-validation-for="RedLine" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Solution"></label>
+                <div class="col-md-12">
+                    <input asp-for="Solution" class="form-control" />
+                    <span asp-validation-for="Solution" class="text-danger"></span>
+                </div>
+            </div>
+
+
+            <input class="btn btn-success" type="submit" value="Добавить в таблицу" />
+        </form>
     </div>
-    <hr />
-    <hr />
-
-    <form asp-action="AddRisks" method="post" class="form">
-        <hr />
-        <hr />
-        <div class="form-group">
-            <label asp-for="Description"></label>
-            <div class="col-md-12">
-                <input asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="OTV"></label>
-            <div class="col-md-12">
-                <input asp-for="OTV" class="form-control" />
-                <span asp-validation-for="OTV" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="RedLine"></label>
-            <div class="col-md-12">
-                <input asp-for="RedLine" class="form-control" />
-                <span asp-validation-for="RedLine" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="Solution"></label>
-            <div class="col-md-12">
-                <input asp-for="Solution" class="form-control" />
-                <span asp-validation-for="Solution" class="text-danger"></span>
-            </div>
-        </div>
-
-
-        <input class="btn btn-success" type="submit" value="Добавить в таблицу" />
-    </form>
-</div>

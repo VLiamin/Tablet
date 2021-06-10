@@ -20,7 +20,7 @@ namespace Tablet.Controllers
         
         public ViewResult GetList()
         {
-            
+            MeetingsPageViewModel.ProjectId = ProjectPageViewModel.projectId;
             var items = meetingPageModel.GetListOfMeetingsModel();
             meetingPageModel.ListOfMeetings = items;
 
@@ -39,13 +39,6 @@ namespace Tablet.Controllers
 
             
             return View(obj);
-        }
-
-        [HttpPost]
-        public RedirectToActionResult GoToList(String projectId)
-        {
-            MeetingsPageViewModel.ProjectId = projectId;
-            return RedirectToAction("GetList");
         }
 
         public ViewResult AddMeeting()

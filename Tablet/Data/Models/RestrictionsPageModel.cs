@@ -32,17 +32,14 @@ namespace Tablet.Data.Models
             appDBContent.SaveChanges();
         }
 
-        public void AddRestrictions(String id, String projectId)
+        public void AddRestrictions(String id, String projectId, DateTime date)
         {
-            foreach (var el in appDBContent.RestrictionsModel)
-            {
-                if (el.ProjectId.Equals(projectId))
-                    return;
-            }
             appDBContent.RestrictionsModel.Add(new Restrictions
             {
                 Id = id,
-                ProjectId = projectId
+                ProjectId = projectId,
+                DateTime = date
+            
             });
 
             appDBContent.SaveChanges();
@@ -53,16 +50,17 @@ namespace Tablet.Data.Models
             return appDBContent.RestrictionsModel.ToList();
         }
 
-        public void Edit(String name, String value, String projectId)
+        public void Edit(String id, String name, String value)
         {
+
             Restrictions item = null;
             foreach (var el in appDBContent.RestrictionsModel)
             {
-                if (el.ProjectId.Equals(projectId))
-                {
-                    item = el;
-                    break;
-                }
+                  if (el.Id.Equals(id))
+                  {
+                      item = el;
+                      break;
+                  }
             }
         
         
@@ -95,6 +93,22 @@ namespace Tablet.Data.Models
             }
             appDBContent.SaveChanges();
 
+        }
+
+        internal void EditDateTime(string id, DateTime value)
+        {
+            Restrictions item = null;
+            foreach (var el in appDBContent.RestrictionsModel)
+            {
+                if (el.Id.Equals(id))
+                {
+                    item = el;
+                    break;
+                }
+            }
+
+            item.DateTime = value;
+            appDBContent.SaveChanges();
         }
     }
 }

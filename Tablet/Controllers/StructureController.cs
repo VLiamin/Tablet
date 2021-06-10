@@ -19,7 +19,7 @@ namespace Tablet.Controllers
             this.mainModel = mainModel;
         }
 
-        [Authorize(Roles = "admin")]
+        [Authorize(Roles = "Admin")]
         public IActionResult SecondCheckout()
         {
 
@@ -29,7 +29,7 @@ namespace Tablet.Controllers
         [HttpPost]
         public IActionResult SecondCheckout(Structure structure)
         {
-            mainModel.AddToTableStructure(structure.Name, structure.Proportion);
+            mainModel.AddToTableStructure(structure.Name, structure.Proportion, structure.Plan);
             return View();
         }
 
@@ -37,7 +37,7 @@ namespace Tablet.Controllers
         public RedirectToActionResult DeleteValue(String Id)
         {
             mainModel.DeleteFromStructureTable(Id);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "GeneralInformation");
         }
     }
 }

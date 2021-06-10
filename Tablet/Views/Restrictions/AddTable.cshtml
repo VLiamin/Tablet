@@ -1,0 +1,57 @@
+﻿@model Restrictions
+
+<div class="container  mt-5 mb-5">
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <div class="navbar-collapse" id="navbarСollapse">
+                <ul class="navbar-nav mr-auto">
+
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/Home/Index">Главная</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/ProjectPage/Index">Подробная информация</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/Restrictions/Index">Ограничения</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/MeetingPage/GetList">Встречи по проекту</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/GeneralInformation/Index">Исполнение проекта</a>
+                    </li>
+
+                </ul>
+
+                <form class="form-inline mt-2 mt-md-0">
+                    <a class="nav-link" href="/Account/Logout">Выйти</a>
+                </form>
+            </div>
+        </nav>
+
+    </header>
+    <hr />
+    <hr />
+    <div class="currencies float-left">
+        <h2>
+            Добавление значения
+        </h2>
+
+    </div>
+    <hr />
+    <hr />
+
+    <form asp-action="AddTable" method="post" class="form">
+        <hr />
+        <hr />
+        <div class="form-group">
+            <label asp-for="DateTime"></label>
+            <div class="col-md-12">
+                <input asp-for="DateTime" class="form-control" />
+                <span asp-validation-for="DateTime" class="text-danger"></span>
+            </div>
+        </div>
+        <input class="btn btn-success" type="submit" value="Добавить таблицу" />
+    </form>
+</div>

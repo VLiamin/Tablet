@@ -1,38 +1,68 @@
 ﻿@model MeetingsPageViewModel
 
-<div class="container mt-5 mb-5">
-    <hr />
-    <hr />
-    <div class="currencies float-left">
-        <h2>
-            Все встречи
-        </h2>
+    <div class="container mt-5 mb-5">
+        <header>
+            <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+                <div class="navbar-collapse" id="navbarСollapse">
+                    <ul class="navbar-nav mr-auto">
+
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/Home/Index">Главная</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/ProjectPage/Index">Подробная информация</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/Restrictions/Index">Ограничения</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/MeetingPage/GetList">Встречи по проекту</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/GeneralInformation/Index">Исполнение проекта</a>
+                        </li>
+
+                    </ul>
+
+                    <form class="form-inline mt-2 mt-md-0">
+                        <a class="nav-link" href="/Account/Logout">Выйти</a>
+                    </form>
+                </div>
+            </nav>
+
+        </header>
+        <br />
+        <br />
+        <div class="currencies float-left">
+            <h2>
+                Все встречи
+            </h2>
+
+        </div>
+        <hr />
+        <hr />
+        <hr />
+        <style>
+            button {
+                border: 2px solid #e34761; /* Параметры рамки */
+                background: #f3dbdf; /* Цвет фона */
+                font-size: 14px; /* Размер текста */
+                padding: 5px 20px; /* Поля вокруг текста */
+            }
+        </style>
+
+        @foreach (var el in Model.MeetingPageModel.ListOfMeetings)
+        {
+            if (el.ProjectId.Equals(MeetingsPageViewModel.ProjectId))
+            {
+
+                <td>Номер встречи: @el.Number</td>
+                <a class="" asp-controller="MeetingPage" asp-action="GoToMeeting" asp-route-id="@el.Id">Перейти на встречу</a>
+                <hr />
+            }
+        }
+        <hr />
+        <hr />
+        <a class="btn badge-light border-dark" href="/MeetingPage/AddMeeting">Добавить встречу</a>
 
     </div>
-    <hr />
-    <hr />
-    <hr />
-    <style>
-        button {
-            border: 2px solid #e34761; /* Параметры рамки */
-            background: #f3dbdf; /* Цвет фона */
-            font-size: 14px; /* Размер текста */
-            padding: 5px 20px; /* Поля вокруг текста */
-        }
-    </style>
-
-    @foreach (var el in Model.MeetingPageModel.ListOfMeetings)
-    {
-        if (el.ProjectId.Equals(MeetingsPageViewModel.ProjectId))
-        {
-
-            <td>Номер встречи: @el.Number</td>
-            <a class="" asp-controller="MeetingPage" asp-action="GoToMeeting" asp-route-id="@el.Id">Перейти на встречу</a>
-            <hr />
-        }
-    }
-    <hr />
-    <hr />
-    <a class="btn badge-light border-dark" href="/MeetingPage/AddMeeting">Добавить встречу</a>
-
-</div>

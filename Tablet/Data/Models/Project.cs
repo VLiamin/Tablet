@@ -14,7 +14,7 @@ namespace Tablet.Data.Models
         public String Id { set; get; }
 
         [Display(Name = "Введите название")]
-        [MaxLength(20)]
+        [MaxLength(50)]
         public String Name { set; get; }
 
         [Display(Name = "Введите заказчика")]
@@ -28,6 +28,9 @@ namespace Tablet.Data.Models
         [Display(Name = "Введите технологию")]
         [MaxLength(10)]
         public String Technology { get; set; }
+
+        [Display(Name = "Введите дату окончания")]
+        public DateTime FinalDate { set; get; }
 
         [Display(Name = "Введите стоимость")]
         public int Cost { get; set; }
